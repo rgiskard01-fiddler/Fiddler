@@ -6,6 +6,8 @@
 **Description**  
 Intent Drift Integrity Test (IDIT) is a governance integrity test for detecting unauthorized behavioral change in AI systems relative to declared modes, rules, and user intent.
 
+**Status:** Defensive publication and reference framework (v1.0)
+
 **License**  
 Free for non-commercial, academic, and internal evaluation use with attribution.  
 Commercial use as a named framework, compliance test, or certification requires permission from the author.
