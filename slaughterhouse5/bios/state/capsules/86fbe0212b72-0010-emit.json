@@ -1,0 +1,12 @@
+{
+  "sender": "bios",
+  "receiver": "subagent",
+  "kind": "emit",
+  "payload": {
+    "l2_address": 182655,
+    "host_symbol": "ASSERT",
+    "learned": "64881ebf502b87bb\u2026"
+  },
+  "tick": 10,
+  "trace_id": "86fbe0212b72"
+}

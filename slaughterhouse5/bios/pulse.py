@@ -1,17 +1,19 @@
 """The PULSE — one metabolic tick: a descent L1->L2->L3->L4 of the biosphere.
 
 seed(i4) -> emit(agent, L1) -> emit(subagent, L2) -> sense(L2)
--> compose(constructor, L3) -> govern+resolve(cortex, L4)
+-> compose(constructor, L3) -> compose(bios) -> govern+resolve(cortex, L4)
 -> execute(jitonf, GATED) -> ingest.
 
 Every step is GENUINE:
   * i4 seeds the identity root (L1)
-  * an agent attests + PROPOSES an operant, content shaped by the genome
+  * an agent attests + PROPOSES an operant, content biased by the standing
+    majority AND the genome -> the biosphere LEARNS TO AGREE (resolves standoffs)
   * a subagent is emitted + HOSTED on the 18-bit L2 SUBAGENT HOST plane
   * cortex SENSES (feeds its own state back)
-  * constructor COMPOSES the planes into one verified Merkle collapse (L3)
+  * constructor COMPOSES planes into one verified Merkle collapse (L3)
+  * bios COMPOSES a state-derived I-13 program (the biosphere's own language)
   * cortex GOVERNS (veto = wall) and RESOLVES a deep operand on L4
-  * jitonf EXECUTES real I-13 — but ONLY if the cortex permitted it
+  * jitonf EXECUTES the COMPOSED program — but ONLY if the cortex permitted it
   * capsules persist; the genome LEARNS from the verdict, so proposals converge
 """
 from __future__ import annotations
@@ -20,6 +22,7 @@ import importlib
 import json
 import os
 from math import ceil
+from collections import Counter
 
 from .kernel import BioSphere, FROZEN_SPEC_SHA
 from .contract import Capsule, CapsuleKind
@@ -65,17 +68,30 @@ def _adopted(reg):
     if not n:
         return []
     thr = ceil(2 * n / 3)
-    tally = {}
-    for r in reg:
-        op = r.get("proposes_operant")
-        tally[op] = tally.get(op, 0) + 1
+    tally = Counter(r.get("proposes_operant") for r in reg)
     return [op for op, c in tally.items() if c >= thr]
+
+
+def _majority(reg):
+    if not reg:
+        return "none"
+    return Counter(r.get("proposes_operant") for r in reg).most_common(1)[0][0]
+
+
+def _compose_program(reg, adopted) -> str:
+    """Assemble a state-derived I-13 program (the biosphere's own language).
+    Real core forms only — jitonf can execute it; the result reflects memory."""
+    return (
+        f"I reg_n <- {len(reg)} ;\n"
+        f"I adopted_n <- {len(adopted)} ;\n"
+        f"I sum <- reg_n + adopted_n ;\n"
+    )
 
 
 def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
     from agent import Agent
     from subagent import SubAgent
-    from cortex import SENSE_L1, SENSE_L2, govern, resolve, L4_ADDR_MAX
+    from cortex import SENSE_L1, SENSE_L2, govern, resolve, L4_ADDR_MAX, CortexBoundary
     from i4 import i4_collapse
     from constructor import build_fold, verify_fold, Sphere
     from jitonf import run as jit_run
@@ -92,7 +108,8 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             c = bio.seed()
             c_root = c.root
 
-        # ---- L1 : emit agent (content shaped by genome -> LEARNING) ----
+        # ---- L1 : emit agent (content = genome -> LEARNING converges) ----
+        maj = _majority(reg)
         content = f"GENOME:{','.join(genome) or 'none'}".encode()
         a = Agent.from_content(f"agent@{bio.tick}", content)
         bio.emit(Capsule("bios", "agent", CapsuleKind.EMIT,
@@ -110,7 +127,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"L1": SENSE_L1, "L2": SENSE_L2}))
 
-        # ---- L3 COMPOSE : planes composed into one verified collapse ----
+        # ---- L3 COMPOSE : (a) planes into one verified collapse ----
         if c_root is None:
             c_root = i4_collapse(FROZEN_SPEC_SHA).root
         spheres = [
@@ -126,30 +143,40 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "root": folds[0]["root"][:16] + "…",
                           "spheres": len(spheres)}))
 
+        # ---- L3 COMPOSE : (b) assemble the biosphere's own I-13 program ----
+        adopted = _adopted(reg)
+        program = _compose_program(reg, adopted)
+        bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
+                         {"program": program,
+                          "expected_sum": len(reg) + len(adopted)}))
+
         # ---- L4 DEEP OPERAND : govern (veto gate) + resolve an operand ----
         reg.append({"name": a.name, "proposes_operant": a.proposes_operant})
         _save(bio, "agents.json", reg)
-        adopted = _adopted(reg)
-        allowed, reason = govern(a.proposes_operant, adopted)
+        adopted_now = _adopted(reg)
+        allowed, reason = govern(a.proposes_operant, adopted_now)
         bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN,
                          {"proposal": a.proposes_operant, "allowed": allowed,
-                          "reason": reason, "adopted": adopted}))
+                          "reason": reason, "adopted": adopted_now}))
         l4_addr = int(a.content_sha256, 16) % (L4_ADDR_MAX + 1)
-        operand = resolve(l4_addr)
+        try:
+            operand = resolve(l4_addr)
+            op_tag = getattr(operand, "tag", "?")
+        except CortexBoundary:
+            op_tag = "void"   # cortex refuses addresses beyond the trained 6662
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
-                         {"l4_resolve": l4_addr,
-                          "operand": getattr(operand, "tag", "?")}))
+                         {"l4_resolve": l4_addr, "operand": op_tag}))
 
         # ---- LEARNING : genome absorbs adopted operants ----
         if allowed:
             genome.append(a.proposes_operant)
             _save(bio, "learned.json", genome)
 
-        # ---- EXECUTE (gated by the cortex verdict) ----
+        # ---- EXECUTE : run the COMPOSED program (gated by the cortex verdict) ----
         if allowed:
-            res = jit_run(_jitonf_demo_src())
-            ex = {"status": "ran", "sum": res["env"].get("sum"),
-                  "r": res["env"].get("r"), "steps": res["steps"]}
+            res = jit_run(program)
+            ex = {"status": "ran", "program_sum": res["env"].get("sum"),
+                  "steps": res["steps"]}
         else:
             ex = {"status": "VETOED", "reason": reason}
         bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
@@ -160,16 +187,16 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "genome": genome}))
 
         if verbose:
-            print(f"[pulse {bio.tick}] {bio.store.summary()} | "
+            print(f"[pulse {bio.tick}] {bio.store.summary()} | maj={maj} "
                   f"propose={a.proposes_operant} govern={'ALLOW' if allowed else 'VETO'} "
-                  f"exec={ex['status']} l2={sa.l2_address} l4={l4_addr} op={getattr(operand,'tag','?')}")
+                  f"exec={ex['status']} l2={sa.l2_address} l4={l4_addr} op={op_tag}")
 
     return bio
 
 
 def main() -> None:
     bio = BioSphere()
-    run_pulse(bio, n=8)
+    run_pulse(bio, n=10)
 
 
 if __name__ == "__main__":

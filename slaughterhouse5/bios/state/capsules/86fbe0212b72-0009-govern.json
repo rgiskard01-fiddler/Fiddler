@@ -1,0 +1,15 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern",
+  "payload": {
+    "proposal": "SPAWN",
+    "allowed": true,
+    "reason": "adopted by >= 2/3 consensus",
+    "adopted": [
+      "SPAWN"
+    ]
+  },
+  "tick": 9,
+  "trace_id": "86fbe0212b72"
+}

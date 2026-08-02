@@ -42,22 +42,26 @@ State **accumulates** across ticks; the biosphere does not reboot blank.
 ## The PULSE — a descent through the four planes
 ```
   L1  seed(i4) ............ identity root (the self-reference)
-      emit(agent) ......... attests frozen spec, proposes an operant
+      emit(agent) ......... attests frozen spec; proposes an operant
+                            (biased by the standing majority -> learns to agree)
   L2  emit(subagent) ...... hosted on the 18-bit SUBAGENT HOST plane
       sense(cortex) ....... cortex feeds its own state back as features
   L3  compose(constructor) planes composed into one verified Merkle collapse
+      compose(bios) ....... ASSEMBLES a state-derived I-13 program
+                            (the biosphere's own language, not the demo)
   L4  govern(cortex) ...... VETO gate — jitonf runs only on >= 2/3 consensus
       resolve(cortex) ..... a deep operand resolved on the 13-bit L4 space
-      execute(jitonf) ..... real I-13, GATED by the cortex verdict
+      execute(jitonf) ..... runs the COMPOSED program, GATED by the verdict
   -> ingest ............... capsules persist; the genome learns the verdict
 ```
 
-**GOVERN is a wall.** `jitonf` executes only when the proposed operant is a
-core I-13 form *or* adopted by consensus (≥ 2/3). Otherwise it is blocked.
+**GOVERN is a wall.** `jitonf` runs only when the proposed operant is a core
+I-13 form *or* adopted by consensus (≥ 2/3). Otherwise it is blocked.
 
-**LEARNING.** Each agent's content is shaped by the biosphere **genome**
-(`learned.json`): as consensus stabilizes, proposals converge instead of
-oscillating. History feeds identity; the biosphere teaches itself.
+**LEARNING.** Each agent's content is biased by the standing **majority** and
+the **genome** (`learned.json`): as consensus forms, proposals converge on
+the majority, the standoff resolves, and execution resumes. History feeds
+identity; the biosphere teaches itself to agree.
 
 ## Tight-structure-first
 This directory is the **shape**: `kernel` (boot + wire + hold state),

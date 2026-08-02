@@ -1,0 +1,11 @@
+{
+  "sender": "bios",
+  "receiver": "constructor",
+  "kind": "compose",
+  "payload": {
+    "program": "I reg_n <- 9 ;\nI adopted_n <- 1 ;\nI sum <- reg_n + adopted_n ;\n",
+    "expected_sum": 10
+  },
+  "tick": 10,
+  "trace_id": "86fbe0212b72"
+}

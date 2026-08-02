@@ -4,9 +4,9 @@
   "kind": "execute",
   "payload": {
     "status": "ran",
-    "program_sum": 2,
+    "program_sum": 8,
     "steps": 9
   },
-  "tick": 3,
+  "tick": 9,
   "trace_id": "86fbe0212b72"
 }

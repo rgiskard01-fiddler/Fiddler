@@ -3,10 +3,9 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "ran",
-    "program_sum": 2,
-    "steps": 9
+    "status": "VETOED",
+    "reason": "veto: 'AWAIT' is neither a core form nor adopted"
   },
-  "tick": 3,
+  "tick": 10,
   "trace_id": "86fbe0212b72"
 }

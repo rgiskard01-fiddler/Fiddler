@@ -30,5 +30,13 @@
   {
     "name": "agent@8",
     "proposes_operant": "SPAWN"
+  },
+  {
+    "name": "agent@9",
+    "proposes_operant": "SPAWN"
+  },
+  {
+    "name": "agent@10",
+    "proposes_operant": "AWAIT"
   }
 ]

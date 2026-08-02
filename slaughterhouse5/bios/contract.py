@@ -16,6 +16,7 @@ class CapsuleKind(str, Enum):
     EMIT = "emit"
     GOVERN = "govern"
     FOLD = "fold"
+    COMPOSE = "compose"
     EXECUTE = "execute"
     INGEST = "ingest"
     SENSE = "sense"

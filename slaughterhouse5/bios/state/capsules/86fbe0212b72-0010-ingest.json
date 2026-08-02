@@ -3,12 +3,14 @@
   "receiver": "bios",
   "kind": "ingest",
   "payload": {
-    "tick": 2,
-    "memory": "ticks=2 capsules=18",
+    "tick": 10,
+    "memory": "ticks=10 capsules=90",
     "genome": [
-      "IMPORT"
+      "IMPORT",
+      "YIELD",
+      "SPAWN"
     ]
   },
-  "tick": 2,
+  "tick": 10,
   "trace_id": "86fbe0212b72"
 }

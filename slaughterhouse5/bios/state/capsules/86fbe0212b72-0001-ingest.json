@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 1,
-    "memory": "ticks=1 capsules=8",
+    "memory": "ticks=1 capsules=9",
     "genome": [
       "IMPORT"
     ]
