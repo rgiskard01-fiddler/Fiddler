@@ -162,7 +162,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         if verbose:
             print(f"[pulse {bio.tick}] {bio.store.summary()} | "
                   f"propose={a.proposes_operant} govern={'ALLOW' if allowed else 'VETO'} "
-                  f"exec={ex['status']} l2={sa.l2_address} l4={l4_addr} op={getattr(operand,'kind','?')}")
+                  f"exec={ex['status']} l2={sa.l2_address} l4={l4_addr} op={getattr(operand,'tag','?')}")
 
     return bio
 
