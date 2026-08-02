@@ -1,0 +1,8 @@
+[
+  {"kind": "feature", "note": "advice only: raise L2 mismatch attention"},
+  {"kind": "veto", "open": ["FUNCTIONDEF"], "closer": "RETURN",
+   "expect": {"FUNCTIONDEF": "RETURN"}},
+  {"kind": "feature", "note": "advice only: feed cortex state back to L1"},
+  {"kind": "veto", "open": ["IF", "EXPR"], "closer": "I",
+   "expect": {"IF": "I", "EXPR": "I"}}
+]

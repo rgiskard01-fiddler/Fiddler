@@ -1,0 +1,35 @@
+{
+  "schema": "dlw.fold/1",
+  "world": "II",
+  "kind": "sphere",
+  "name": "I-13 \u00b7 MACHINE",
+  "slug": "i13-machine",
+  "seal": "93410d52f57f1b743c300753484aec44fbb1111cdcba103f163c8d2295d5b7bf",
+  "index": 2,
+  "algo": "sha256(name|slug|blurb) + sha256 merkle-fold",
+  "anchor": "0ROOT.AI//THE-FOLD//f4//David Lee Wise (ROOT0)//with AVAN",
+  "genesis": "93410d52f57f1b743c300753484aec44fbb1111cdcba103f163c8d2295d5b7bf",
+  "proof": [
+    {
+      "h": "a039ecc33a2cfd9cf8bfc2de93f94afa04d604ca86a8970e3dc55ce69e885493",
+      "side": "R"
+    },
+    {
+      "h": "40a6929fc2f203aec01a212c08f5b99a01d5ad7f01a76a6ee65b54870ff01f4b",
+      "side": "L"
+    },
+    {
+      "h": "6292443ab79b1539e3100de00548664367c25c0a7a4c95acb4bf406269d2029f",
+      "side": "R"
+    },
+    {
+      "h": "f21dd05e41d409b89e8b3bb8f9124e0acb93a0928ddcf49ff588cd84b9c15109",
+      "side": "R"
+    }
+  ],
+  "folded_to": "b490a602\u2026",
+  "root": "b490a602088118d1e6cfcee82f7f3df49da1e955943062048635b02960de83ed",
+  "verify": "fold seal up the proof (R: h(x+sib), L: h(sib+x)) -> root",
+  "sealed": "2026-08-02",
+  "author": "David Lee Wise / ROOT0 / TriPod LLC"
+}

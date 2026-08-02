@@ -1,0 +1,20 @@
+[
+  {
+    "name": "I-13 - THE CONSTRUCTOR",
+    "slug": "i13-constructor",
+    "blurb": "assembler, compiler, interpreter of collapses",
+    "index": 0
+  },
+  {
+    "name": "I-13 - THE JIT ENGINE",
+    "slug": "i13-jitonf",
+    "blurb": "just-in-time on-the-fly executor of I-13",
+    "index": 1
+  },
+  {
+    "name": "I-13 - THE CORTEX",
+    "slug": "i13-cortex",
+    "blurb": "L4 deep operand plane",
+    "index": 2
+  }
+]

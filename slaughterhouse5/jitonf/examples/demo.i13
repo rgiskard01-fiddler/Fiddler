@@ -1,0 +1,19 @@
+# demo.i13 — small I-13 program exercising the jitonf engine.
+# Run with:  from jitonf import run ; run(open("examples/demo.i13").read())
+
+I x <- 3 ;
+I y <- 4 ;
+I sum <- x + y ;            # 3 + 4 = 7
+
+def add(I a, I b) {
+  -> a + b ;                # a user-defined function
+}
+
+I r <- add(x, y) ;          # call it: 7
+
+I m <- 0 ;
+if (x < y) {                # branching
+  m <- 1 ;
+} else {
+  m <- 2 ;
+}                            # x(3) < y(4)  ->  m = 1

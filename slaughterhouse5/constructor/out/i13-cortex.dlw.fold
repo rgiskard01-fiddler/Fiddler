@@ -1,0 +1,27 @@
+{
+  "schema": "dlw.fold/1",
+  "world": "II",
+  "kind": "sphere",
+  "name": "I-13 - THE CORTEX",
+  "slug": "i13-cortex",
+  "seal": "003aaaeda698c2ccc0f4cd29d6f08e1bef53d3e6f1333330a3ee05c5c650ba2b",
+  "index": 2,
+  "algo": "sha256(name|slug|blurb) + sha256 merkle-fold",
+  "anchor": "0ROOT.AI//THE-FOLD//4096->0//David Lee Wise (ROOT0)//with AVAN",
+  "genesis": "3e75b0d95d9c38ce1937ca29013f980ffc07e9f243dcb1b8c3505c2306ba1bfb",
+  "proof": [
+    {
+      "h": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+      "side": "R"
+    },
+    {
+      "h": "105b46607b1cfc6b46b922afeb1b06dbdb31e271313a129d0ce62206a1e57dda",
+      "side": "L"
+    }
+  ],
+  "folded_to": "ROOT_0",
+  "root": "971ea3f59aed37b29c4209e9ff296e4aab88ad9d137c8db678087ab20c04d88b",
+  "verify": "fold seal up the proof (R: h(x+sib), L: h(sib+x)) -> root",
+  "sealed": "2026-08-02",
+  "author": "David Lee Wise / ROOT0 / TriPod LLC"
+}

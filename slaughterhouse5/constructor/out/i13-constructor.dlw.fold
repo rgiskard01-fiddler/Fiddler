@@ -1,0 +1,27 @@
+{
+  "schema": "dlw.fold/1",
+  "world": "II",
+  "kind": "sphere",
+  "name": "I-13 - THE CONSTRUCTOR",
+  "slug": "i13-constructor",
+  "seal": "edfc4a847747d497ddde8a05094804e10dfa939e01a506739f68114d9b88d4e5",
+  "index": 0,
+  "algo": "sha256(name|slug|blurb) + sha256 merkle-fold",
+  "anchor": "0ROOT.AI//THE-FOLD//4096->0//David Lee Wise (ROOT0)//with AVAN",
+  "genesis": "3e75b0d95d9c38ce1937ca29013f980ffc07e9f243dcb1b8c3505c2306ba1bfb",
+  "proof": [
+    {
+      "h": "f60497cd1e8660d759728cfb67b97485f05bad497a84dd6a5dc3ae31f6301d6d",
+      "side": "R"
+    },
+    {
+      "h": "395804db292d7e990be03eb5a2d663b6bae56cf3b55557fbf4af2d3c3f655612",
+      "side": "R"
+    }
+  ],
+  "folded_to": "ROOT_0",
+  "root": "971ea3f59aed37b29c4209e9ff296e4aab88ad9d137c8db678087ab20c04d88b",
+  "verify": "fold seal up the proof (R: h(x+sib), L: h(sib+x)) -> root",
+  "sealed": "2026-08-02",
+  "author": "David Lee Wise / ROOT0 / TriPod LLC"
+}
