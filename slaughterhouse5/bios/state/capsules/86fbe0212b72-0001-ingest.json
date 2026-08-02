@@ -1,0 +1,11 @@
+{
+  "sender": "bios",
+  "receiver": "bios",
+  "kind": "ingest",
+  "payload": {
+    "tick": 1,
+    "memory": "ticks=1 capsules=5"
+  },
+  "tick": 1,
+  "trace_id": "86fbe0212b72"
+}

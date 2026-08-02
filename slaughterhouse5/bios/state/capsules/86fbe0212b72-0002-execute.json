@@ -1,0 +1,10 @@
+{
+  "sender": "bios",
+  "receiver": "jitonf",
+  "kind": "execute",
+  "payload": {
+    "status": "hook:AttributeError"
+  },
+  "tick": 2,
+  "trace_id": "86fbe0212b72"
+}

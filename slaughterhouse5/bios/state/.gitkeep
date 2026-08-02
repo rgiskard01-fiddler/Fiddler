@@ -1,0 +1,3 @@
+# biosphere memory lives here (git-friendly, transparent)
+# capsules/*.json  -> every Capsule emitted
+# ledger.json      -> tick count + capsule index
