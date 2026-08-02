@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I-13 — A Collapsed Coding Language for AI</title>
+<style>
+:root{--bg:#0b0e14;--fg:#e6e6e6;--muted:#9aa4b2;--acc:#5ad1c4;--acc2:#c792ea;--line:#1c2230;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;max-width:900px;margin:0 auto;padding:48px 24px 80px}
+h1{font-size:2.4rem;margin:0 0 .1em;letter-spacing:.5px}
+h2{margin-top:2em;border-top:1px solid var(--line);padding-top:.8em;color:var(--acc)}
+.sub{color:var(--muted);font-size:1.05rem;margin-bottom:2em}
+code{background:#11151f;padding:.15em .4em;border-radius:4px;color:var(--acc2);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+table{border-collapse:collapse;width:100%;margin:1em 0}
+th,td{border:1px solid var(--line);padding:.5em .7em;text-align:left}
+th{background:#11151f;color:var(--acc)}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:1em 0}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#0f131c;transition:.2s;display:block}
+.card:hover{border-color:var(--acc);transform:translateY(-2px)}
+.card b{color:var(--acc2);display:block;margin-bottom:.2em}
+.note{border-left:3px solid var(--acc);padding:.6em 1em;background:#0f131c;color:var(--muted);margin:1.5em 0}
+</style>
+</head>
+<body>
+<h1>I-13</h1>
+<div class="sub"><em>I, collapsed.</em> A symbol-finite coding language an AI can emit <b>and</b> verify — 13 symbols, four planes, five zero-parameter laws.</div>
+
+<h2>What I-13 is</h2>
+<p>I-13 is a minimal programming language built around one idea: <strong>collapse ordinary programming intent into a 13-symbol grammar</strong> that an AI can both produce and check without a sprawling vocabulary. It is a <em>surface</em> an agent emits and a <em>verifier</em> checks — not a language you hand-write for fun.</p>
+
+<h2>The 13 symbols</h2>
+<table>
+<tr><th>#</th><th>Symbol</th><th>Role</th></tr>
+<tr><td>1</td><td><code>NAME</code></td><td>identifier</td></tr>
+<tr><td>2</td><td><code>CONSTANT</code></td><td>literal value</td></tr>
+<tr><td>3</td><td><code>ATTRIBUTE</code></td><td>field / property access</td></tr>
+<tr><td>4</td><td><code>CALL</code></td><td>invocation</td></tr>
+<tr><td>5</td><td><code>ASSIGN</code></td><td>binding</td></tr>
+<tr><td>6</td><td><code>ARG</code></td><td>argument passing</td></tr>
+<tr><td>7</td><td><code>EXPR</code></td><td>expression grouping</td></tr>
+<tr><td>8</td><td><code>IF</code></td><td>conditional</td></tr>
+<tr><td>9</td><td><code>COMPARE</code></td><td>comparison</td></tr>
+<tr><td>10</td><td><code>FUNCTIONDEF</code></td><td>function definition</td></tr>
+<tr><td>11</td><td><code>RETURN</code></td><td>return</td></tr>
+<tr><td>12</td><td><code>BINOP</code></td><td>binary operator</td></tr>
+<tr><td>13</td><td><code>I</code></td><td>the <em>deep operand</em> — self-reference into plane L4</td></tr>
+</table>
+
+<h2>Four planes</h2>
+<ul>
+<li><b>L1 · FIELD</b> — 395,162 nodes, 19-bit addresses, trained, 30-alpha.</li>
+<li><b>L2 · SUBAGENT HOST</b> — 209,068 nodes, 18-bit, trained, 66.</li>
+<li><b>L3 · COMPOSE</b> — 38,742 nodes, 16-bit, rewrite (0-param).</li>
+<li><b>L4 · DEEP OPERAND</b> — 6,662 nodes, 13-bit, cortex-only, 18.</li>
+</ul>
+
+<h2>Five zero-parameter laws</h2>
+<ol>
+<li><b>veto</b> — reject ill-formed collapse.</li>
+<li><b>-I</b> — the I-symbol is subtractive / self-cancelling by construction.</li>
+<li><b>depth</b> — bound the recursion / stack depth.</li>
+<li><b>idempotence</b> — repeated application is stable.</li>
+<li><b>address</b> — address resolution is closed (0 params).</li>
+</ol>
+
+<h2>Interactive artifacts</h2>
+<div class="grid">
+  <a class="card" href="factory/i13-factory.html"><b>Factory</b>collapse emitter</a>
+  <a class="card" href="language/i13-language.html"><b>Language</b>grammar</a>
+  <a class="card" href="tower/i13-live-stack.html"><b>Tower</b>four-plane runner</a>
+  <a class="card" href="machine/i13-two-scopes.html"><b>Machine</b>IVM-13-S</a>
+  <a class="card" href="pipeline/i13-pipeline-v2.1.html"><b>Pipeline</b>v2.1</a>
+  <a class="card" href="targets/go-hello-i13.html"><b>Go target</b>hello-i13</a>
+  <a class="card" href="targets/rust-hello-i13.html"><b>Rust target</b>hello-i13</a>
+  <a class="card" href="v1/i13-frozen-v1.html"><b>v1 frozen</b></a>
+  <a class="card" href="v3/the-complex-v1.html"><b>v3 complex</b></a>
+  <a class="card" href="v3/the-volume-v1.html"><b>v3 volume</b></a>
+</div>
+
+<h2>Provenance</h2>
+<p>Human-directed (David Lee Wise) + AI-co-authored (Hermes Agent, Nous Research). Crediting the AI is <strong>provenance, not a derivation claim</strong>. See <a href="NOTICE.md">NOTICE.md</a> and <a href="README.md">README.md</a>.</p>
+
+<div class="note">This site is served statically from the <code>main</code> branch via GitHub Pages with <code>.nojekyll</code> (no build step — files are served as-is).</div>
+</body>
+</html>
