@@ -3,7 +3,9 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "hook:AttributeError"
+    "sum": 7,
+    "r": 7,
+    "steps": 28
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

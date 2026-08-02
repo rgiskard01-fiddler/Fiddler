@@ -3,7 +3,9 @@
   "receiver": "constructor",
   "kind": "fold",
   "payload": {
-    "attested": "64881ebf502b87bb\u2026"
+    "verified": true,
+    "root": "bde518c4a0a09d43\u2026",
+    "spheres": 3
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"
