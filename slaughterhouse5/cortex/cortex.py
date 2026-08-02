@@ -236,3 +236,8 @@ def govern(proposal: str, adopted) -> "tuple[bool, str]":
     if proposal in (adopted or []):
         return True, "adopted by >= 2/3 consensus"
     return False, f"veto: '{proposal}' is neither a core form nor adopted"
+
+
+def resolve(addr: int):
+    """Resolve a deep operand on the L4 13-bit address space (cortex-only)."""
+    return Cortex().resolve(addr)

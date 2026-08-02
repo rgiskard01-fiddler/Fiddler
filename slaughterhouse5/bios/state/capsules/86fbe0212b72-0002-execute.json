@@ -4,7 +4,7 @@
   "kind": "execute",
   "payload": {
     "status": "VETOED",
-    "reason": "veto: 'TRY' is neither a core form nor adopted"
+    "reason": "veto: 'YIELD' is neither a core form nor adopted"
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

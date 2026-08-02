@@ -3,9 +3,9 @@
   "receiver": "cortex",
   "kind": "sense",
   "payload": {
-    "l4_resolve": 4297,
-    "operand": "DOP-4dc02493"
+    "l4_resolve": 4830,
+    "operand": "DOP-93074f62"
   },
-  "tick": 1,
+  "tick": 7,
   "trace_id": "86fbe0212b72"
 }

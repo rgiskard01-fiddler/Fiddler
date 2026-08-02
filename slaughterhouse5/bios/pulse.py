@@ -1,19 +1,18 @@
-"""The PULSE — one metabolic tick of the biosphere.
+"""The PULSE — one metabolic tick: a descent L1->L2->L3->L4 of the biosphere.
 
-seed(i4) -> emit(agent) -> sense(cortex) -> govern(cortex)
-         -> fold(constructor) -> execute(jitonf, gated by govern) -> ingest -> loop
+seed(i4) -> emit(agent, L1) -> emit(subagent, L2) -> sense(L2)
+-> compose(constructor, L3) -> govern+resolve(cortex, L4)
+-> execute(jitonf, GATED) -> ingest.
 
 Every step is GENUINE:
-  * i4 seeds the identity root
-  * the agent attests the frozen spec and PROPOSES an operant
-  * cortex SENSES (feeds its own state back) and GOVERNS (vetoes what is not a
-    core form nor adopted by consensus -- the veto is a wall)
-  * constructor BUILDS and VERIFIES a real Merkle collapse from the tick's
-    material
-  * jitonf EXECUTES real I-13 -- but ONLY if the cortex permitted it
-  * the output is ingested, and the agent registry ACCUMULATES, so consensus
-    (and therefore what may run) evolves across ticks. The biosphere becomes
-    genuinely self-regulating: it interacts with itself only.
+  * i4 seeds the identity root (L1)
+  * an agent attests + PROPOSES an operant, content shaped by the genome
+  * a subagent is emitted + HOSTED on the 18-bit L2 SUBAGENT HOST plane
+  * cortex SENSES (feeds its own state back)
+  * constructor COMPOSES the planes into one verified Merkle collapse (L3)
+  * cortex GOVERNS (veto = wall) and RESOLVES a deep operand on L4
+  * jitonf EXECUTES real I-13 — but ONLY if the cortex permitted it
+  * capsules persist; the genome LEARNS from the verdict, so proposals converge
 """
 from __future__ import annotations
 
@@ -30,32 +29,35 @@ def _jitonf_demo_src() -> str:
     jf = importlib.import_module("jitonf")
     demo = os.path.join(os.path.dirname(jf.__file__), "examples", "demo.i13")
     src = open(demo, encoding="utf-8").read()
-    lines = []
+    out = []
     for ln in src.splitlines():
         if "#" in ln:
             ln = ln.split("#", 1)[0]
         if ln.strip():
-            lines.append(ln)
-    return "\n".join(lines)
+            out.append(ln)
+    return "\n".join(out)
 
 
-def _registry_path(bio) -> str:
-    return os.path.join(bio.state_dir, "agents.json")
+# --------------------------------------------------------------------------
+# persistence helpers (git-friendly, under bios/state/)
+# --------------------------------------------------------------------------
+def _p(bio, name):
+    return os.path.join(bio.state_dir, name)
 
 
-def _load_registry(bio):
-    p = _registry_path(bio)
+def _load(bio, name, default):
+    p = _p(bio, name)
     if not os.path.isfile(p):
-        return []
+        return default
     try:
         return json.load(open(p, encoding="utf-8"))
     except Exception:
-        return []
+        return default
 
 
-def _save_registry(bio, reg) -> None:
+def _save(bio, name, data):
     os.makedirs(bio.state_dir, exist_ok=True)
-    json.dump(reg, open(_registry_path(bio), "w", encoding="utf-8"), indent=2)
+    json.dump(data, open(_p(bio, name), "w", encoding="utf-8"), indent=2)
 
 
 def _adopted(reg):
@@ -72,78 +74,102 @@ def _adopted(reg):
 
 def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
     from agent import Agent
-    from cortex import SENSE_L1, SENSE_L2, govern
+    from subagent import SubAgent
+    from cortex import SENSE_L1, SENSE_L2, govern, resolve, L4_ADDR_MAX
     from i4 import i4_collapse
     from constructor import build_fold, verify_fold, Sphere
     from jitonf import run as jit_run
 
-    reg = _load_registry(bio)
+    reg = _load(bio, "agents.json", [])
+    genome = _load(bio, "learned.json", [])
 
     for _ in range(n):
         bio.tick += 1
 
-        # SEED
+        # ---- L1 FIELD : identity root ----
         c_root = None
         if bio.tick == 1:
             c = bio.seed()
             c_root = c.root
 
-        # EMIT — agent attests + proposes an operant
-        a = Agent.from_content(f"agent@{bio.tick}", f"pulse {bio.tick}".encode())
+        # ---- L1 : emit agent (content shaped by genome -> LEARNING) ----
+        content = f"GENOME:{','.join(genome) or 'none'}".encode()
+        a = Agent.from_content(f"agent@{bio.tick}", content)
         bio.emit(Capsule("bios", "agent", CapsuleKind.EMIT,
                          {"proposes": a.proposes_operant,
                           "learned": a.learned_i13[:16] + "…"}))
 
-        # SENSE — cortex feeds its own state back as features
+        # ---- L2 SUBAGENT HOST : emit + host a subagent ----
+        sa = SubAgent.from_content(f"sa@{bio.tick}", content, l2_address=None)
+        bio.emit(Capsule("bios", "subagent", CapsuleKind.EMIT,
+                         {"l2_address": sa.l2_address,
+                          "host_symbol": sa.host_symbol,
+                          "learned": sa.learned_i13[:16] + "…"}))
+
+        # ---- L2 : cortex SENSE (feeds its own state back) ----
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"L1": SENSE_L1, "L2": SENSE_L2}))
 
-        # GOVERN + FOLD — constructor builds + verifies a real collapse
+        # ---- L3 COMPOSE : planes composed into one verified collapse ----
         if c_root is None:
             c_root = i4_collapse(FROZEN_SPEC_SHA).root
         spheres = [
             Sphere(f"agent@{bio.tick}", "agent", a.attestation),
+            Sphere(f"sa@{bio.tick}", "subagent", sa.attestation),
             Sphere("cortex", "cortex", json.dumps({"L1": SENSE_L1, "L2": SENSE_L2})),
             Sphere("i4", "i4", c_root),
         ]
         folds = build_fold(spheres)
         fold_ok, _ = verify_fold(folds[0]["seal"], folds[0]["proof"], folds[0]["root"])
         bio.emit(Capsule("bios", "constructor", CapsuleKind.FOLD,
-                         {"verified": fold_ok, "root": folds[0]["root"][:16] + "…",
+                         {"verified": fold_ok,
+                          "root": folds[0]["root"][:16] + "…",
                           "spheres": len(spheres)}))
 
-        # GOVERN — cortex gates what may execute (veto = wall)
+        # ---- L4 DEEP OPERAND : govern (veto gate) + resolve an operand ----
         reg.append({"name": a.name, "proposes_operant": a.proposes_operant})
-        _save_registry(bio, reg)
+        _save(bio, "agents.json", reg)
         adopted = _adopted(reg)
         allowed, reason = govern(a.proposes_operant, adopted)
         bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN,
                          {"proposal": a.proposes_operant, "allowed": allowed,
                           "reason": reason, "adopted": adopted}))
+        l4_addr = int(a.content_sha256, 16) % (L4_ADDR_MAX + 1)
+        operand = resolve(l4_addr)
+        bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
+                         {"l4_resolve": l4_addr,
+                          "operand": getattr(operand, "tag", "?")}))
 
-        # EXECUTE — jitonf runs real I-13 ONLY if the cortex permitted it
+        # ---- LEARNING : genome absorbs adopted operants ----
+        if allowed:
+            genome.append(a.proposes_operant)
+            _save(bio, "learned.json", genome)
+
+        # ---- EXECUTE (gated by the cortex verdict) ----
         if allowed:
             res = jit_run(_jitonf_demo_src())
-            exec_payload = {"status": "ran", "sum": res["env"].get("sum"),
-                            "r": res["env"].get("r"), "steps": res["steps"]}
+            ex = {"status": "ran", "sum": res["env"].get("sum"),
+                  "r": res["env"].get("r"), "steps": res["steps"]}
         else:
-            exec_payload = {"status": "VETOED", "reason": reason}
-        bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, exec_payload))
+            ex = {"status": "VETOED", "reason": reason}
+        bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
 
-        # INGEST — output becomes the next tick's material
+        # ---- INGEST ----
         bio.emit(Capsule("bios", "bios", CapsuleKind.INGEST,
-                         {"tick": bio.tick, "memory": bio.store.summary()}))
+                         {"tick": bio.tick, "memory": bio.store.summary(),
+                          "genome": genome}))
 
         if verbose:
             print(f"[pulse {bio.tick}] {bio.store.summary()} | "
                   f"propose={a.proposes_operant} govern={'ALLOW' if allowed else 'VETO'} "
-                  f"exec={exec_payload['status']}")
+                  f"exec={ex['status']} l2={sa.l2_address} l4={l4_addr} op={getattr(operand,'kind','?')}")
+
     return bio
 
 
 def main() -> None:
     bio = BioSphere()
-    run_pulse(bio, n=5)
+    run_pulse(bio, n=8)
 
 
 if __name__ == "__main__":

@@ -3,9 +3,9 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "TRY",
+    "proposal": "YIELD",
     "allowed": false,
-    "reason": "veto: 'TRY' is neither a core form nor adopted",
+    "reason": "veto: 'YIELD' is neither a core form nor adopted",
     "adopted": []
   },
   "tick": 2,

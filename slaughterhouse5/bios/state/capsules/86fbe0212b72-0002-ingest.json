@@ -4,7 +4,10 @@
   "kind": "ingest",
   "payload": {
     "tick": 2,
-    "memory": "ticks=2 capsules=12"
+    "memory": "ticks=2 capsules=16",
+    "genome": [
+      "IMPORT"
+    ]
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

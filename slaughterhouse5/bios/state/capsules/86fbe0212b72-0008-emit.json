@@ -3,10 +3,10 @@
   "receiver": "subagent",
   "kind": "emit",
   "payload": {
-    "l2_address": 223880,
-    "host_symbol": "H15",
+    "l2_address": 209630,
+    "host_symbol": "NAME",
     "learned": "64881ebf502b87bb\u2026"
   },
-  "tick": 2,
+  "tick": 8,
   "trace_id": "86fbe0212b72"
 }

@@ -5,18 +5,30 @@
   },
   {
     "name": "agent@2",
-    "proposes_operant": "TRY"
+    "proposes_operant": "YIELD"
   },
   {
     "name": "agent@3",
-    "proposes_operant": "TRY"
+    "proposes_operant": "YIELD"
   },
   {
     "name": "agent@4",
-    "proposes_operant": "TRY"
+    "proposes_operant": "SPAWN"
   },
   {
     "name": "agent@5",
-    "proposes_operant": "LOOP"
+    "proposes_operant": "SPAWN"
+  },
+  {
+    "name": "agent@6",
+    "proposes_operant": "SPAWN"
+  },
+  {
+    "name": "agent@7",
+    "proposes_operant": "SPAWN"
+  },
+  {
+    "name": "agent@8",
+    "proposes_operant": "SPAWN"
   }
 ]

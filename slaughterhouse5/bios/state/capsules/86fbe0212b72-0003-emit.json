@@ -1,9 +1,10 @@
 {
   "sender": "bios",
-  "receiver": "agent",
+  "receiver": "subagent",
   "kind": "emit",
   "payload": {
-    "proposes": "TRY",
+    "l2_address": 223880,
+    "host_symbol": "H15",
     "learned": "64881ebf502b87bb\u2026"
   },
   "tick": 3,

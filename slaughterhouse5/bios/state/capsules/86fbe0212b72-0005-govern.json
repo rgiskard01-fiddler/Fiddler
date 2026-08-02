@@ -3,9 +3,9 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "LOOP",
+    "proposal": "SPAWN",
     "allowed": false,
-    "reason": "veto: 'LOOP' is neither a core form nor adopted",
+    "reason": "veto: 'SPAWN' is neither a core form nor adopted",
     "adopted": []
   },
   "tick": 5,

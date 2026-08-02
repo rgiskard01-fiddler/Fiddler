@@ -3,10 +3,8 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "ran",
-    "sum": 7,
-    "r": 7,
-    "steps": 28
+    "status": "VETOED",
+    "reason": "veto: 'SPAWN' is neither a core form nor adopted"
   },
   "tick": 4,
   "trace_id": "86fbe0212b72"

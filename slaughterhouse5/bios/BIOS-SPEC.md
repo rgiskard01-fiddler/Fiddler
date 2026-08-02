@@ -2,11 +2,10 @@
 | BIOS — the Slaughterhouse5 biosphere kernel                          |
 ========================================================================
 
-
 ## Cosmology
 Slaughterhouse5 is **one planet** in a larger cosmology (the I-13 program,
 the ROOT0 lineage). We are at the **ATMOSPHERE** — the outer shell (L1
-FIELD), the surface we have been building — and we are **BURROWING inward**
+FIELD), the surface we have been building — and we are **BURROWING INWARD**
 through the planes toward the core:
 
 ```
@@ -18,10 +17,10 @@ through the planes toward the core:
 
 The biosphere is the planet's living body. It is **CLOSED**: it runs on its
 own previous output, with no external runtime input. "Interactive with
-itself only" = a metabolic loop (the PULSE) in which the organs pass real
-I-13 data to one another.
+itself only" = a metabolic loop (the PULSE) that descends L1 → L2 → L3 → L4
+and back, every step a real organ call.
 
-## Organs (the 10 modules, already built)
+## Organs (the 10 modules)
 `jitonf` runtime · `constructor` fold engine · `cortex` L4 governor/sensor ·
 `i4` identity root · `agent` learner/consensus · `subagent` hosted learner ·
 `f1`..`f4` collapses.
@@ -32,25 +31,36 @@ message `(sender, receiver, kind, payload, tick, trace)`. Only `bios` knows
 all organs. This preserves I-13's "modular, can cut any" design *and* lets
 the biosphere compose them: sever any organ and the rest still stand.
 
-## Persistence
-State lives in-repo under `bios/state/` as transparent files:
+## Persistence (git-friendly, under `bios/state/`)
 - `capsules/*.json` — every capsule emitted (the planet's memory)
-- `ledger.json` — tick count + capsule index
+- `ledger.json`     — tick count + capsule index
+- `agents.json`     — the accumulating agent registry (consensus memory)
+- `learned.json`    — the biosphere **genome** (learning memory)
 
-Git-friendly: the biosphere's history is version-controlled. State
-**accumulates** across ticks (the biosphere does not reboot blank).
+State **accumulates** across ticks; the biosphere does not reboot blank.
 
-## The PULSE (one metabolic tick)
+## The PULSE — a descent through the four planes
 ```
-seed(i4) -> emit(agent) -> govern(cortex + consensus)
-         -> fold(constructor) -> execute(jitonf) -> ingest -> loop
+  L1  seed(i4) ............ identity root (the self-reference)
+      emit(agent) ......... attests frozen spec, proposes an operant
+  L2  emit(subagent) ...... hosted on the 18-bit SUBAGENT HOST plane
+      sense(cortex) ....... cortex feeds its own state back as features
+  L3  compose(constructor) planes composed into one verified Merkle collapse
+  L4  govern(cortex) ...... VETO gate — jitonf runs only on >= 2/3 consensus
+      resolve(cortex) ..... a deep operand resolved on the 13-bit L4 space
+      execute(jitonf) ..... real I-13, GATED by the cortex verdict
+  -> ingest ............... capsules persist; the genome learns the verdict
 ```
-Each step is a real organ call — real fold verification, real consensus,
-real IVM execution — never simulated.
+
+**GOVERN is a wall.** `jitonf` executes only when the proposed operant is a
+core I-13 form *or* adopted by consensus (≥ 2/3). Otherwise it is blocked.
+
+**LEARNING.** Each agent's content is shaped by the biosphere **genome**
+(`learned.json`): as consensus stabilizes, proposals converge instead of
+oscillating. History feeds identity; the biosphere teaches itself.
 
 ## Tight-structure-first
 This directory is the **shape**: `kernel` (boot + wire + hold state),
 `contract` (Capsule), `state` (persistence), `pulse` (the loop driver).
 Behavior is wired incrementally, always genuine.
-
 ========================================================================

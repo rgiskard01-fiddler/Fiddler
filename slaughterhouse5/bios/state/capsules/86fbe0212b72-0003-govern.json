@@ -3,11 +3,11 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "TRY",
+    "proposal": "YIELD",
     "allowed": true,
     "reason": "adopted by >= 2/3 consensus",
     "adopted": [
-      "TRY"
+      "YIELD"
     ]
   },
   "tick": 3,
