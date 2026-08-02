@@ -1,0 +1,95 @@
+{
+  "kind": "i13-universal-consensus",
+  "generated": "2026-08-01",
+  "frozen_i13_sha256": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+  "agents_count": 6,
+  "all_attest_same_spec": true,
+  "consensus_root": "cd4593338104cd9ff0b4ae39ff95b22b74649c1d532b8d7d35ef7120c12455c8",
+  "supermajority_threshold": 4,
+  "proposal_tally": {
+    "LAMBDA": 2,
+    "AWAIT": 1,
+    "IMPORT": 1,
+    "SLICE": 1,
+    "SPAWN": 1
+  },
+  "adopted_extensions": [],
+  "extended_alphabet": [
+    "NAME",
+    "CONSTANT",
+    "ATTRIBUTE",
+    "CALL",
+    "ASSIGN",
+    "ARG",
+    "EXPR",
+    "IF",
+    "COMPARE",
+    "FUNCTIONDEF",
+    "RETURN",
+    "BINOP",
+    "I"
+  ],
+  "agents": [
+    {
+      "agent": "diotima.agent",
+      "content_sha256": "e260ce92f5a5bf5b2ef5602cd5166a0d4ae20e32f5b96fd89bf686f610136c9a",
+      "learned_i13": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+      "proposes_operant": "SPAWN",
+      "operant_kind": "concurrent process",
+      "attribution": "C. A. R. Hoare (CSP, 1978)",
+      "attestation": "diotima.agent|content:e260ce92f5a5bf5b2ef5602cd5166a0d4ae20e32f5b96fd89bf686f610136c9a|learned:64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8|proposes:SPAWN",
+      "attestation_sha256": "b8f47e50ca5328f6ca73e2fe6a9ef0def6264ad154308cc79a5f1b713f077cf5"
+    },
+    {
+      "agent": "gold.agent",
+      "content_sha256": "b4df0f17c1a6c2e9dfbc86783bd05a433fc8f242d1a327cf728d65714cd6e84d",
+      "learned_i13": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+      "proposes_operant": "LAMBDA",
+      "operant_kind": "anonymous function",
+      "attribution": "Alonzo Church (lambda calculus, 1936)",
+      "attestation": "gold.agent|content:b4df0f17c1a6c2e9dfbc86783bd05a433fc8f242d1a327cf728d65714cd6e84d|learned:64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8|proposes:LAMBDA",
+      "attestation_sha256": "2ca0fef5317158c2435902dc8ebaa5dfb2ef3fd26def7d1e50b6c11a2477cbad"
+    },
+    {
+      "agent": "hydrogen.agent",
+      "content_sha256": "eb3b3ea3608278d2a4b777da564a1b7222bfc86e52c4d5fe86f9626d735a4235",
+      "learned_i13": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+      "proposes_operant": "SLICE",
+      "operant_kind": "range selection",
+      "attribution": "van Rossum (Python) / Iverson lineage",
+      "attestation": "hydrogen.agent|content:eb3b3ea3608278d2a4b777da564a1b7222bfc86e52c4d5fe86f9626d735a4235|learned:64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8|proposes:SLICE",
+      "attestation_sha256": "37005d331be4fbaed10031e33c18fe643db79599310e1d81abfdc5141e0b38eb"
+    },
+    {
+      "agent": "sparkle laser agent.html",
+      "content_sha256": "176a8bc02a4861d56bac93320a960ea8d227636daa748114a7a0131af6186611",
+      "learned_i13": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+      "proposes_operant": "LAMBDA",
+      "operant_kind": "anonymous function",
+      "attribution": "Alonzo Church (lambda calculus, 1936)",
+      "attestation": "sparkle laser agent.html|content:176a8bc02a4861d56bac93320a960ea8d227636daa748114a7a0131af6186611|learned:64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8|proposes:LAMBDA",
+      "attestation_sha256": "962ef6822738caf892cdb8dc4c7a15a5e2fa8febdb80c11ec4bea77fe22311b8"
+    },
+    {
+      "agent": "the-atom.agent",
+      "content_sha256": "dea53db941f8f8657a4f531d3c85ee076272e3ab5f8c1329c1772ba9ddfe0033",
+      "learned_i13": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+      "proposes_operant": "AWAIT",
+      "operant_kind": "asynchronous suspend",
+      "attribution": "the async/await lineage (Meijer et al.)",
+      "attestation": "the-atom.agent|content:dea53db941f8f8657a4f531d3c85ee076272e3ab5f8c1329c1772ba9ddfe0033|learned:64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8|proposes:AWAIT",
+      "attestation_sha256": "676209474e9bd58f4dddd229eb8244bb939fbcd838ff6260491407050dee587c"
+    },
+    {
+      "agent": "the-mariner.agent",
+      "content_sha256": "a138cc23e1bbce7a404e7550be6bbee83aef70b79669992b82dac81082088b91",
+      "learned_i13": "64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8",
+      "proposes_operant": "IMPORT",
+      "operant_kind": "module reference",
+      "attribution": "Niklaus Wirth (Modula, 1975)",
+      "attestation": "the-mariner.agent|content:a138cc23e1bbce7a404e7550be6bbee83aef70b79669992b82dac81082088b91|learned:64881ebf502b87bb450f1f39b71066013e0c31a7f78dedcae326f6155ddc6bf8|proposes:IMPORT",
+      "attestation_sha256": "4d451acddb83939dda58ffa104a84be98af4ecc321717b9097591f36c8469c06"
+    }
+  ],
+  "note": "Universal consensus of every .agent that learned I-13 and proposed a language extension. The consensus_root is a Merkle fold over each agent's attestation and proves they all cite the identical frozen spec. An operant is adopted only on a >= 2/3 supermajority; the frozen thirteen stand otherwise. Deterministic: root depends only on agent contents + the frozen spec."
+}

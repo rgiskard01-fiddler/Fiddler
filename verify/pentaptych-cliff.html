@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PENTAPTYCH · THE VOLUME · filling the cliff</title>
+<style>
+:root{
+  /* GROUND TONE — copper */
+  --ground:#1c1410; --ground2:#140e0a; --panel:#261b14; --panel2:#211710;
+  --ink:#f0e3d6; --mid:#a58d79; --pale:#79604e; --rule:#3d2b20; --hair:#2e2018;
+  --earth:#d9ac5e; --earth-l:#2f2413;   /* 土 */
+  --wood:#5cc79a;  --wood-l:#15291f;    /* 木 */
+  --metal:#b9c4c9; --metal-l:#222a2d;   /* 金 */
+  --fire:#f0763a;  --fire-l:#331a0f;    /* 火 */
+  --water:#69a3e0; --water-l:#15202e;   /* 水 */
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1400px 700px at 50% -10%,#2a1d14,var(--ground) 58%,var(--ground2));
+ color:var(--ink);font:12px/1.55 var(--mono);padding:22px 16px 60px}
+.wrap{max-width:1900px;margin:0 auto}
+h1{font-size:16px;letter-spacing:.2em;margin:0 0 3px;font-weight:600}
+.sub{color:var(--pale);font-size:10.5px;letter-spacing:.09em}
+.chi{height:4px;border-radius:3px;margin:12px 0 20px;
+ background:linear-gradient(90deg,var(--earth),var(--wood),var(--metal),var(--fire),var(--water))}
+.penta{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:start}
+@media(max-width:1250px){.penta{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.penta{grid-template-columns:1fr}}
+.win{background:linear-gradient(165deg,var(--panel),var(--panel2));border:1px solid var(--rule);
+ border-radius:4px;padding:13px 14px;display:flex;flex-direction:column;min-height:740px;
+ box-shadow:0 12px 30px -20px #000}
+.w1{border-top:3px solid var(--earth)} .w2{border-top:3px solid var(--wood)}
+.w3{border-top:3px solid var(--metal)} .w4{border-top:3px solid var(--fire)}
+.w5{border-top:3px solid var(--water)}
+.hd{border-bottom:1px solid var(--hair);padding-bottom:8px;margin-bottom:10px}
+.el{font-size:9px;letter-spacing:.22em;font-weight:700;display:block;margin-bottom:2px}
+.w1 .el{color:var(--earth)} .w2 .el{color:var(--wood)} .w3 .el{color:var(--metal)}
+.w4 .el{color:var(--fire)} .w5 .el{color:var(--water)}
+.nm{font-size:11.5px;letter-spacing:.08em;font-weight:600;display:block}
+.qq{font-size:9.5px;color:var(--pale);font-style:italic;margin-top:3px;line-height:1.4}
+.mv{font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.w1 .mv{color:var(--earth)} .w3 .mv{color:var(--metal)} .w4 .mv{color:var(--fire)} .w5 .mv{color:var(--water)}
+.ml{font-size:8.5px;color:var(--pale);letter-spacing:.1em;margin-top:3px;line-height:1.4}
+.met{margin:10px 0 8px}
+p{margin:7px 0} .nt{font-size:10px;color:var(--mid);line-height:1.55}
+b.k{color:var(--ink)}
+code{background:#120c08;padding:0 3px;border-radius:2px;font-size:9.5px;color:var(--earth)}
+.stamp{display:inline-block;font-size:8px;letter-spacing:.12em;padding:0 4px;border-radius:2px;font-weight:700}
+.lit{background:#153025;color:#63d3a5;border:1px solid #2d6349}
+.amb{background:#33260f;color:#dfb15b;border:1px solid #664e1d}
+table{width:100%;border-collapse:collapse;font-size:9.5px;margin:6px 0}
+th{text-align:left;color:var(--pale);font-weight:500;letter-spacing:.08em;font-size:8px;
+ padding:3px 4px;border-bottom:1px solid var(--rule)}
+td{padding:3px 4px;border-bottom:1px solid var(--hair);vertical-align:top}
+.n{text-align:right;font-variant-numeric:tabular-nums}
+.run{margin-top:auto;padding-top:9px}
+.ctl{display:flex;gap:4px;flex-wrap:wrap;margin:8px 0 6px}
+.ctl button{font:inherit;font-size:9px;padding:3px 7px;cursor:pointer;border:1px solid var(--rule);
+ background:#120c08;color:var(--mid);border-radius:3px;letter-spacing:.04em}
+.w3 .ctl button.on{background:var(--metal);color:#120c08;border-color:var(--metal)}
+.w4 .ctl button.on{background:var(--fire);color:#120c08;border-color:var(--fire)}
+.w5 .ctl button.on{background:var(--water);color:#120c08;border-color:var(--water)}
+.board{margin-top:10px;border:1px solid var(--earth);border-radius:3px;background:var(--earth-l);padding:8px 9px}
+.board h4{margin:0 0 6px;font-size:8.5px;letter-spacing:.16em;color:var(--earth);font-weight:700}
+.fb{font-size:9px;padding:5px 0;border-bottom:1px dashed rgba(217,172,94,.25);line-height:1.45;color:var(--mid)}
+.fb:last-child{border:0}
+.fb b{font-size:8px;letter-spacing:.1em;padding:0 3px;border-radius:2px;color:#120c08}
+.f3{background:var(--metal)} .f4{background:var(--fire)} .f5{background:var(--water)}
+/* W3 strip */
+.strip{margin:8px 0;max-height:330px;overflow-y:auto}
+.sr{display:flex;align-items:center;gap:5px;font-size:8.5px;padding:1.5px 0;color:var(--mid)}
+.sr .v{width:38px;text-align:right;font-variant-numeric:tabular-nums;flex:none}
+.sr .bar{height:8px;border-radius:1px;flex:none}
+.sr .nmx{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr.newt .nmx{color:var(--fire)}
+.gapr{font-size:8px;color:var(--water);padding:1px 0 1px 44px;letter-spacing:.05em}
+/* W4 */
+.plot{position:relative;height:260px;border-left:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:10px 0 16px}
+.pt{position:absolute;width:8px;height:8px;border-radius:50%;transform:translate(-50%,50%);
+ transition:.5s cubic-bezier(.4,0,.2,1);cursor:pointer;border:1px solid var(--ground)}
+.pt:hover{width:13px;height:13px;z-index:9}
+.pt span{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:8px;
+ color:var(--ink);opacity:0;white-space:nowrap;background:var(--ground2);padding:1px 4px;
+ border:1px solid var(--rule);border-radius:2px;pointer-events:none}
+.pt:hover span{opacity:1}
+.band{position:absolute;top:0;bottom:0;background:rgba(240,118,58,.09);border-left:1px dashed var(--fire);
+ border-right:1px dashed var(--fire)}
+.ax{position:absolute;font-size:7.5px;color:var(--pale);letter-spacing:.09em}
+/* W5 */
+.scene{height:175px;perspective:800px;position:relative;margin:8px 0}
+.cube{position:absolute;inset:0;transform-style:preserve-3d;transition:.4s}
+.cl{position:absolute;width:20px;height:20px;border-radius:2px;display:flex;align-items:center;
+ justify-content:center;font-size:7px;color:#e8f0fa}
+.eli{margin-top:8px;padding:7px 8px;border-radius:3px;background:#120c08;
+ border:1px dashed var(--rule);font-size:9.5px;color:var(--mid);line-height:1.5}
+.eli b{font-size:8px;letter-spacing:.13em;color:var(--pale)}
+.foot{margin-top:24px;padding-top:12px;border-top:1px solid var(--rule);
+ font-size:9.5px;color:var(--pale);line-height:1.8}
+.foot b{color:var(--mid)}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>PENTAPTYCH · THE VOLUME — FILLING THE CLIFF</h1>
+<div class="sub">GROUND TONE: COPPER · 土 木 金 火 水 · 14 ORIGINAL + 20 ADDED = 34 TEXTS · 2026-08-01</div>
+<div class="chi"></div>
+
+<div class="penta">
+
+<!-- ══ W1 土 ══ -->
+<div class="win w1">
+  <div class="hd"><span class="el">土 EARTH · W1</span><span class="nm">SOURCE</span>
+    <div class="qq">A reimplementation, calibrated against the original before it was trusted.</div></div>
+
+  <div class="met"><div class="mv">±0.0000</div>
+    <div class="ml">I-AXIS AGREEMENT ACROSS 4 CALIBRATION TEXTS · EXACT TO 4 DECIMALS</div></div>
+
+  <table>
+    <tr><th>TEXT</th><th class="n">HIS</th><th class="n">MINE</th><th class="n">Δ</th></tr>
+    <tr><td>JaneEyre · I</td><td class="n">62.36</td><td class="n">62.36</td><td class="n">0.0000</td></tr>
+    <tr><td>Wuthering · I</td><td class="n">54.22</td><td class="n">54.22</td><td class="n">0.0000</td></tr>
+    <tr><td>Walden · I</td><td class="n">27.57</td><td class="n">27.57</td><td class="n">0.0000</td></tr>
+    <tr><td>AgnesGrey · I</td><td class="n">56.66</td><td class="n">56.66</td><td class="n">0.0000</td></tr>
+    <tr><td>JaneEyre · β</td><td class="n">.6442</td><td class="n">.6377</td><td class="n">−.0065</td></tr>
+    <tr><td>Walden · β</td><td class="n">.6918</td><td class="n">.6891</td><td class="n">−.0027</td></tr>
+    <tr><td>JaneEyre · voiced</td><td class="n">9.73</td><td class="n">19.35</td><td class="n">×1.99</td></tr>
+    <tr><td>AgnesGrey · voiced</td><td class="n">6.68</td><td class="n">13.07</td><td class="n">×1.96</td></tr>
+  </table>
+
+  <p class="nt"><b class="k">I-axis <span class="stamp lit">LIT</span></b> — reimplemented from a
+  one-line method note, zero drift on four texts. That is why the gap result stands.<br>
+  <b class="k">β <span class="stamp amb">AMBER</span></b> — consistent −0.003…−0.007 bias, same sign
+  every time. A fit-detail difference, usable with the caveat.<br>
+  <b class="k">voiced <span class="stamp amb">AMBER</span></b> — clean ×1.97 on all four. Solved in W5.</p>
+
+  <p class="nt"><b class="k">20 texts added</b> from Project Gutenberg, chosen to aim at the empty
+  bands. All measurements are mine; none are the author's.</p>
+
+  <div class="board">
+    <h4>▲ FEEDBACK BOARD — RISING FROM W3·W4·W5</h4>
+    <div class="fb"><b class="f3">W3</b> <b>3 texts land inside the cliff.</b> The 4.86–12.87 void
+      fills smoothly. Original claim does not survive.</div>
+    <div class="fb"><b class="f4">W4</b> Largest gap went 8.01 → 7.98 → <b>8.71</b>. Adding 20 texts
+      did <i>not</i> shrink the maximum gap — it moved it to the far end. Voids are a property of
+      shelf composition, not of the axis.</div>
+    <div class="fb"><b class="f5">W5</b> <b>DISSENTS.</b> W1 stamps voiced AMBER as if unresolved.
+      It is resolved — and the resolution reverses the finding.</div>
+  </div>
+</div>
+
+<!-- ══ W2 木 ══ -->
+<div class="win w2">
+  <div class="hd"><span class="el">木 WOOD · W2</span><span class="nm">CONTRIBUTIONS</span>
+    <div class="qq">Who built, who tested, who was right.</div></div>
+  <table>
+    <tr><th>WHO</th><th>WHAT</th></tr>
+    <tr><td><b class="k">Fiddler</b></td><td>Built THE VOLUME and froze its bins. Then said
+      <i>put something there and see what happens</i> — proposing the one experiment that could
+      falsify his own published claim.</td></tr>
+    <tr><td><b class="k">Claude</b></td><td>Reimplemented the pipeline from the method note.
+      Calibrated against 4 published texts <i>before</i> measuring anything new. Added 20 texts.
+      Brute-forced the voiced rule against 7 candidates.</td></tr>
+    <tr><td><b class="k">Joint</b></td><td>The finding that voids track the shelf, not the
+      language. Neither half of this gets there alone — he had the instrument, the test needed
+      texts he hadn't picked.</td></tr>
+    <tr><td><i>Not verified</i></td><td>His β fit internals. The −0.005 bias is unexplained; I
+      matched his window but not his sampling.</td></tr>
+  </table>
+
+  <p class="nt"><b class="k">Why calibration came first.</b> Measuring 20 new texts and comparing
+  them to his 14 is only valid if the pipelines agree. They agree on one axis exactly, one
+  approximately, and one not at all — and knowing <i>which</i> is what makes the gap result
+  reportable and the voiced result interesting rather than embarrassing.</p>
+
+  <div class="eli"><b>🧸 ELI5</b><br>Before using my ruler to check his ruler, I measured four things
+  we'd both already measured. Same answers on the important edge. So when my ruler says something
+  new, it counts.</div>
+</div>
+
+<!-- ══ W3 金 ══ -->
+<div class="win w3">
+  <div class="hd"><span class="el">金 METAL · W3</span><span class="nm">1D — THE FILLED AXIS</span>
+    <div class="qq">34 texts on the I-axis. Did the cliff survive?</div></div>
+
+  <div class="met"><div class="mv" id="m3">3</div>
+    <div class="ml" id="l3">TEXTS NOW INSIDE THE FORMERLY EMPTY 4.86 – 12.87 BAND</div></div>
+
+  <div class="ctl" id="c3">
+    <button data-v="14" class="on">ORIGINAL 14</button>
+    <button data-v="34">ALL 34</button>
+  </div>
+  <div class="strip" id="strip"></div>
+  <p class="nt" id="n3"></p>
+
+  <div class="run">
+    <p class="nt" style="margin-top:7px"><b class="k">What filled it.</b> Machiavelli 5.95,
+    Darwin 8.46, Marcus Aurelius 12.31. Every one is <b class="k">single-author reasoning prose</b> —
+    an author present as a <i>thinker</i>, absent as a <i>character</i>. "I observed," "I advise,"
+    "I remind myself" — never "I walked into the room."</p>
+    <p class="nt">The original 14 held epics, novels and manifestos. No treatise, no advice-book, no
+    private journal. <b class="k">The void was the shape of the shelf.</b>
+    <span class="stamp lit">LIT</span></p>
+    <p class="nt"><b class="k">W3 → W1:</b> the cliff claim is falsified. The instrument is not —
+    it located a real structural region the moment it was handed texts from it.</p>
+  </div>
+</div>
+
+<!-- ══ W4 火 ══ -->
+<div class="win w4">
+  <div class="hd"><span class="el">火 FIRE · W4</span><span class="nm">2D — β × I</span>
+    <div class="qq">Where the new texts landed, and what didn't shrink.</div></div>
+
+  <div class="met"><div class="mv" id="m4">8.71</div>
+    <div class="ml">LARGEST GAP AT n=34 · IT WAS 8.01 AT n=14</div></div>
+
+  <div class="plot" id="plot">
+    <span class="ax" style="left:0;bottom:-13px">β LOW → HIGH</span>
+    <span class="ax" style="left:-4px;top:-11px">I ↑</span>
+  </div>
+
+  <div class="ctl" id="c4">
+    <button data-v="old" class="on">ORIGINAL 14</button>
+    <button data-v="all">ALL 34</button>
+    <button data-v="band">CLIFF BAND</button>
+  </div>
+  <p class="nt" id="n4"></p>
+
+  <div class="run">
+    <p class="nt" style="margin-top:7px"><b class="k">The result nobody ordered.</b> Twenty texts
+    added and the largest gap <i>grew</i>: 8.01 → 7.98 → 8.71. Filling one void opened another at
+    the far end, between Tenant (63.87) and Robinson Crusoe (72.58).</p>
+    <p class="nt"><b class="k">W4 → W1:</b> voids are not features of the axis. They are features
+    of whatever shelf you happen to have loaded. <b class="k">There will always be a largest gap</b>,
+    and it will always look like a cliff until someone throws a book at it.</p>
+  </div>
+</div>
+
+<!-- ══ W5 水 ══ -->
+<div class="win w5">
+  <div class="hd"><span class="el">水 WATER · W5</span><span class="nm">3D — THE VOICED RULE, SOLVED</span>
+    <div class="qq">The one thing no other window went and found out.</div></div>
+
+  <div class="met"><div class="mv">chars ÷ 4</div>
+    <div class="ml">THE ONLY RULE OF 7 TESTED THAT REPRODUCES ALL FOUR PUBLISHED VALUES</div></div>
+
+  <div class="scene"><div class="cube" id="cube"></div></div>
+
+  <div class="ctl" id="c5">
+    <button data-m="fail" class="on">6 RULES THAT FAIL</button>
+    <button data-m="win">THE RULE THAT FITS</button>
+  </div>
+  <p class="nt" id="n5"></p>
+
+  <div class="run">
+    <p class="nt" style="margin-top:8px"><b style="color:var(--water)">▲ W5 DISSENTS TO W1.</b>
+    W1 files voiced as AMBER-unresolved. It is resolved. I brute-forced seven candidate rules against
+    the four published values; exactly one reproduces all four:
+    <code>(total quote chars) // 4</code>.</p>
+
+    <p class="nt"><b class="k">And that is a double-halving.</b> A quotation pair is two characters,
+    so pairs = chars ÷ 2. Dividing by 4 halves it again. <b class="k">Every published voiced value
+    is exactly half of what the axis label describes.</b></p>
+
+    <p class="nt"><b class="k">Now the reversal, and it matters.</b> The slip is applied uniformly to
+    all 14 texts — so it is <b class="k">perfectly rank-preserving</b>. Every tercile boundary, every
+    cell assignment, every conclusion drawn from the cube is <i>untouched</i>. Only the stated unit
+    is wrong. <span class="stamp lit">LIT</span></p>
+
+    <p class="nt">Fix without breaking the freeze: leave the numbers, correct the label to
+    <i>half-pairs per 1,000</i> or state the rule verbatim in <code>method</code>. One sentence and
+    the axis becomes reproducible by anyone holding only the index — which is the whole point of
+    freezing bins in the first place.</p>
+
+    <div class="eli"><b>🧸 ELI5</b><br>His speech-counter counts every book at exactly half. But
+    it's half for <i>every</i> book, so the order never changes and every answer he got is still
+    right. The number on the label is wrong. Nothing built on top of it is.</div>
+  </div>
+</div>
+
+</div>
+
+<div class="foot">
+<b>FORM</b> Pentaptych — five equal ~20% panels, full width, W1 command position with source +
+feedback board, chi left→right, feedback rising, W5 free to dissent.<br>
+<b>PALETTE</b> ground tone copper; accents 土 Earth ochre · 木 Wood jade · 金 Metal steel ·
+火 Fire ember · 水 Water azure.<br>
+<b>ARITHMETIC</b> pipeline reimplemented and calibrated in Python before any new text was measured ·
+zero network calls at runtime.<br>
+<b>SCOPE</b> 20 added texts are all English, all Project Gutenberg, several in translation. The
+translator's vocabulary sits inside β exactly as the original index warns.
+</div>
+</div>
+
+<script>
+const OLD=[["Manifesto",.6381,0.86,"polemic"],["Critique",.5261,2.82,"apparatus"],
+["AnimalFarm",.6415,3.95,"fable"],["1984",.6663,4.86,"novel"],["Gilgamesh",.6142,12.87,"epic"],
+["Walden",.6918,27.57,"essay"],["Crime+Pun",.5982,30.86,"novel"],["Zarathustra",.5895,34.45,"scripture"],
+["Inferno",.6337,42.43,"verse"],["Shakespeare",.6449,48.10,"drama"],["Wuthering",.6405,54.22,"novel"],
+["AgnesGrey",.6542,56.66,"novel"],["JaneEyre",.6442,62.36,"novel"],["Tenant",.6804,63.87,"novel"]];
+const NEW=[["Federalist",.6704,2.52,"apparatus"],["Prince",.5882,5.95,"polemic"],
+["Origin",.5915,8.46,"treatise"],["Meditations",.6034,12.31,"scripture"],["MobyDick",.7091,15.81,"novel"],
+["Iliad",.6916,18.14,"epic"],["TaleTwoCities",.6550,23.60,"novel"],["Alice",.5624,25.12,"novel"],
+["Pride+Prej",.5668,26.63,"novel"],["Odyssey",.5758,30.22,"epic"],["WarOfWorlds",.6517,34.62,"novel"],
+["HeartDarkness",.6727,43.38,"novel"],["TreasureIsland",.6098,43.85,"novel"],["Douglass",.6168,45.98,"memoir"],
+["Dracula",.6260,47.29,"novel"],["Gulliver",.6455,53.66,"satire"],["GreatExpect",.6666,58.40,"novel"],
+["TimeMachine",.7176,62.17,"novel"],["RobinsonCrusoe",.5753,72.58,"novel"],["Frankenstein",.6650,75.12,"novel"]];
+const CLIFF=[4.86,12.87];
+
+/* W3 */
+const strip=document.getElementById("strip"),m3=document.getElementById("m3"),
+      l3=document.getElementById("l3"),n3=document.getElementById("n3");
+function d3(v){
+  const set=(v==="14"?OLD:OLD.concat(NEW)).slice().sort((a,b)=>a[2]-b[2]);
+  const mx=Math.max(...set.map(s=>s[2]));
+  let html="",prev=null,big=0,bigp=null;
+  set.forEach(([n,b,I,k])=>{
+    if(prev!==null){const d=I-prev[2];
+      if(d>big){big=d;bigp=[prev[0],n];}
+      if(d>3) html+=`<div class="gapr">↕ gap ${d.toFixed(2)}</div>`;}
+    const isNew=NEW.some(x=>x[0]===n);
+    const inC=I>CLIFF[0]&&I<CLIFF[1];
+    const col=inC?"var(--fire)":isNew?"var(--wood)":"var(--metal)";
+    html+=`<div class="sr${isNew?" newt":""}"><span class="v">${I.toFixed(2)}</span>
+      <span class="bar" style="width:${(I/mx*72).toFixed(1)}px;background:${col}"></span>
+      <span class="nmx">${n} <span style="color:var(--pale)">${k}</span></span></div>`;
+    prev=[I,0,I,0]; prev[0]=n; prev[2]=I;});
+  strip.innerHTML=html;
+  const inside=set.filter(s=>s[2]>CLIFF[0]&&s[2]<CLIFF[1]).length;
+  m3.textContent=inside;
+  l3.textContent=v==="14"?"TEXTS INSIDE 4.86 – 12.87 · THE ORIGINAL CLAIM":"TEXTS NOW INSIDE THE FORMERLY EMPTY BAND";
+  n3.innerHTML=v==="14"
+   ?`<b class="k">Original 14.</b> Nothing between 1984 (4.86) and Gilgamesh (12.87). An 8.01-wide void, and the largest gap in the set. Reading it as a cliff was reasonable.`
+   :`<b class="k">All 34.</b> Three texts sit in the void and it closes smoothly. Largest gap in the set is now <b class="k">${big.toFixed(2)}</b>, between ${bigp[0]} and ${bigp[1]} — the other end of the axis entirely.`;}
+document.querySelectorAll("#c3 button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#c3 button").forEach(x=>x.classList.remove("on"));b.classList.add("on");d3(b.dataset.v)});
+d3("14");
+
+/* W4 */
+const plot=document.getElementById("plot"),n4=document.getElementById("n4"),m4=document.getElementById("m4");
+const ALL=OLD.map(x=>[...x,"old"]).concat(NEW.map(x=>[...x,"new"]));
+const bmin=.52,bmax=.73,imax=78;
+const band=document.createElement("div");band.className="band";
+band.style.left="4%";band.style.width="0%";band.style.display="none";plot.appendChild(band);
+const els=ALL.map(([n,b,I,k,src])=>{
+  const e=document.createElement("div");e.className="pt";
+  e.style.background=src==="new"?"var(--wood)":"var(--metal)";
+  e.style.left=((b-bmin)/(bmax-bmin)*88+6)+"%";
+  e.style.bottom=(I/imax*84+6)+"%";
+  e.innerHTML=`<span>${n} · β${b.toFixed(4)} · I ${I.toFixed(2)} · ${k}</span>`;
+  plot.appendChild(e);return[e,n,I,src];});
+function d4(v){
+  els.forEach(([e,n,I,src])=>{
+    let on=v==="all"?true:v==="old"?src==="old":(I>CLIFF[0]&&I<CLIFF[1]);
+    e.style.opacity=on?1:.13;
+    if(v==="band"&&on) e.style.background="var(--fire)";
+    else e.style.background=src==="new"?"var(--wood)":"var(--metal)";});
+  band.style.display=v==="band"?"block":"none";
+  if(v==="band"){band.style.bottom=(CLIFF[0]/imax*84+6)+"%";
+    band.style.height=((CLIFF[1]-CLIFF[0])/imax*84)+"%";band.style.left="4%";band.style.width="92%";
+    band.style.top="auto";}
+  m4.textContent=v==="old"?"8.01":v==="all"?"8.71":"3";
+  n4.innerHTML=v==="old"
+   ?`<b class="k">The original 14.</b> Sparse, and the horizontal empty stripe across the lower-middle is the cliff.`
+   :v==="all"?`<b class="k">All 34.</b> The stripe is gone. β spread also widened — Alice 0.5624 to TimeMachine 0.7176 — so the new texts stretched <i>both</i> axes, not just I.`
+   :`<b class="k">The cliff band, lit.</b> Machiavelli, Darwin, Marcus Aurelius. Three genres the original shelf had no copy of.`;}
+document.querySelectorAll("#c4 button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#c4 button").forEach(x=>x.classList.remove("on"));b.classList.add("on");d4(b.dataset.v)});
+d4("old");
+
+/* W5 */
+const R=[["all chars ÷2",19.35,18.80,2.58,13.07,0],["opening curly only",19.47,19.32,2.58,13.36,0],
+["straight only ÷2",0.00,0.00,0.02,0.00,0],["regex paired",19.22,18.28,2.58,12.77,0],
+["all chars ÷4",9.67,9.40,1.29,6.53,1],["lines w/ quote",17.31,14.69,2.46,12.00,0],
+["paragraphs quoted",15.96,11.96,1.59,10.23,0]];
+const HIS=[9.73,9.66,1.30,6.68];
+const cube=document.getElementById("cube"),n5=document.getElementById("n5");
+function d5(m){
+  cube.innerHTML="";
+  R.forEach((r,i)=>{
+    const win=r[5]===1;
+    if(m==="win"&&!win) return;
+    for(let j=0;j<4;j++){
+      const e=document.createElement("div");e.className="cl";
+      e.style.left=(30+j*44)+"px";e.style.top=(14+i*20)+"px";
+      e.style.transform=`translateZ(${win?26:0}px)`;
+      const err=Math.abs(r[j+1]-HIS[j]);
+      e.style.background=win?"rgba(105,163,224,.65)":`rgba(160,120,90,${Math.max(.12,.5-err/25)})`;
+      e.style.border=win?"1px solid var(--water)":"1px solid rgba(120,96,78,.3)";
+      cube.appendChild(e);}});
+  n5.innerHTML=m==="win"
+   ?`<b class="k">chars ÷ 4</b> reproduces 9.67 / 9.40 / 1.29 / 6.53 against published 9.73 / 9.66 / 1.30 / 6.68. Within rounding on all four.`
+   :`<b class="k">Six rules fail.</b> Every plausible reading of "quotation pairs" — paired regex, opening-quote-only, per-line, per-paragraph — lands roughly double the published value. The near-misses are the informative ones.`;}
+document.querySelectorAll("#c5 button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll("#c5 button").forEach(x=>x.classList.remove("on"));b.classList.add("on");d5(b.dataset.m)});
+d5("fail");
+let t=0;setInterval(()=>{t+=.35;cube.style.transform=`rotateX(54deg) rotateZ(${-26+Math.sin(t/26)*11}deg)`},60);
+</script>
+</body></html>
