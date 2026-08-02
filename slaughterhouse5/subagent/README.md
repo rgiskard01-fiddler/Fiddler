@@ -1,4 +1,7 @@
-# slaughterhouse5-subagent
+========================================================================
+| slaughterhouse5-subagent                                             |
+========================================================================
+
 
 **`subagent`** — the **L2 SUBAGENT HOST** plane (18-bit, trained, 66): the
 **hosted** I-13 learner. It is the `sa` element of the learning scope
@@ -68,3 +71,5 @@ I-13 is human-directed and AI-co-authored (Hermes Agent, Nous Research).
 The plane counts and frozen-spec sha are drawn from the unified baseline
 `I,Robot/hermes.i13`. AI co-creator credit is **provenance**, not evidence
 of external derivation.
+
+========================================================================

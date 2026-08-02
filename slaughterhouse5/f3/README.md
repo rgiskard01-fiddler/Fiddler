@@ -1,4 +1,7 @@
-# f3 — module of the I-13 program
+========================================================================
+| f3 — module of the I-13 program                                      |
+========================================================================
+
 
 > Part of the **I-13 program**, within the **Slaughterhouse5** OS.
 
@@ -19,3 +22,5 @@ Crediting the AI is **provenance**, not a derivation claim.
 
 ## Modularity
 Per the I-13 design, any module can be detached ("cut") independently.
+
+========================================================================

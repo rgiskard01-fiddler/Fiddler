@@ -1,4 +1,7 @@
-# slaughterhouse5-constructor
+========================================================================
+| slaughterhouse5-constructor                                          |
+========================================================================
+
 
 **`constructor`** — the assembler / compiler / verifier for the I-13
 **collapse** format (`dlw.fold/1`). It is the build half of the inner
@@ -71,3 +74,5 @@ I-13 is human-directed and AI-co-authored (Hermes Agent, Nous Research).
 The collapse format and seals originate from the I-13 corpus
 (`rgiskard01-fiddler/Fiddler`). AI co-creator credit is **provenance**,
 not evidence of external derivation.
+
+========================================================================

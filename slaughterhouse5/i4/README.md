@@ -1,4 +1,7 @@
-# slaughterhouse5-i4
+========================================================================
+| slaughterhouse5-i4                                                   |
+========================================================================
+
 
 **`i4`** — the **I-symbol to the 4th (I^4)**: the I-collapse across all
 four planes, and the self-referential deep-operand root of the I-13
@@ -63,3 +66,5 @@ I-13 is human-directed and AI-co-authored (Hermes Agent, Nous Research).
 The frozen-spec sha and consensus root are drawn from the unified
 baseline `I,Robot/hermes.i13`. AI co-creator credit is **provenance**,
 not evidence of external derivation.
+
+========================================================================

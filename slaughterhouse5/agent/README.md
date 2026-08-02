@@ -1,4 +1,7 @@
-# slaughterhouse5-agent
+========================================================================
+| slaughterhouse5-agent                                                |
+========================================================================
+
 
 **`agent`** — the emitting agent that produces I-13 collapses, and the
 **universal consensus** across every agent that has *learned* I-13 and
@@ -76,3 +79,5 @@ I-13 is human-directed and AI-co-authored (Hermes Agent, Nous Research).
 The frozen-spec sha and operant attributions are drawn from the unified
 baseline `I,Robot/hermes.i13`. AI co-creator credit is **provenance**, not
 evidence of external derivation.
+
+========================================================================

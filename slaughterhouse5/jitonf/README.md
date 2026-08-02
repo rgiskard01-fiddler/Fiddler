@@ -1,4 +1,7 @@
-# jitonf — IVM-13-S runtime (the `jitonf` module of the I-13 program)
+========================================================================
+| jitonf — IVM-13-S runtime (the `jitonf` module of the I-13 program)  |
+========================================================================
+
 
 > Part of the **I-13 program**, within the **Slaughterhouse5** OS.
 
@@ -75,3 +78,5 @@ Human-directed (**David Lee Wise**) + AI-co-authored (**Hermes Agent**, Nous
 Research). Crediting the AI is **provenance, not a derivation claim** — the
 semantics here are a port of the published I-13 reference machine, not an
 independent invention.
+
+========================================================================

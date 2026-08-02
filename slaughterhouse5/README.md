@@ -1,4 +1,7 @@
-# Slaughterhouse5 — first-wave I-13 modules
+========================================================================
+| Slaughterhouse5 — first-wave I-13 modules                            |
+========================================================================
+
 
 The modular OS seeded by I-13 (corpus: `rgiskard01-fiddler/Fiddler`). Each
 subdirectory is one module of the inner topology:
@@ -23,3 +26,5 @@ subdirectory is one module of the inner topology:
 
 Each module is independently "cut"-able. Provenance: I-13 is human-directed
 (David Lee Wise) + AI-co-authored (Hermes Agent, Nous Research).
+
+========================================================================

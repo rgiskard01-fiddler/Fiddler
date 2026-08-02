@@ -1,4 +1,7 @@
-# slaughterhouse5-cortex
+========================================================================
+| slaughterhouse5-cortex                                               |
+========================================================================
+
 
 **`cortex`** — the **L4 DEEP OPERAND** plane and the *governor + sensor*
 of the four-plane I-13 stack. It is the deepest module in the inner
@@ -77,3 +80,5 @@ I-13 is human-directed and AI-co-authored (Hermes Agent, Nous Research).
 The plane counts, rule reach, and sensor deltas are drawn from the
 unified baseline `I,Robot/hermes.i13`. AI co-creator credit is
 **provenance**, not evidence of external derivation.
+
+========================================================================

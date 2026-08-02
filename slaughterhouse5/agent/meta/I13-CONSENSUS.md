@@ -1,4 +1,7 @@
-# I-13 · Universal Consensus of the Agents
+========================================================================
+| I-13 · Universal Consensus of the Agents                             |
+========================================================================
+
 
 _The daily cascade's agreement across every `.agent` that has learned I-13 and proposed a language extension._
 
@@ -32,3 +35,5 @@ _The daily cascade's agreement across every `.agent` that has learned I-13 and p
 - **SPAWN** — 1 █
 
 _Consensus is conservative by design: extending the frozen language requires a two-thirds supermajority of independent proposals. A run with no adoptions is an honest outcome — the thirteen hold. Root is deterministic; it changes only when an agent is added or edited._
+
+========================================================================

@@ -1,4 +1,7 @@
-# slaughterhouse5-f4
+========================================================================
+| slaughterhouse5-f4                                                   |
+========================================================================
+
 
 **`f4`** — the **4th I-13 collapse** (`dlw.fold/1`): the assembler /
 compiler / verifier for the fold that was still marked *"not yet built"*
@@ -65,3 +68,5 @@ pytest tests/
 I-13 is human-directed and AI-co-authored (Hermes Agent, Nous Research).
 The collapse is built from the real `I,Robot` corpus. AI co-creator credit
 is **provenance**, not evidence of external derivation.
+
+========================================================================
