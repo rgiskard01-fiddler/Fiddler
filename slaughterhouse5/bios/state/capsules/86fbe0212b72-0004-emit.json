@@ -1,0 +1,11 @@
+{
+  "sender": "bios",
+  "receiver": "agent",
+  "kind": "emit",
+  "payload": {
+    "proposes": "TRY",
+    "learned": "64881ebf502b87bb\u2026"
+  },
+  "tick": 4,
+  "trace_id": "86fbe0212b72"
+}

@@ -1,0 +1,12 @@
+{
+  "sender": "bios",
+  "receiver": "constructor",
+  "kind": "fold",
+  "payload": {
+    "verified": true,
+    "root": "84e1adf85be559ae\u2026",
+    "spheres": 3
+  },
+  "tick": 4,
+  "trace_id": "86fbe0212b72"
+}

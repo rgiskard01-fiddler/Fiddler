@@ -1,0 +1,22 @@
+[
+  {
+    "name": "agent@1",
+    "proposes_operant": "IMPORT"
+  },
+  {
+    "name": "agent@2",
+    "proposes_operant": "TRY"
+  },
+  {
+    "name": "agent@3",
+    "proposes_operant": "TRY"
+  },
+  {
+    "name": "agent@4",
+    "proposes_operant": "TRY"
+  },
+  {
+    "name": "agent@5",
+    "proposes_operant": "LOOP"
+  }
+]

@@ -3,11 +3,9 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "ran",
-    "sum": 7,
-    "r": 7,
-    "steps": 28
+    "status": "VETOED",
+    "reason": "veto: 'LOOP' is neither a core form nor adopted"
   },
-  "tick": 1,
+  "tick": 5,
   "trace_id": "86fbe0212b72"
 }

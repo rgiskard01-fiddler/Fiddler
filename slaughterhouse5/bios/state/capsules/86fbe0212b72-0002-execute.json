@@ -3,9 +3,8 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "sum": 7,
-    "r": 7,
-    "steps": 28
+    "status": "VETOED",
+    "reason": "veto: 'TRY' is neither a core form nor adopted"
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

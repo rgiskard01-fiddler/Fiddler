@@ -1,0 +1,13 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern",
+  "payload": {
+    "proposal": "LOOP",
+    "allowed": false,
+    "reason": "veto: 'LOOP' is neither a core form nor adopted",
+    "adopted": []
+  },
+  "tick": 5,
+  "trace_id": "86fbe0212b72"
+}

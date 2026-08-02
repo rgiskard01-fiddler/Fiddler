@@ -3,9 +3,9 @@
   "receiver": "bios",
   "kind": "ingest",
   "payload": {
-    "tick": 3,
-    "memory": "ticks=3 capsules=18"
+    "tick": 4,
+    "memory": "ticks=4 capsules=24"
   },
-  "tick": 3,
+  "tick": 4,
   "trace_id": "86fbe0212b72"
 }

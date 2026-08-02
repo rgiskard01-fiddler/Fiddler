@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 1,
-    "memory": "ticks=1 capsules=5"
+    "memory": "ticks=1 capsules=6"
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

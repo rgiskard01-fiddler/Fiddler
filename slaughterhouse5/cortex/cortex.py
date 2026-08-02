@@ -218,3 +218,21 @@ class Cortex:
                 "doctrine": VETO_MSG,
             }
         }
+
+
+# ---------------------------------------------------------------------------
+# GOVERNOR -- the cortex as the gate on what may be executed
+# ---------------------------------------------------------------------------
+CORE_FORMS = ["NAME", "CONSTANT", "ATTRIBUTE", "CALL", "ASSIGN", "ARG", "EXPR",
+             "IF", "COMPARE", "FUNCTIONDEF", "RETURN", "BINOP", "I"]
+
+def govern(proposal: str, adopted) -> "tuple[bool, str]":
+    """Permit a proposed operant into the executable language only if it is a
+    core I-13 form or has been adopted by consensus (>= 2/3). Otherwise it is
+    vetoed -- a wall, not advice (BIOS-SPEC: 'a feature is advice, a veto is
+    a wall')."""
+    if proposal in CORE_FORMS:
+        return True, "core I-13 form (always permitted)"
+    if proposal in (adopted or []):
+        return True, "adopted by >= 2/3 consensus"
+    return False, f"veto: '{proposal}' is neither a core form nor adopted"

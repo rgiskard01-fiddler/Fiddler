@@ -1,0 +1,13 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern",
+  "payload": {
+    "proposal": "TRY",
+    "allowed": false,
+    "reason": "veto: 'TRY' is neither a core form nor adopted",
+    "adopted": []
+  },
+  "tick": 2,
+  "trace_id": "86fbe0212b72"
+}

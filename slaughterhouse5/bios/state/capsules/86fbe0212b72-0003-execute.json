@@ -3,6 +3,7 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
+    "status": "ran",
     "sum": 7,
     "r": 7,
     "steps": 28
