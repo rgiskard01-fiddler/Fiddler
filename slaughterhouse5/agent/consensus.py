@@ -67,6 +67,16 @@ def sha256_hex(data) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+# ASCII framing for human-readable ledger output (consistent with the
+# README / BIOS-SPEC delimiter style across the biosphere).
+_LEDGER_W = 72
+_LEDGER_RULE = "=" * _LEDGER_W
+
+def _ascii_frame(title: str, body: str) -> str:
+    t = title[:_LEDGER_W - 4].ljust(_LEDGER_W - 4)
+    return f"{_LEDGER_RULE}\n| {t} |\n{_LEDGER_RULE}\n\n{body.rstrip()}\n\n{_LEDGER_RULE}\n"
+
+
 def merkle(leaves: List[str]) -> str:
     """Bottom-up pairwise sha256 over hex-string leaves; odd node duplicates
     itself. Returns the hex root. (hex-string concat, consistent with the
@@ -194,5 +204,6 @@ def _write_ledger(path: str, out: dict) -> None:
     for op, c in out["proposal_tally"].items():
         mark = " ✓ ADOPTED" if op in adopted else ""
         lines.append(f"- **{op}** — {c}{mark}")
+    framed = _ascii_frame("I-13 · UNIVERSAL CONSENSUS", "\n".join(lines))
     with open(path, "w", encoding="utf-8") as fh:
-        fh.write("\n".join(lines))
+        fh.write(framed)

@@ -1,26 +1,25 @@
 ========================================================================
-| f2 — module of the I-13 program                                      |
+| f2 — factory collapse                                                |
 ========================================================================
 
 
-> Part of the **I-13 program**, within the **Slaughterhouse5** OS.
+**f2** carries the **factory** I-13 collapse (`dlw.fold/1`): the sealed
+Merkle fold of THE FACTORY.
 
-## Role
-Fold/feature 2 (built).
+## What it holds
+- `f2-factory.dlw.fold` — THE FACTORY collapse (seal `8d6c265f…`, folds to
+  the shared `ROOT_0` `549f12…`).
 
-## Build status
-**built**
+It verifies against its sealed root using the corpus convention
+`R: h(x+sib), L: h(sib+x)` (hex-string concat) — the same engine
+`constructor` implements.
 
-## Relation to the corpus
-The full I-13 source corpus lives at `rgiskard01-fiddler/Fiddler` (eco-sphere `I,Robot`).
-This repo carries the following artifacts (mapped from the corpus):
-- `f2-factory.dlw.fold`  (← `I,Robot/factory/i13-factory.dlw.fold`)
+## Relationship to the other modules
+Paired with `f1` (factory+language) and `f3` (language); `f4` is the 4th
+collapse (machine); `constructor` verifies and assembles all of them.
 
 ## Provenance
-Human-directed (David Lee Wise) + AI-co-authored (Hermes Agent, Nous Research).
-Crediting the AI is **provenance**, not a derivation claim.
-
-## Modularity
-Per the I-13 design, any module can be detached ("cut") independently.
+I-13 is human-directed (David Lee Wise) + AI-co-authored (Hermes Agent,
+Nous Research). AI co-creator credit is provenance, not derivation.
 
 ========================================================================

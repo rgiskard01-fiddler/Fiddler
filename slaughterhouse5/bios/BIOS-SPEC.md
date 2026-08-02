@@ -45,8 +45,8 @@ Git-friendly: the biosphere's history is version-controlled. State
 seed(i4) -> emit(agent) -> govern(cortex + consensus)
          -> fold(constructor) -> execute(jitonf) -> ingest -> loop
 ```
-Each step is a real organ call (real fold verification, real consensus,
-real IVM execution) — never simulated.
+Each step is a real organ call — real fold verification, real consensus,
+real IVM execution — never simulated.
 
 ## Tight-structure-first
 This directory is the **shape**: `kernel` (boot + wire + hold state),

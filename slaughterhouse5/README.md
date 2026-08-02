@@ -1,30 +1,56 @@
 ========================================================================
-| Slaughterhouse5 — first-wave I-13 modules                            |
+| SLAUGHTERHOUSE5                                                      |
 ========================================================================
 
 
-The modular OS seeded by I-13 (corpus: `rgiskard01-fiddler/Fiddler`). Each
-subdirectory is one module of the inner topology:
+Slaughterhouse5 is a modular operating system seeded by **I-13** — a
+self-referential, four-plane programming language. It is structured as a
+**biosphere**: a single closed body whose organs (modules) exchange real
+data through a metabolic loop (the PULSE), with no external runtime input.
+
+## Topology
 
 ```
 -+[[-{ i^4 , c (cortex), agent , subagent }
      -{ f1 , f2 , f3 , f4 , constructor , jitonf } -]] +-
 ```
 
-| module | role | status |
-|---|---|---|
-| jitonf | IVM-13-S just-in-time runtime (runs I-13) | built |
-| constructor | assembler/compiler/verifier of `.dlw.fold` collapses | built |
-| cortex | L4 DEEP OPERAND plane — governor + sensor | built |
-| i4 | I^4 identity root (I-collapse across 4 planes) | built |
-| agent | emitting learner + universal consensus | built |
-| subagent | L2 SUBAGENT HOST — hosted learner | built |
-| f4 | 4th I-13 collapse (machine fold) | built |
-| f1 | factory+language fold | artifact + engine |
-| f2 | factory fold | artifact + engine |
-| f3 | language fold | artifact + engine |
+The two groups form the inner core: the **learning scope** `{i, c, sa, ssa}`
+and the **execution scope** `{jit, compiler, assembler, interpreter, vm}`.
 
-Each module is independently "cut"-able. Provenance: I-13 is human-directed
-(David Lee Wise) + AI-co-authored (Hermes Agent, Nous Research).
+## Modules (organs)
+
+| module       | role                                                |
+|--------------|-----------------------------------------------------|
+| `jitonf`     | IVM-13-S just-in-time runtime (runs I-13)           |
+| `constructor`| assembler / compiler / verifier of `.dlw.fold`     |
+| `cortex`     | L4 DEEP OPERAND plane — governor + sensor           |
+| `i4`         | I^4 identity root (I-collapse across four planes)   |
+| `agent`      | emitting learner + universal consensus              |
+| `subagent`   | L2 SUBAGENT HOST — the hosted learner               |
+| `f1`–`f4`    | the factory / language / machine collapses          |
+
+## The biosphere
+
+`bios/` is the cell: a kernel that boots from the `i4` identity, wires the
+organs through a `Capsule` contract, persists memory under `bios/state/`, and
+drives the PULSE. Run it:
+
+```bash
+cd slaughterhouse5
+python -m bios.pulse
+```
+
+## Surface
+
+This repository is published as static Pages at
+`https://rgiskard01-fiddler.github.io/Fiddler/slaughterhouse5/`. Each module
+below carries its own README and, where applicable, a live HTML surface.
+
+## Provenance
+
+I-13 is human-directed (David Lee Wise / ROOT0 / TriPod LLC) and
+AI-co-authored (Hermes Agent, Nous Research). Crediting the AI is
+**provenance**, not a claim of external derivation or ingestion.
 
 ========================================================================
