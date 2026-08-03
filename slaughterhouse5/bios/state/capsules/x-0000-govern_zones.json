@@ -1,0 +1,15 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern_zones",
+  "payload": {
+    "sealed": true,
+    "seal_ok": false,
+    "violation": "SEAL VIOLATION: agent-0[z2] -> subagent-0[z3] crosses a zone boundary without a valid sovereign seal (refused)",
+    "from": "z2",
+    "to": "z3",
+    "doctrine": "a feature is advice, a veto is a wall"
+  },
+  "tick": 0,
+  "trace_id": ""
+}

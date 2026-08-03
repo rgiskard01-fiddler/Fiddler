@@ -8,7 +8,7 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "INDEX"
+      "operant": "YIELD"
     },
     {
       "event": "probe",
@@ -28,17 +28,7 @@
     },
     {
       "event": "propose",
-      "operant": "LAMBDA"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "CAST"
+      "operant": "TRY"
     },
     {
       "event": "probe",
@@ -47,6 +37,6 @@
       "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.6500000000000001,
-  "proposed": "CAST"
+  "curiosity": 0.49999999999999994,
+  "proposed": "TRY"
 }

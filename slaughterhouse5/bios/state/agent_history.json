@@ -25,14 +25,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 4,
-"proposed": "ASSERT",
-"fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -59,14 +51,6 @@
 "tick": 3,
 "proposed": "ASSERT",
 "fitness": 2,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 4,
-"proposed": "ASSERT",
-"fitness": 3,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -99,14 +83,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 4,
-"proposed": "ASSERT",
-"fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -133,14 +109,6 @@
 "tick": 3,
 "proposed": "ASSERT",
 "fitness": 2,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 4,
-"proposed": "ASSERT",
-"fitness": 3,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -173,14 +141,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 4,
-"proposed": "ASSERT",
-"fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -210,14 +170,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 4,
-"proposed": "ASSERT",
-"fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -226,7 +178,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "INDEX",
+"proposed": "YIELD",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -242,15 +194,7 @@
 },
 {
 "tick": 3,
-"proposed": "LAMBDA",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
-},
-{
-"tick": 4,
-"proposed": "CAST",
+"proposed": "TRY",
 "fitness": 0,
 "gen": 1,
 "taught": true,
