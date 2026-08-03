@@ -4,7 +4,7 @@
   "kind": "execute",
   "payload": {
     "status": "VETOED",
-    "reason": "L4 deep-operand selected TRY, not the ratified IMPORT"
+    "reason": "L4 deep-operand selected SLICE, not the ratified IMPORT"
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

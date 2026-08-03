@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 4,
-    "memory": "ticks=5 capsules=167",
+    "memory": "ticks=5 capsules=417",
     "genome": [
       {
         "toward": "LOOP",
@@ -28,16 +28,12 @@
       },
       {
         "toward": "TRY",
-        "taught": [
-          "hermes"
-        ],
+        "taught": [],
         "tick": 3
       },
       {
         "toward": "TRY",
-        "taught": [
-          "hermes"
-        ],
+        "taught": [],
         "tick": 4
       }
     ]

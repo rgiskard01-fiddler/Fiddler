@@ -4,15 +4,15 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "CAST",
+    "proposes": "SLICE",
     "skills": [
       "propose",
       "probe",
       "garden",
       "recall"
     ],
-    "curiosity": 0.8,
-    "retention": 9
+    "curiosity": 1.0,
+    "retention": 45
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

@@ -10,11 +10,11 @@
       "IMPORT",
       "IMPORT",
       "IMPORT",
-      "SLICE"
+      "ASSERT"
     ],
     "distinct": [
-      "IMPORT",
-      "SLICE"
+      "ASSERT",
+      "IMPORT"
     ],
     "differing_pairs": [
       [

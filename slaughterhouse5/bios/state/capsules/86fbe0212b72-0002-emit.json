@@ -4,15 +4,15 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "SPAWN",
+    "proposes": "INDEX",
     "skills": [
       "propose",
       "probe",
       "garden",
       "recall"
     ],
-    "curiosity": 1.0,
-    "retention": 37
+    "curiosity": 0.62,
+    "retention": 3
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

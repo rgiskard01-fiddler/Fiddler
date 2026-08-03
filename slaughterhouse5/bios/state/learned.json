@@ -21,16 +21,12 @@
   },
   {
     "toward": "TRY",
-    "taught": [
-      "hermes"
-    ],
+    "taught": [],
     "tick": 3
   },
   {
     "toward": "TRY",
-    "taught": [
-      "hermes"
-    ],
+    "taught": [],
     "tick": 4
   },
   {
@@ -54,9 +50,9 @@
       "hermes"
     ],
     "tick": 1,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": 0.4331
+    "deep": "SLICE",
+    "ran": false,
+    "weight": -0.3186
   },
   {
     "toward": "IMPORT",
@@ -71,9 +67,9 @@
       "hermes"
     ],
     "tick": 2,
-    "deep": "TRY",
-    "ran": false,
-    "weight": 0.4898
+    "deep": "IMPORT",
+    "ran": true,
+    "weight": -0.3867
   },
   {
     "toward": "IMPORT",
@@ -88,9 +84,9 @@
       "hermes"
     ],
     "tick": 3,
-    "deep": "TRY",
+    "deep": "SLICE",
     "ran": false,
-    "weight": 0.3408
+    "weight": -0.2481
   },
   {
     "toward": "IMPORT",
@@ -105,8 +101,8 @@
       "hermes"
     ],
     "tick": 4,
-    "deep": "SLICE",
-    "ran": false,
-    "weight": 0.2068
+    "deep": "IMPORT",
+    "ran": true,
+    "weight": -0.3233
   }
 ]

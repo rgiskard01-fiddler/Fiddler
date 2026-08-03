@@ -5,7 +5,7 @@
   "payload": {
     "l4_resolve": 609,
     "operand": "DOP-563cb7ec",
-    "deep_selected": "SLICE",
+    "deep_selected": "IMPORT",
     "weight": 0.1972219212891526
   },
   "tick": 4,

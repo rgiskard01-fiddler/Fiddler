@@ -10,11 +10,11 @@
       "IMPORT",
       "IMPORT",
       "IMPORT",
-      "TRY"
+      "AWAIT"
     ],
     "distinct": [
-      "IMPORT",
-      "TRY"
+      "AWAIT",
+      "IMPORT"
     ],
     "differing_pairs": [
       [

@@ -4,15 +4,15 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "ASSERT",
+    "proposes": "AWAIT",
     "skills": [
       "propose",
       "probe",
       "garden",
       "recall"
     ],
-    "curiosity": 1.0,
-    "retention": 39
+    "curiosity": 0.68,
+    "retention": 5
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

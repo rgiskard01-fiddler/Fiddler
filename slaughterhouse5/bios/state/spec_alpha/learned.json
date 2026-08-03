@@ -21,16 +21,12 @@
   },
   {
     "toward": "TRY",
-    "taught": [
-      "hermes"
-    ],
+    "taught": [],
     "tick": 3
   },
   {
     "toward": "TRY",
-    "taught": [
-      "hermes"
-    ],
+    "taught": [],
     "tick": 4
   }
 ]

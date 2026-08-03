@@ -8,16 +8,6 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "LAMBDA"
-    },
-    {
-      "event": "probe",
-      "l4": 609,
-      "tag": "DOP-563cb7ec",
-      "weight": 0.1972219212891526
-    },
-    {
-      "event": "propose",
       "operant": "IMPORT"
     },
     {
@@ -85,8 +75,188 @@
       "l4": 609,
       "tag": "DOP-563cb7ec",
       "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "LAMBDA"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "SPAWN"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "LAMBDA"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "YIELD"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "YIELD"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "INDEX"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "AWAIT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
     }
   ],
-  "curiosity": 0.9800000000000004,
-  "proposed": "SLICE"
+  "curiosity": 1.0,
+  "proposed": "ASSERT"
 }

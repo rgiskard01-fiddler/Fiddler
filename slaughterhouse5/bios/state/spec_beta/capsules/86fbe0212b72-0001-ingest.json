@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 1,
-    "memory": "ticks=5 capsules=134",
+    "memory": "ticks=5 capsules=376",
     "genome": [
       {
         "toward": "AWAIT",
@@ -27,9 +27,9 @@
           "hermes"
         ],
         "tick": 1,
-        "deep": "IMPORT",
-        "ran": true,
-        "weight": 0.4331
+        "deep": "SLICE",
+        "ran": false,
+        "weight": -0.3186
       }
     ]
   },

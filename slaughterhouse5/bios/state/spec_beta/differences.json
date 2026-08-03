@@ -1057,5 +1057,1621 @@
     ],
     "verdict": "IMPORT",
     "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 12,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 12,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 12,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 12,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 12,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 12,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "TRY"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "TRY": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 13,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 13,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 13,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 13,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 13,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 13,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "SLICE",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "SLICE"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "SLICE": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 14,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 14,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 14,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 14,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 14,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 14,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "IMPORT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT"
+    ],
+    "counts": {
+      "IMPORT": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 15,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 15,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 15,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 15,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 15,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 15,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "TRY"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "TRY": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 5,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 16,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 16,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 16,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 16,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 16,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 16,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "LAMBDA",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "LAMBDA"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "LAMBDA": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 17,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 17,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 17,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 17,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 17,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 17,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "SPAWN",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "SPAWN"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "SPAWN": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 18,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 18,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 18,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 18,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 18,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 18,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "LAMBDA",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "LAMBDA"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "LAMBDA": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 19,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 19,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 19,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 19,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 19,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 19,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "IMPORT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT"
+    ],
+    "counts": {
+      "IMPORT": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 20,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 20,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 20,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 20,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 20,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 20,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT",
+      "IMPORT"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "ASSERT": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 5,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 21,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 21,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 21,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 21,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 21,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 21,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "TRY"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "TRY": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 22,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 22,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 22,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 22,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 22,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 22,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT",
+      "IMPORT"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "ASSERT": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 23,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 23,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 23,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 23,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 23,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 23,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "YIELD",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "YIELD"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "YIELD": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 24,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 24,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 24,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 24,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 24,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 24,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "YIELD",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "YIELD"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "YIELD": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 25,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 25,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 25,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 25,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 25,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 25,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "INDEX",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "INDEX"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "INDEX": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 26,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 26,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 26,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 26,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 26,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 26,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "SLICE",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "SLICE"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "SLICE": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 27,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 27,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 27,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 27,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 27,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 27,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "AWAIT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "AWAIT",
+      "IMPORT"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "AWAIT": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 28,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 28,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 28,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 28,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 28,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 28,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "SLICE",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "IMPORT",
+      "SLICE"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "SLICE": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 29,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 29,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "IMPORT",
+        "fitness": 29,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 29,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 29,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "IMPORT",
+        "fitness": 29,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT",
+      "IMPORT"
+    ],
+    "counts": {
+      "IMPORT": 6,
+      "ASSERT": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/7)"
   }
 ]

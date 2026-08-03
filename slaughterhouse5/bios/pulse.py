@@ -175,12 +175,21 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
 
     hm = Hermes(bio.state_dir)  # special citizen, persists its own retention/curiosity
 
-    for _ in range(n):
+    # resume: continue the tick counter across runs (persisted to state/tick.json)
+    if not reset:
+        try:
+            bio.tick = int(json.load(open(os.path.join(bio.state_dir, "tick.json"), encoding="utf-8")))
+        except Exception:
+            bio.tick = 0
+
+    if reset:
+        # wipe capsule dir ONLY on explicit reset (so resume does not lose history)
         import shutil
         cd = os.path.join(bio.state_dir, "capsules")
         if os.path.isdir(cd):
             shutil.rmtree(cd)
         os.makedirs(cd, exist_ok=True)
+        bio.tick = 0
 
     genome = _load(bio, "learned.json", [])
     diff_log = _load(bio, "differences.json", [])
@@ -289,6 +298,18 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
         # Hermes curiosity skill: probe the L4 deep-operand space it just resolved
         hm.probe_l4(resolve, l4_addr)
 
+        # record the learned L4 weight into a rolling history (dashboard chart)
+        try:
+            _hist = json.load(open(os.path.join(bio.state_dir, "weight_history.json"), encoding="utf-8")) if os.path.isfile(os.path.join(bio.state_dir, "weight_history.json")) else []
+        except Exception:
+            _hist = []
+        if cortex_weight is not None:
+            _hist.append(round(cortex_weight, 4))
+        try:
+            json.dump(_hist[-120:], open(os.path.join(bio.state_dir, "weight_history.json"), "w"), indent=0)
+        except Exception:
+            pass
+
         # ---- EXECUTE : fuse + run only the deep-resolved == ratified operants ----
         if deep_op is not None and deep_op == verdict["verdict"] and adopted:
             program = jit_lower(_compose_fused_program(adopted))
@@ -325,6 +346,12 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
 
         bio.emit(Capsule("bios", "bios", CapsuleKind.INGEST,
                          {"tick": bio.tick, "memory": bio.store.summary(), "genome": genome}))
+
+        # persist the tick counter so the next run (resume) continues the descent
+        try:
+            json.dump(bio.tick, open(os.path.join(bio.state_dir, "tick.json"), "w"), indent=0)
+        except Exception:
+            pass
 
         if verbose:
             print(f"[pulse {bio.tick}] {bio.store.summary()} | L1={[a.proposes_operant for a in agents]} "

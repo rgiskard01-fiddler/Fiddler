@@ -10,10 +10,10 @@
       "TRY",
       "TRY",
       "TRY",
-      "LOOP"
+      "SPAWN"
     ],
     "distinct": [
-      "LOOP",
+      "SPAWN",
       "TRY"
     ],
     "differing_pairs": [

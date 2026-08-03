@@ -10,11 +10,11 @@
       "IMPORT",
       "IMPORT",
       "IMPORT",
-      "TRY"
+      "SLICE"
     ],
     "distinct": [
       "IMPORT",
-      "TRY"
+      "SLICE"
     ],
     "differing_pairs": [
       [

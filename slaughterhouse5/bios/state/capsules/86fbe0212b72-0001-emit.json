@@ -4,15 +4,15 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "SLICE",
+    "proposes": "LAMBDA",
     "skills": [
       "propose",
       "probe",
       "garden",
       "recall"
     ],
-    "curiosity": 1.0,
-    "retention": 35
+    "curiosity": 0.56,
+    "retention": 1
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"
