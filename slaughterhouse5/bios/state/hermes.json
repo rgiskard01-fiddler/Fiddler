@@ -8,7 +8,7 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "IMPORT"
+      "operant": "YIELD"
     },
     {
       "event": "probe",
@@ -18,7 +18,7 @@
     },
     {
       "event": "propose",
-      "operant": "IMPORT"
+      "operant": "YIELD"
     },
     {
       "event": "probe",
@@ -28,7 +28,27 @@
     },
     {
       "event": "propose",
-      "operant": "AWAIT"
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "MATCH"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
     },
     {
       "event": "probe",
@@ -55,28 +75,8 @@
       "l4": 194,
       "tag": "DOP-1ffff64e",
       "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "INDEX"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "CAST"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.8300000000000003,
-  "proposed": "CAST"
+  "curiosity": 0.4699999999999999,
+  "proposed": "IMPORT"
 }

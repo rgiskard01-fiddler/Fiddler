@@ -10,13 +10,13 @@
       "LAMBDA",
       "LAMBDA",
       "TRY",
-      "IMPORT"
+      "YIELD"
     ],
     "distinct": [
-      "IMPORT",
       "INDEX",
       "LAMBDA",
-      "TRY"
+      "TRY",
+      "YIELD"
     ],
     "differing_pairs": [
       [
