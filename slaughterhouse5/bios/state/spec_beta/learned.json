@@ -12,67 +12,50 @@
     "taught": [
       "hermes"
     ],
-    "tick": 1
+    "tick": 18
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 1,
-    "deep": "SLICE",
+    "tick": 18,
+    "deep": "LOOP",
     "ran": false,
-    "weight": -0.3186
+    "weight": -0.5511
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 2
+    "tick": 19
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 2,
+    "tick": 19,
     "deep": "IMPORT",
     "ran": true,
-    "weight": -0.3867
+    "weight": -0.596
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 3
+    "tick": 20
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 3,
-    "deep": "SLICE",
-    "ran": false,
-    "weight": -0.2481
-  },
-  {
-    "toward": "IMPORT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 4
-  },
-  {
-    "toward": "IMPORT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 4,
+    "tick": 20,
     "deep": "IMPORT",
     "ran": true,
-    "weight": -0.3233
+    "weight": -0.4364
   }
 ]

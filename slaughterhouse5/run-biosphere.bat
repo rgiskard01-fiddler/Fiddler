@@ -1,14 +1,10 @@
 @echo off
 REM Slaughterhouse5 biosphere — local dashboard launcher (Windows)
-REM Opens the live dashboard in your browser and starts the PULSE server.
+REM The Python server auto-picks a free port (so an old instance can't block it)
+REM and prints the URL; this launcher captures it and opens the right tab.
 title Slaughterhouse5 biosphere
 cd /d "%~dp0"
-echo.
-echo   Slaughterhouse5 biosphere dashboard
-echo   --------------------------------
-echo   Starting local server on http://localhost:8753/
+echo   Starting local server (auto port)...
 echo   (Ctrl+C in this window stops it)
-echo.
-start "" http://localhost:8753/
 python -m bios.dashboard
 pause

@@ -1,0 +1,20 @@
+{
+  "sender": "bios",
+  "receiver": "jitonf",
+  "kind": "execute",
+  "payload": {
+    "status": "ran",
+    "operants": [
+      "AWAIT",
+      "IMPORT"
+    ],
+    "results": {
+      "result_AWAIT": 42,
+      "result_IMPORT": 1
+    },
+    "l4_weight": -0.596,
+    "steps": 20
+  },
+  "tick": 19,
+  "trace_id": "86fbe0212b72"
+}

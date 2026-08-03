@@ -4,7 +4,7 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "LAMBDA",
+    "proposes": "IMPORT",
     "skills": [
       "propose",
       "probe",

@@ -53,6 +53,53 @@ def _save(bio, name, data):
     json.dump(data, open(_p(bio, name), "w", encoding="utf-8"), indent=2)
 
 
+# --------------------------------------------------------------------------
+# Tier 3: per-agent history (enables click-to-inspect dossiers)
+# --------------------------------------------------------------------------
+def _record_agent_history(bio, members, verdict, deep_op, lw):
+    hist_path = _p(bio, "agent_history.json")
+    try:
+        hist = json.load(open(hist_path, encoding="utf-8"))
+    except Exception:
+        hist = {}
+    for spec, prop in members:
+        name = spec["name"]
+        h = hist.setdefault(name, {"plane": spec["plane"], "events": []})
+        h["plane"] = spec["plane"]
+        h["events"].append({
+            "tick": bio.tick,
+            "proposed": prop,
+            "fitness": spec.get("fitness", 0),
+            "gen": spec.get("gen", 0),
+            "taught": (verdict["verdict"] and prop != verdict["verdict"]),
+            "selected": (prop == deep_op),
+        })
+        h["events"] = h["events"][-60:]
+    try:
+        json.dump(hist, open(hist_path, "w", encoding="utf-8"), indent=0)
+    except Exception:
+        pass
+
+
+# --------------------------------------------------------------------------
+# Tier 1: per-tick snapshot for the live SSE stream
+# --------------------------------------------------------------------------
+def tick_snapshot(bio, lw, deep_op, verdict, members, hm):
+    return {
+        "tick": bio.tick,
+        "learned_weight": round(lw, 4),
+        "verdict": verdict.get("verdict"),
+        "deep_op": deep_op,
+        "members": [{"name": s["name"], "plane": s["plane"], "proposed": p,
+                     "fitness": s.get("fitness", 0), "gen": s.get("gen", 0)}
+                    for s, p in members],
+        "executed": (deep_op is not None and deep_op == verdict.get("verdict")),
+        "hermes": {"curiosity": round(hm.curiosity, 3),
+                   "retention": len(hm.retention),
+                   "skills": hm.skills},
+    }
+
+
 def _seed_population(g):
     pop = []
     for i in range(POP):
@@ -165,7 +212,7 @@ def _write_viewer(bio):
             pass
 
 
-def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = False, extra_agent: str = None) -> BioSphere:
+def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = False, extra_agent: str = None, on_tick=None) -> BioSphere:
     from agent import Agent
     from subagent import SubAgent
     from cortex import SENSE_L1, SENSE_L2, arbitrate, resolve, L4_ADDR_MAX, CortexBoundary
@@ -346,6 +393,16 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
 
         bio.emit(Capsule("bios", "bios", CapsuleKind.INGEST,
                          {"tick": bio.tick, "memory": bio.store.summary(), "genome": genome}))
+
+        # ---- per-agent history (Tier 3: click-to-inspect dossier) ----
+        _record_agent_history(bio, members, verdict, deep_op, lw)
+
+        # ---- live broadcast hook (Tier 1: SSE stream pushes each tick) ----
+        if on_tick is not None:
+            try:
+                on_tick(bio, tick_snapshot(bio, lw, deep_op, verdict, members, hm))
+            except Exception:
+                pass
 
         # persist the tick counter so the next run (resume) continues the descent
         try:

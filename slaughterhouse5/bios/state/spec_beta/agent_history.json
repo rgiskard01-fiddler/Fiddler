@@ -1,0 +1,205 @@
+{
+"agent-0": {
+"plane": "L1",
+"events": [
+{
+"tick": 18,
+"proposed": "IMPORT",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "IMPORT",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": true
+},
+{
+"tick": 20,
+"proposed": "IMPORT",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": true
+}
+]
+},
+"agent-1": {
+"plane": "L1",
+"events": [
+{
+"tick": 18,
+"proposed": "IMPORT",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "IMPORT",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": true
+},
+{
+"tick": 20,
+"proposed": "IMPORT",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": true
+}
+]
+},
+"agent-2": {
+"plane": "L1",
+"events": [
+{
+"tick": 18,
+"proposed": "IMPORT",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "IMPORT",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": true
+},
+{
+"tick": 20,
+"proposed": "IMPORT",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": true
+}
+]
+},
+"subagent-0": {
+"plane": "L2",
+"events": [
+{
+"tick": 18,
+"proposed": "IMPORT",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "IMPORT",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": true
+},
+{
+"tick": 20,
+"proposed": "IMPORT",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": true
+}
+]
+},
+"subagent-1": {
+"plane": "L2",
+"events": [
+{
+"tick": 18,
+"proposed": "IMPORT",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "IMPORT",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": true
+},
+{
+"tick": 20,
+"proposed": "IMPORT",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": true
+}
+]
+},
+"subagent-2": {
+"plane": "L2",
+"events": [
+{
+"tick": 18,
+"proposed": "IMPORT",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "IMPORT",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": true
+},
+{
+"tick": 20,
+"proposed": "IMPORT",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": true
+}
+]
+},
+"hermes": {
+"plane": "H",
+"events": [
+{
+"tick": 18,
+"proposed": "LOOP",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": true
+},
+{
+"tick": 19,
+"proposed": "ASSERT",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "ASSERT",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
+}
+]
+}
+}

@@ -1,0 +1,205 @@
+{
+"agent-0": {
+"plane": "L1",
+"events": [
+{
+"tick": 18,
+"proposed": "TRY",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "TRY",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "TRY",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": false
+}
+]
+},
+"agent-1": {
+"plane": "L1",
+"events": [
+{
+"tick": 18,
+"proposed": "TRY",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "TRY",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "TRY",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": false
+}
+]
+},
+"agent-2": {
+"plane": "L1",
+"events": [
+{
+"tick": 18,
+"proposed": "TRY",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "TRY",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "TRY",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": false
+}
+]
+},
+"subagent-0": {
+"plane": "L2",
+"events": [
+{
+"tick": 18,
+"proposed": "TRY",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "TRY",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "TRY",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": false
+}
+]
+},
+"subagent-1": {
+"plane": "L2",
+"events": [
+{
+"tick": 18,
+"proposed": "TRY",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "TRY",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "TRY",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": false
+}
+]
+},
+"subagent-2": {
+"plane": "L2",
+"events": [
+{
+"tick": 18,
+"proposed": "TRY",
+"fitness": 54,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "TRY",
+"fitness": 55,
+"gen": 1,
+"taught": false,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "TRY",
+"fitness": 56,
+"gen": 1,
+"taught": false,
+"selected": false
+}
+]
+},
+"hermes": {
+"plane": "H",
+"events": [
+{
+"tick": 18,
+"proposed": "SPAWN",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
+},
+{
+"tick": 19,
+"proposed": "LOOP",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
+},
+{
+"tick": 20,
+"proposed": "MATCH",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
+}
+]
+}
+}

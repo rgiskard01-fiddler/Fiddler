@@ -10,11 +10,11 @@
       "ASSERT",
       "ASSERT",
       "ASSERT",
-      "INDEX"
+      "IMPORT"
     ],
     "distinct": [
       "ASSERT",
-      "INDEX"
+      "IMPORT"
     ],
     "differing_pairs": [
       [

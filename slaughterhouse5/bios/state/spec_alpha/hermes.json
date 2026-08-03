@@ -8,6 +8,226 @@
   "retention": [
     {
       "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "YIELD"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "LOOP"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "YIELD"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "MATCH"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "INDEX"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "LOOP"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "INDEX"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "LAMBDA"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "YIELD"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "MATCH"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
       "operant": "SPAWN"
     },
     {
@@ -18,16 +238,6 @@
     },
     {
       "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
       "operant": "LOOP"
     },
     {
@@ -38,217 +248,7 @@
     },
     {
       "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "SPAWN"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "LOOP"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "LOOP"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "LOOP"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "LOOP"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "SPAWN"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
+      "operant": "MATCH"
     },
     {
       "event": "probe",
@@ -257,6 +257,6 @@
       "weight": null
     }
   ],
-  "curiosity": 0.4099999999999996,
-  "proposed": "TRY"
+  "curiosity": 1.0,
+  "proposed": "MATCH"
 }

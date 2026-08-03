@@ -10,9 +10,10 @@
       "LAMBDA",
       "LAMBDA",
       "TRY",
-      "LAMBDA"
+      "IMPORT"
     ],
     "distinct": [
+      "IMPORT",
       "INDEX",
       "LAMBDA",
       "TRY"
@@ -71,8 +72,16 @@
         5
       ],
       [
+        3,
+        6
+      ],
+      [
         4,
         5
+      ],
+      [
+        4,
+        6
       ],
       [
         5,
