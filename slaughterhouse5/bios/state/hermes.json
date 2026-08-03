@@ -8,7 +8,7 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "MATCH"
+      "operant": "YIELD"
     },
     {
       "event": "probe",
@@ -28,7 +28,7 @@
     },
     {
       "event": "propose",
-      "operant": "SPAWN"
+      "operant": "ASSERT"
     },
     {
       "event": "probe",
@@ -47,6 +47,6 @@
       "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.56,
+  "curiosity": 0.3799999999999999,
   "proposed": "ASSERT"
 }

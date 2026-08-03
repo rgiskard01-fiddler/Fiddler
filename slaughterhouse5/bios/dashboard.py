@@ -136,6 +136,7 @@ def agent_dossier(name):
 HTML = r"""<!doctype html><html><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Slaughterhouse5 — Biosphere Console</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
   :root{--bg:#05070c;--panel:#0c1320;--edge:#1c2940;--fg:#e3ecff;--mut:#8298c6;
         --acc:#3af0cf;--warn:#ff6b6b;--gold:#ffd166;--blue:#62a9ff;--teal:#3af0cf}
@@ -576,6 +577,48 @@ function tickStatic(){fetch('/state').then(r=>r.json()).then(S=>{lastStatic=S;if
 connectStream(); setInterval(tickStatic,2000); tickStatic();
 </script></body></html>"""
 
+def _build_spinor_svg():
+    """Genuine parametric Möbius strip — the SU(2) spinor object: a single
+    half-twisted band. One full 360deg rotation flips it (spinor sign flip);
+    two full turns (720deg) return it to start. Geometry is computed, not drawn."""
+    import math
+    R, w, N = 22.0, 6.0, 180
+    cx0 = cy0 = 32.0
+    top, bot, cen = [], [], []
+    for i in range(N + 1):
+        u = 2.0 * math.pi * i / N
+        c, s = math.cos(u / 2.0), math.sin(u / 2.0)
+        cu, su = math.cos(u), math.sin(u)
+        xc, yc = R * cu, R * su                       # centerline (a circle)
+        cen.append((cx0 + xc, cy0 + (yc * 0.62)))
+        for sign, store in ((1.0, top), (-1.0, bot)): # two ribbon edges
+            rr = R + sign * w * c
+            x = rr * cu
+            y = rr * su
+            z = sign * w * s
+            sx = cx0 + x
+            sy = cy0 + (y * 0.62 - z * 0.55)          # tilt projection so the twist reads
+            store.append((round(sx, 1), round(sy, 1)))
+    def pts(lst):
+        return " ".join(f"{x},{y}" for x, y in lst)
+    d = "M " + pts(top) + " L " + pts(list(reversed(bot))) + " Z"
+    dc = "M " + pts(cen)
+    return (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
+        '<defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">'
+        '<stop offset="0" stop-color="#3af0cf"/>'
+        '<stop offset="0.5" stop-color="#1fb89e"/>'
+        '<stop offset="1" stop-color="#0e6b63"/></linearGradient></defs>'
+        '<g>'
+        '<path d="' + d + '" fill="url(#sg)" stroke="#3af0cf" stroke-width="0.8" '
+        'stroke-linejoin="round" opacity="0.92"/>'
+        '<path d="' + dc + '" fill="none" stroke="#0a0f1a" stroke-width="0.7" opacity="0.5"/>'
+        '<animateTransform attributeName="transform" type="rotate" '
+        'from="0 32 32" to="360 32 32" dur="8s" repeatCount="indefinite"/>'
+        '</g></svg>'
+    )
+SPINOR_SVG = _build_spinor_svg()
+
 
 class Handler(BaseHTTPRequestHandler):
     def _send(self, code, body, ctype="application/json"):
@@ -660,6 +703,8 @@ class Handler(BaseHTTPRequestHandler):
         elif path in ("/", "/index.html"):
             html = HTML.replace("/*__THREE__*/", THREE_JS or "console.warn('three.min.js missing')")
             self._send(200, html, "text/html")
+        elif path == "/favicon.svg":
+            self._send(200, SPINOR_SVG, "image/svg+xml")
         else:
             self._send(404, json.dumps({"error": "not found"}))
 

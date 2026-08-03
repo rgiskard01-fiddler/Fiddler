@@ -226,7 +226,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "MATCH",
+"proposed": "YIELD",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -242,11 +242,11 @@
 },
 {
 "tick": 3,
-"proposed": "SPAWN",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
+"proposed": "ASSERT",
+"fitness": 1,
+"gen": 0,
+"taught": false,
+"selected": true
 },
 {
 "tick": 4,
