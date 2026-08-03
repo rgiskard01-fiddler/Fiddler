@@ -1,0 +1,27 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern_zones",
+  "payload": {
+    "sealed": true,
+    "z1": "HEGEMONIC SOVEREIGN (S)",
+    "z2": "DEMOCRATIC SUB-AGENTS",
+    "z3": "STEWARDSHIP SUB-SUB AGENTS",
+    "sovereign_veto": null,
+    "democratic": "ASSERT",
+    "stewardship_pass": true,
+    "seal_ok": true,
+    "report": [
+      "[z1] sovereign: core I-13 form (permitted)",
+      "[z1] sovereign: core I-13 form (permitted)",
+      "[z1] sovereign: core I-13 form (permitted)",
+      "[z1] sovereign: core I-13 form (permitted)",
+      "[z1] sovereign: core I-13 form (permitted)",
+      "[z1] sovereign: core I-13 form (permitted)",
+      "[z3] stewardship: continuity + no-harm OK; stewardship: continuity + no-harm OK; stewardship: continuity + no-harm OK"
+    ],
+    "doctrine": "a feature is advice, a veto is a wall"
+  },
+  "tick": 1,
+  "trace_id": "86fbe0212b72"
+}

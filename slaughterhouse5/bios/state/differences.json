@@ -47,7 +47,7 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "YIELD",
+        "proposal": "LAMBDA",
         "fitness": 0,
         "gen": 0
       }
@@ -55,14 +55,12 @@
     "distinct": [
       "INDEX",
       "LAMBDA",
-      "TRY",
-      "YIELD"
+      "TRY"
     ],
     "counts": {
       "INDEX": 3,
-      "LAMBDA": 2,
-      "TRY": 1,
-      "YIELD": 1
+      "LAMBDA": 3,
+      "TRY": 1
     },
     "differing_pairs": [
       [
@@ -118,16 +116,8 @@
         5
       ],
       [
-        3,
-        6
-      ],
-      [
         4,
         5
-      ],
-      [
-        4,
-        6
       ],
       [
         5,
@@ -279,18 +269,82 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "TRY",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT"
+    ],
+    "counts": {
+      "ASSERT": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "LAMBDA",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "TRY"
+      "LAMBDA"
     ],
     "counts": {
       "ASSERT": 6,
-      "TRY": 1
+      "LAMBDA": 1
     },
     "differing_pairs": [
       [
@@ -323,5 +377,133 @@
     ],
     "verdict": "ASSERT",
     "reason": "ASSERT adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT"
+    ],
+    "counts": {
+      "ASSERT": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT"
+    ],
+    "counts": {
+      "ASSERT": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (7/7)"
   }
 ]

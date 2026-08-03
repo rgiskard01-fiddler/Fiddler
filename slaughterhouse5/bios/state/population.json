@@ -3,42 +3,42 @@
     "name": "agent-0",
     "plane": "L1",
     "content": "EVOLVE GENOME:none",
-    "fitness": 2,
+    "fitness": 5,
     "gen": 1
   },
   {
     "name": "agent-1",
     "plane": "L1",
     "content": "EVOLVE GENOME:none",
-    "fitness": 2,
+    "fitness": 5,
     "gen": 1
   },
   {
     "name": "agent-2",
     "plane": "L1",
     "content": "EVOLVE GENOME:none",
-    "fitness": 2,
+    "fitness": 5,
     "gen": 1
   },
   {
     "name": "subagent-0",
     "plane": "L2",
     "content": "EVOLVE GENOME:none",
-    "fitness": 2,
+    "fitness": 5,
     "gen": 1
   },
   {
     "name": "subagent-1",
     "plane": "L2",
     "content": "EVOLVE GENOME:none",
-    "fitness": 2,
+    "fitness": 5,
     "gen": 1
   },
   {
     "name": "subagent-2",
     "plane": "L2",
     "content": "EVOLVE GENOME:none",
-    "fitness": 2,
+    "fitness": 5,
     "gen": 1
   }
 ]

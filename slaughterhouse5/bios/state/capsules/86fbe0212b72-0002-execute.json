@@ -1,0 +1,18 @@
+{
+  "sender": "bios",
+  "receiver": "jitonf",
+  "kind": "execute",
+  "payload": {
+    "status": "ran",
+    "operants": [
+      "ASSERT"
+    ],
+    "results": {
+      "result_ASSERT": 1
+    },
+    "l4_weight": 0.5918,
+    "steps": 16
+  },
+  "tick": 2,
+  "trace_id": "86fbe0212b72"
+}
