@@ -74,35 +74,37 @@ def _seed_population(genome):
     return pop
 
 
-def _teach(content, verdict):
+def _teach(content, verdict, strength=1.0):
     """Teach signal: find a content perturbation such that the agent's OWN
-    propose_operant yields the ratified verdict. The minority agent is not
-    bypassed -- it is taught an input that makes its own logic agree
-    (genuine teach, not a forced override)."""
+    propose_operant yields the ratified verdict. The L4 trained weight scales
+    `strength` -> the teach REACH: a weak cortex signal searches fewer candidates
+    and may fail to converge (soft teach); a strong signal converges fully."""
     from agent import Agent
     base = content if " TEACH:" in content else content + " TEACH:"
-    for k in range(4096):
+    cap = max(1, int(4096 * strength))
+    for k in range(cap):
         cand = f"{base}{k}"
         if Agent.from_content("taught", cand.encode()).proposes_operant == verdict:
             return cand
-    return content
+    return content  # weak L4 signal: this agent was not fully taught to agree
 
 
-def _evolve(members, verdict, genome):
+def _evolve(members, verdict, genome, deep_weight=None):
     """Selection across BOTH planes. Winners gain fitness. Losers are fed a
-    TEACH signal: their content is nudged (via their own proposal function)
-    toward the ratified verdict, so the population CONVERGES instead of merely
-    being logged as different. With no verdict, they reseed as mutants."""
+    TEACH signal whose STRENGTH is modulated by the L4 deep-operand weight:
+    a strong cortex signal nudges the minority to agree (convergence); a weak
+    signal leaves it divergent (reseed mutant). With no verdict, reseed."""
     g = genome or "none"   # genome param is the joined "toward" string (genome memory)
+    strength = abs(deep_weight) if deep_weight is not None else 0.0
     for spec, prop in members:
         if verdict and prop == verdict:
             spec["fitness"] += 1
         else:
             spec["fitness"] = max(0, spec["fitness"] - 1)
-            if verdict:
-                spec["content"] = _teach(spec["content"], verdict)
+            if verdict and strength >= 0.15:          # L4 modulates teach strength
+                spec["content"] = _teach(spec["content"], verdict, strength)
                 spec["gen"] += 1
-            else:
+            else:                                       # weak/no L4 signal -> reseed mutant
                 spec["content"] = f"EVOLVE GENOME:{g}"
                 spec["gen"] += 1
     return members
@@ -234,11 +236,6 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "taught": taught_names,
                           "verdict": verdict["verdict"], "reason": verdict["reason"]}))
 
-        # ---- EVOLVE : teach signal feeds differences back; genome biases future ----
-        g_join = _weighted_gjoin(genome)
-        members = _evolve(members, verdict["verdict"], g_join)
-        _save(bio, "population.json", pop)
-
         # ---- L3 COMPOSE : (b) weave the ratified operant's semantics (staged) ----
         ratified = verdict["verdict"]
         program = None
@@ -261,6 +258,11 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"l4_resolve": l4_addr, "operand": op_tag,
                           "deep_selected": deep_op, "weight": deep_weight}))
+
+        # ---- EVOLVE : teach signal (L4-weighted) feeds differences back; genome biases future ----
+        g_join = _weighted_gjoin(genome)
+        members = _evolve(members, verdict["verdict"], g_join, deep_weight)
+        _save(bio, "population.json", pop)
 
         # ---- EXECUTE : run only the deep-resolved + ratified operant ----
         # L4 SELECTION FEEDBACK: the deep-resolved choice is written into the
