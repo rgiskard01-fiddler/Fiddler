@@ -4,8 +4,8 @@
   "kind": "execute",
   "payload": {
     "status": "ran",
-    "program_sum": 2,
-    "steps": 9
+    "program_result": 1,
+    "steps": 11
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

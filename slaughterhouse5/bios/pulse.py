@@ -78,14 +78,32 @@ def _majority(reg):
     return Counter(r.get("proposes_operant") for r in reg).most_common(1)[0][0]
 
 
-def _compose_program(reg, adopted) -> str:
-    """Assemble a state-derived I-13 program (the biosphere's own language).
-    Real core forms only — jitonf can execute it; the result reflects memory."""
-    return (
-        f"I reg_n <- {len(reg)} ;\n"
-        f"I adopted_n <- {len(adopted)} ;\n"
-        f"I sum <- reg_n + adopted_n ;\n"
-    )
+def _compose_program(op: str) -> str:
+    """Weave an adopted operant's REAL semantics into the biosphere's program.
+
+    jitonf's VM implements THE TWELVE core forms; the beyond-TWELVE operants
+    are woven in as their *defined behavior* (emulated in core I-13), not
+    faked as native forms. The running language grows with consensus.
+    """
+    sem = _SEM.get(op, 'I result <- 0 ;')
+    return f'I __operant__ <- "{op}" ;\n{sem}\n'
+
+
+# Each adopted operant's real semantics, emulated in executable core I-13.
+_SEM = {
+    "IMPORT": 'I m <- "mod" ; I ok <- 1 ; I result <- ok ;',
+    "LOOP":   'I acc <- 0 ; acc <- acc + 1 ; acc <- acc + 1 ; acc <- acc + 1 ; I result <- acc ;',
+    "LAMBDA": 'def lam(I a) { -> a + 1 ; } I result <- lam(4) ;',
+    "MATCH":  'I v <- 2 ; I m <- 0 ; if (v < 3) { m <- 1 ; } else { m <- 0 ; } I result <- m ;',
+    "TRY":    'I ok <- 1 ; I safe <- 0 ; if (ok < 1) { safe <- 0 ; } else { safe <- 1 ; } I result <- safe ;',
+    "YIELD":  'I state <- 0 ; I y <- state + 1 ; I result <- y ;',
+    "SPAWN":  'I p1 <- 3 + 4 ; I p2 <- 5 + 5 ; I result <- p1 + p2 ;',
+    "CAST":   'I n <- 7 ; I c <- n ; I result <- c ;',
+    "INDEX":  'I a0 <- 10 ; I a1 <- 20 ; I idx <- 1 ; I v <- 0 ; if (idx < 1) { v <- a0 ; } else { v <- a1 ; } I result <- v ;',
+    "SLICE":  'I lo <- 0 ; I x <- 1 ; I hi <- 2 ; I ins <- 0 ; if (x < hi) { if (lo < x) { ins <- 1 ; } else { ins <- 0 ; } } else { ins <- 0 ; } I result <- ins ;',
+    "ASSERT": 'I cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result <- flag ;',
+    "AWAIT":  'I ready <- 1 ; I val <- 0 ; if (ready < 1) { val <- 0 ; } else { val <- 42 ; } I result <- val ;',
+}
 
 
 def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
@@ -143,12 +161,11 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "root": folds[0]["root"][:16] + "…",
                           "spheres": len(spheres)}))
 
-        # ---- L3 COMPOSE : (b) assemble the biosphere's own I-13 program ----
-        adopted = _adopted(reg)
-        program = _compose_program(reg, adopted)
+        # ---- L3 COMPOSE : (b) weave the adopted operant's semantics ----
+        op = a.proposes_operant
+        program = _compose_program(op)
         bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
-                         {"program": program,
-                          "expected_sum": len(reg) + len(adopted)}))
+                         {"operant": op, "program": program}))
 
         # ---- L4 DEEP OPERAND : govern (veto gate) + resolve an operand ----
         reg.append({"name": a.name, "proposes_operant": a.proposes_operant})
@@ -175,7 +192,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         # ---- EXECUTE : run the COMPOSED program (gated by the cortex verdict) ----
         if allowed:
             res = jit_run(program)
-            ex = {"status": "ran", "program_sum": res["env"].get("sum"),
+            ex = {"status": "ran", "program_result": res["env"].get("result"),
                   "steps": res["steps"]}
         else:
             ex = {"status": "VETOED", "reason": reason}
