@@ -4,7 +4,7 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "IMPORT",
+    "proposes": "INDEX",
     "skills": [
       "propose",
       "probe",

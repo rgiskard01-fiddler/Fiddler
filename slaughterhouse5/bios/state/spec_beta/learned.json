@@ -12,50 +12,50 @@
     "taught": [
       "hermes"
     ],
-    "tick": 18
+    "tick": 27
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 18,
-    "deep": "LOOP",
+    "tick": 27,
+    "deep": "SLICE",
     "ran": false,
-    "weight": -0.5511
+    "weight": -0.0051
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 19
+    "tick": 28
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 19,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": -0.596
+    "tick": 28,
+    "deep": "SLICE",
+    "ran": false,
+    "weight": -0.1046
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 20
+    "tick": 29
   },
   {
     "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
-    "tick": 20,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": -0.4364
+    "tick": 29,
+    "deep": "YIELD",
+    "ran": false,
+    "weight": -0.1941
   }
 ]

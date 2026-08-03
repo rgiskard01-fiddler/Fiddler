@@ -216,6 +216,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
     from agent import Agent
     from subagent import SubAgent
     from cortex import SENSE_L1, SENSE_L2, arbitrate, resolve, L4_ADDR_MAX, CortexBoundary
+    from cortex import zones as ZG
     from i4 import i4_collapse
     from constructor import build_fold, verify_fold, Sphere
     from .hermes import Hermes, NOVEL_POOL
@@ -304,6 +305,24 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
         verdict = arbitrate(proposals)
         diff_pairs = [[i, j] for i in range(len(members)) for j in range(i + 1, len(members))
                       if proposals[i] != proposals[j]]
+
+        # ---- ZONED GOVERNANCE PROTOCOL (z1 sovereign / z2 democratic / z3 stewardship) ----
+        zg = ZG.run_zoned_governance(members, sorted({d["toward"] for d in genome if d.get("toward")}
+                                                      | ({verdict["verdict"]} if verdict["verdict"] else set())),
+                                    {"genome_wiped": False})
+        # the sovereign's VETO is a wall: if it fires, nothing executes this tick
+        if zg.sovereign_veto:
+            bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN_ZONES,
+                             {"sealed": True, "z1": ZG.ZONES["z1"]["label"], "z2": ZG.ZONES["z2"]["label"],
+                              "z3": ZG.ZONES["z3"]["label"], "sovereign_veto": zg.sovereign_veto,
+                              "democratic": zg.democratic["verdict"], "stewardship_pass": zg.stewardship["pass"],
+                              "seal_ok": zg.seal_ok, "report": zg.report, "doctrine": ZG.DOCTRINE}))
+        else:
+            bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN_ZONES,
+                             {"sealed": True, "z1": ZG.ZONES["z1"]["label"], "z2": ZG.ZONES["z2"]["label"],
+                              "z3": ZG.ZONES["z3"]["label"], "sovereign_veto": None,
+                              "democratic": zg.democratic["verdict"], "stewardship_pass": zg.stewardship["pass"],
+                              "seal_ok": zg.seal_ok, "report": zg.report, "doctrine": ZG.DOCTRINE}))
         taught_names = [s["name"] for s, p in members if verdict["verdict"] and p != verdict["verdict"]]
         if verdict["verdict"]:
             genome.append({"toward": verdict["verdict"], "taught": taught_names, "tick": bio.tick})

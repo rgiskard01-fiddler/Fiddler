@@ -8,96 +8,6 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "YIELD"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "IMPORT"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "SLICE"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "LOOP"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 7355,
-      "tag": "void",
-      "weight": null
-    },
-    {
-      "event": "propose",
       "operant": "YIELD"
     },
     {
@@ -255,8 +165,98 @@
       "l4": 7355,
       "tag": "void",
       "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "CAST"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "CAST"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "INDEX"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "CAST"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SPAWN"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
     }
   ],
   "curiosity": 1.0,
-  "proposed": "MATCH"
+  "proposed": "SLICE"
 }

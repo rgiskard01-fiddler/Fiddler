@@ -1,5 +1,5 @@
 {
-  "ticks": 5,
+  "ticks": 4,
   "capsules": [
     "86fbe0212b72-0001-seed.json",
     "86fbe0212b72-0001-emit.json",
@@ -11,6 +11,7 @@
     "86fbe0212b72-0001-sense.json",
     "86fbe0212b72-0001-fold.json",
     "86fbe0212b72-0001-emit.json",
+    "86fbe0212b72-0001-govern_zones.json",
     "86fbe0212b72-0001-govern.json",
     "86fbe0212b72-0001-sense.json",
     "86fbe0212b72-0001-execute.json",
@@ -24,6 +25,7 @@
     "86fbe0212b72-0002-sense.json",
     "86fbe0212b72-0002-fold.json",
     "86fbe0212b72-0002-emit.json",
+    "86fbe0212b72-0002-govern_zones.json",
     "86fbe0212b72-0002-govern.json",
     "86fbe0212b72-0002-sense.json",
     "86fbe0212b72-0002-compose.json",
@@ -38,6 +40,7 @@
     "86fbe0212b72-0003-sense.json",
     "86fbe0212b72-0003-fold.json",
     "86fbe0212b72-0003-emit.json",
+    "86fbe0212b72-0003-govern_zones.json",
     "86fbe0212b72-0003-govern.json",
     "86fbe0212b72-0003-sense.json",
     "86fbe0212b72-0003-compose.json",
@@ -52,24 +55,11 @@
     "86fbe0212b72-0004-sense.json",
     "86fbe0212b72-0004-fold.json",
     "86fbe0212b72-0004-emit.json",
+    "86fbe0212b72-0004-govern_zones.json",
     "86fbe0212b72-0004-govern.json",
     "86fbe0212b72-0004-sense.json",
     "86fbe0212b72-0004-compose.json",
     "86fbe0212b72-0004-execute.json",
-    "86fbe0212b72-0004-ingest.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-sense.json",
-    "86fbe0212b72-0005-fold.json",
-    "86fbe0212b72-0005-emit.json",
-    "86fbe0212b72-0005-govern.json",
-    "86fbe0212b72-0005-sense.json",
-    "86fbe0212b72-0005-compose.json",
-    "86fbe0212b72-0005-execute.json",
-    "86fbe0212b72-0005-ingest.json"
+    "86fbe0212b72-0004-ingest.json"
   ]
 }

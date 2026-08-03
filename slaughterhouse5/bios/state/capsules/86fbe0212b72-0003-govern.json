@@ -10,11 +10,11 @@
       "ASSERT",
       "ASSERT",
       "ASSERT",
-      "LOOP"
+      "LAMBDA"
     ],
     "distinct": [
       "ASSERT",
-      "LOOP"
+      "LAMBDA"
     ],
     "differing_pairs": [
       [

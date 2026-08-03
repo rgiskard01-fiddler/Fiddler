@@ -10,11 +10,11 @@
       "ASSERT",
       "ASSERT",
       "ASSERT",
-      "TRY"
+      "CAST"
     ],
     "distinct": [
       "ASSERT",
-      "TRY"
+      "CAST"
     ],
     "differing_pairs": [
       [

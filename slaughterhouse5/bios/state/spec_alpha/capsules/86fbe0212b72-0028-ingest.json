@@ -1,0 +1,35 @@
+{
+  "sender": "bios",
+  "receiver": "bios",
+  "kind": "ingest",
+  "payload": {
+    "tick": 28,
+    "memory": "ticks=28 capsules=861",
+    "genome": [
+      {
+        "toward": "LOOP",
+        "taught": [],
+        "tick": 0,
+        "deep": "LOOP",
+        "ran": true,
+        "weight": 0.6
+      },
+      {
+        "toward": "TRY",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 27
+      },
+      {
+        "toward": "TRY",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 28
+      }
+    ]
+  },
+  "tick": 28,
+  "trace_id": "86fbe0212b72"
+}

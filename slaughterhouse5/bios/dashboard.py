@@ -102,6 +102,7 @@ def state_snapshot():
                   "retention": len(h.get("retention", [])), "last": h.get("retention", [])[-5:]}
         except Exception:
             pass
+    zones_caps = [c for c in _capsules("govern_zones")]
     weight_hist = _load("weight_history.json", [])
     return {
         "tick": ledger.get("ticks", 0),
@@ -113,6 +114,7 @@ def state_snapshot():
         "verdicts": [(d.get("verdict") or "?") for d in diffs][-20:],
         "govern": [c.get("payload") for c in govern][-6:],
         "execute": [c.get("payload") for c in execute][-6:],
+        "zones": (zones_caps[-1].get("payload") if zones_caps else None),
         "capsule_log": [(c.get("kind"), c.get("sender")) for c in _capsules()][-30:],
         "hermes": hm,
         "playing": _TRANS["playing"],
@@ -194,6 +196,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
       <button onclick=tab('pop',this)>Population</button>
       <button onclick=tab('gov',this)>Governance</button>
       <button onclick=tab('herm',this)>Hermes</button>
+      <button onclick=tab('zones',this)>Zoned Gov</button>
       <button onclick=tab('log',this)>Capsule log</button>
     </div>
     <div class=tabbody id=tab-genome>
@@ -204,6 +207,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
     <div class=tabbody id=tab-pop style="display:none"><div id=pop></div></div>
     <div class=tabbody id=tab-gov style="display:none"><div id=gov class=log></div></div>
     <div class=tabbody id=tab-herm style="display:none"><div id=herm></div></div>
+    <div class=tabbody id=tab-zones style="display:none"><div id=zones class=log></div></div>
     <div class=tabbody id=tab-log style="display:none"><div id=clog class=log></div></div>
   </div>
 </main>
@@ -248,7 +252,7 @@ function syncNodes(S){
   if(S.hermes&&S.hermes.skills){
     const mesh=new THREE.Mesh(new THREE.SphereGeometry(8,16,12),new THREE.MeshBasicMaterial({color:0xffd166}));
     mesh.position.set(Math.cos(0.6)*156,Math.sin(0.6)*156,Math.sin(0.6)*156*0.7);
-    mesh.userData={name:'HERMES',plane:'H',curiosity:S.hermes.curiosity,retention:S.hermes.retention};
+    mesh.userData={name:'hermes',plane:'H',curiosity:S.hermes.curiosity,retention:S.hermes.retention};
     scene.add(mesh); nodeMesh['HERMES']=mesh; picks.push(mesh);
   }
 }
@@ -325,6 +329,21 @@ function render(S){
      <div class=log style="margin-top:8px">recall:<br>${JSON.stringify(h.last||[],null,1)}</div>`;
   document.getElementById('clog').innerHTML=(S.capsule_log||[]).reverse().map(c=>
     `<span class=hl>${c[0]}</span> · ${c[1]}`).join('<br>');
+  const z=S.zones;
+  if(z){
+    document.getElementById('zones').innerHTML=
+      `<div class="chip"><b>SEALED</b> <small>${(z.sealed?'yes':'no')}</small></div>`+
+      `<div class=chip><b>z1 \\ l0</b> <small>${z.z1}</small></div>`+
+      `<div class=chip><b>z2 \\ l1</b> <small>${z.z2}</small></div>`+
+      `<div class=chip><b>z3 \\ l2</b> <small>${z.z3}</small></div>`+
+      (z.sovereign_veto?`<div class=log style="margin-top:8px;color:var(--warn)">⛔ SOVEREIGN VETO (wall): ${z.sovereign_veto}</div>`
+                        :`<div class=log style="margin-top:8px;color:var(--acc)">✓ no sovereign veto — verdict passes the wall</div>`)+
+      `<div class=log style="margin-top:6px">democratic (z2) verdict: ${z.democratic||'none'}</div>`+
+      `<div class=log">stewardship (z3) pass: ${z.stewardship_pass}</div>`+
+      `<div class=log">seal_ok: ${z.seal_ok}</div>`+
+      `<div class=log" style="margin-top:6px;color:var(--gold)">"${z.doctrine}"</div>`+
+      `<div class=log" style="margin-top:6px">${z.report.join('<br>')}</div>`;
+  }
   drawChart(S.weight_history);
   document.getElementById('playdot').className='dot'+(S.playing?' live':' off');
   document.getElementById('live').textContent=S.playing?'streaming…':'idle';
@@ -398,7 +417,10 @@ class Handler(BaseHTTPRequestHandler):
         elif path == "/agent":
             q = up.parse_qs(up.urlparse(self.path).query)
             name = q.get("name", [""])[0]
-            self._send(200, json.dumps(agent_dossier(name) or {}))
+            hist = _load("agent_history.json", {})
+            # case-insensitive lookup (3D node stores "hermes"; population rows store "HERMES")
+            dossier = hist.get(name) or next((v for k, v in hist.items() if k.lower() == name.lower()), None)
+            self._send(200, json.dumps(dossier or {}))
         elif path == "/run":
             q = up.parse_qs(up.urlparse(self.path).query)
             n = int(q.get("n", ["10"])[0]); reset = q.get("reset", ["false"])[0] == "true"
@@ -442,23 +464,26 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 
-def main():
-    import socket
-    # auto-pick a free port so a stale instance can't block startup
-    srv = None
-    for _port in [PORT] + list(range(8760, 8800)):
+def pick_port(preferred=PORT):
+    """Bind a free port, preferring `preferred`, else 8760-8799.
+    Returns (bound ThreadingHTTPServer, port) or (None, None) if nothing is free."""
+    for cand in [preferred] + list(range(8760, 8800)):
         try:
-            srv = ThreadingHTTPServer(("127.0.0.1", _port), Handler)
-            PORT_ACTUAL = _port
-            break
+            return ThreadingHTTPServer(("127.0.0.1", cand), Handler), cand
         except OSError:
             continue
+    return None, None
+
+
+def main():
+    srv, port = pick_port()
     if srv is None:
-        print("Could not bind any port in 8753,8760-8799"); return
-    print(f"Slaughterhouse5 console -> http://127.0.0.1:{PORT_ACTUAL}/")
+        print("Could not bind any port in 8753,8760-8799")
+        return
+    print(f"Slaughterhouse5 console -> http://127.0.0.1:{port}/")
     print("  WebGL planet + live SSE stream + clickable agent dossiers. Run/Step/Reset/Speciate/speed.")
     try:
-        webbrowser.open(f"http://127.0.0.1:{PORT_ACTUAL}/")
+        webbrowser.open(f"http://127.0.0.1:{port}/")
     except Exception:
         pass
     srv.serve_forever()

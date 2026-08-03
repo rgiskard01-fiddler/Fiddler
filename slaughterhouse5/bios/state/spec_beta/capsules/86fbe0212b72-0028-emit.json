@@ -1,0 +1,19 @@
+{
+  "sender": "bios",
+  "receiver": "hermes",
+  "kind": "emit",
+  "payload": {
+    "plane": "H",
+    "proposes": "SLICE",
+    "skills": [
+      "propose",
+      "probe",
+      "garden",
+      "recall"
+    ],
+    "curiosity": 1.0,
+    "retention": 53
+  },
+  "tick": 28,
+  "trace_id": "86fbe0212b72"
+}

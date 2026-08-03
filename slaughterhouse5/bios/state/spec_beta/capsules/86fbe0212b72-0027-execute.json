@@ -1,0 +1,11 @@
+{
+  "sender": "bios",
+  "receiver": "jitonf",
+  "kind": "execute",
+  "payload": {
+    "status": "VETOED",
+    "reason": "L4 deep-operand selected SLICE, not the ratified IMPORT"
+  },
+  "tick": 27,
+  "trace_id": "86fbe0212b72"
+}
