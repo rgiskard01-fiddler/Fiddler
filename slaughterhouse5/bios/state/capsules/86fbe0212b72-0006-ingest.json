@@ -4,14 +4,91 @@
   "kind": "ingest",
   "payload": {
     "tick": 6,
-    "memory": "ticks=6 capsules=78",
+    "memory": "ticks=10 capsules=209",
     "genome": [
-      "YIELD",
-      "YIELD",
-      "YIELD",
-      "YIELD",
-      "YIELD",
-      "YIELD"
+      {
+        "toward": "YIELD",
+        "taught": [
+          "agent-2",
+          "subagent-2"
+        ],
+        "tick": 1
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 2
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 5
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 6
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 7
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 8
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 9
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 10
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 1
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 2
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 5
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 6
+      }
     ]
   },
   "tick": 6,

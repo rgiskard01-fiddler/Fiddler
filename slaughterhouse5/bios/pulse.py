@@ -61,7 +61,7 @@ def _save(bio, name, data):
 
 
 def _seed_population(genome):
-    g = ",".join(genome) or "none"
+    g = genome if isinstance(genome, str) else ",".join(d.get("toward", "") for d in genome) or "none"
     pop = []
     for i in range(POP):
         tag = "A" if i < POP - 1 else "B"   # 2/3 majority per plane
@@ -93,7 +93,7 @@ def _evolve(members, verdict, genome):
     TEACH signal: their content is nudged (via their own proposal function)
     toward the ratified verdict, so the population CONVERGES instead of merely
     being logged as different. With no verdict, they reseed as mutants."""
-    g = ",".join(genome) or "none"
+    g = genome or "none"   # genome param is the joined "toward" string (genome memory)
     for spec, prop in members:
         if verdict and prop == verdict:
             spec["fitness"] += 1
@@ -143,7 +143,8 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
     diff_log = _load(bio, "differences.json", [])
     pop = _load(bio, "population.json", None)
     if pop is None:
-        pop = _seed_population(genome)
+        g_join = ",".join(d.get("toward", "") for d in genome) or "none"
+        pop = _seed_population(g_join)
         _save(bio, "population.json", pop)
 
     for _ in range(n):
@@ -195,6 +196,11 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         verdict = arbitrate(proposals)
         diff_pairs = [[i, j] for i in range(len(members)) for j in range(i + 1, len(members))
                       if proposals[i] != proposals[j]]
+        taught_names = [s["name"] for s, p in members if verdict["verdict"] and p != verdict["verdict"]]
+        # THE TAUGHT LESSON IS PERSISTED AS PART OF THE GENOME (remembered across ticks/runs)
+        if verdict["verdict"]:
+            genome.append({"toward": verdict["verdict"], "taught": taught_names, "tick": bio.tick})
+            _save(bio, "learned.json", genome)
         record = {
             "tick": bio.tick,
             "population": [{"name": s["name"], "plane": s["plane"], "proposal": p,
@@ -202,7 +208,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                            for s, p in members],
             "distinct": verdict["distinct"], "counts": verdict["counts"],
             "differing_pairs": diff_pairs,
-            "taught": [s["name"] for s, p in members if verdict["verdict"] and p != verdict["verdict"]],
+            "taught": taught_names,
             "verdict": verdict["verdict"], "reason": verdict["reason"],
         }
         diff_log.append(record)
@@ -210,11 +216,12 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN,
                          {"population": proposals, "distinct": verdict["distinct"],
                           "differing_pairs": diff_pairs,
-                          "taught": [s["name"] for s, p in members if verdict["verdict"] and p != verdict["verdict"]],
+                          "taught": taught_names,
                           "verdict": verdict["verdict"], "reason": verdict["reason"]}))
 
-        # ---- EVOLVE : selection pressure across BOTH planes (persisted) ----
-        members = _evolve(members, verdict["verdict"], genome)
+        # ---- EVOLVE : teach signal feeds differences back; genome biases future ----
+        g_join = ",".join(d.get("toward", "") for d in genome) or "none"
+        members = _evolve(members, verdict["verdict"], g_join)
         _save(bio, "population.json", pop)
 
         # ---- L3 COMPOSE : (b) weave the arbitrated operant's semantics ----
@@ -239,8 +246,6 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             res = jit_run(program)
             ex = {"status": "ran", "operant": verdict["verdict"],
                   "program_result": res["env"].get("result"), "steps": res["steps"]}
-            genome.append(verdict["verdict"])
-            _save(bio, "learned.json", genome)
         else:
             ex = {"status": "VETOED", "reason": verdict["reason"]}
         bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
