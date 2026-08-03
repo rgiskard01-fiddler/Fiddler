@@ -171,8 +171,11 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
     from cortex import SENSE_L1, SENSE_L2, arbitrate, resolve, L4_ADDR_MAX, CortexBoundary
     from i4 import i4_collapse
     from constructor import build_fold, verify_fold, Sphere
+    from .hermes import Hermes, NOVEL_POOL
 
-    if reset:
+    hm = Hermes(bio.state_dir)  # special citizen, persists its own retention/curiosity
+
+    for _ in range(n):
         import shutil
         cd = os.path.join(bio.state_dir, "capsules")
         if os.path.isdir(cd):
@@ -232,6 +235,15 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
         # ---- L4 ARBITRATE L1+L2 ----
         members = ([(s, a.proposes_operant) for s, a in zip(agents_spec, agents)]
                    + [(s, sa.proposes_operant) for s, sa in zip(sub_specs, subagents)])
+        # HERMES — special modular agent (skills, retention, curiosity) joins the
+        # arbitration as plane "H"; the cortex may ratify or note its novelty.
+        consensus = genome[-1].get("toward") if genome else "YIELD"
+        hermes_op = hm.propose(consensus)
+        members.append(({"name": "hermes", "plane": "H", "content": "Hermes",
+                          "fitness": 0, "gen": 0}, hermes_op))
+        bio.emit(Capsule("bios", "hermes", CapsuleKind.EMIT,
+                         {"plane": "H", "proposes": hermes_op, "skills": hm.skills,
+                          "curiosity": round(hm.curiosity, 3), "retention": len(hm.retention)}))
         proposals = [p for _, p in members]
         verdict = arbitrate(proposals)
         diff_pairs = [[i, j] for i in range(len(members)) for j in range(i + 1, len(members))
@@ -274,6 +286,8 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"l4_resolve": l4_addr, "operand": op_tag,
                           "deep_selected": deep_op, "weight": cortex_weight}))
+        # Hermes curiosity skill: probe the L4 deep-operand space it just resolved
+        hm.probe_l4(resolve, l4_addr)
 
         # ---- EXECUTE : fuse + run only the deep-resolved == ratified operants ----
         if deep_op is not None and deep_op == verdict["verdict"] and adopted:

@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 2,
-    "memory": "ticks=2 capsules=27",
+    "memory": "ticks=6 capsules=112",
     "genome": [
       {
         "toward": "ASSERT",
@@ -22,6 +22,100 @@
         "deep": "ASSERT",
         "ran": true,
         "weight": 0.44
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 3
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 3,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.496
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 4,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5464
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 5
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 5,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5918
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 6
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 6,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.6326
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.6693
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.7024
       }
     ]
   },

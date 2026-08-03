@@ -3,8 +3,15 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "VETOED",
-    "reason": "L4 address void (cortex boundary)"
+    "status": "ran",
+    "operants": [
+      "ASSERT"
+    ],
+    "results": {
+      "result_ASSERT": 1
+    },
+    "l4_weight": 0.6693,
+    "steps": 16
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

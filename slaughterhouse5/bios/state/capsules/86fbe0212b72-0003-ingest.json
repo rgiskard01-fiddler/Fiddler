@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 3,
-    "memory": "ticks=3 capsules=41",
+    "memory": "ticks=6 capsules=126",
     "genome": [
       {
         "toward": "ASSERT",
@@ -39,6 +39,96 @@
         "deep": "ASSERT",
         "ran": true,
         "weight": 0.496
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 4,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5464
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 5
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 5,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5918
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 6
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 6,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.6326
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.6693
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.7024
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 3,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.7322
       }
     ]
   },
