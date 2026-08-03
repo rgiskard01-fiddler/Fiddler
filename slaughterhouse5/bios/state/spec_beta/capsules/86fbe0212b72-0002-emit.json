@@ -1,0 +1,13 @@
+{
+  "sender": "bios",
+  "receiver": "subagent-2",
+  "kind": "emit",
+  "payload": {
+    "plane": "L2",
+    "proposes": "IMPORT",
+    "l2_address": 205409,
+    "host_symbol": "ASSERT"
+  },
+  "tick": 2,
+  "trace_id": "86fbe0212b72"
+}

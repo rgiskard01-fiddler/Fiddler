@@ -1,0 +1,13 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "sense",
+  "payload": {
+    "l4_resolve": 2924,
+    "operand": "DOP-4edb123c",
+    "deep_selected": "IMPORT",
+    "weight": -0.33406987742456484
+  },
+  "tick": 1,
+  "trace_id": "86fbe0212b72"
+}

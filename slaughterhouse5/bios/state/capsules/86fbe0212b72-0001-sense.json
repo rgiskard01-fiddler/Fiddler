@@ -3,10 +3,10 @@
   "receiver": "cortex",
   "kind": "sense",
   "payload": {
-    "l4_resolve": 6072,
-    "operand": "DOP-15853eb4",
-    "deep_selected": "AWAIT",
-    "weight": -0.6498738721264474
+    "l4_resolve": 7988,
+    "operand": "void",
+    "deep_selected": null,
+    "weight": null
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

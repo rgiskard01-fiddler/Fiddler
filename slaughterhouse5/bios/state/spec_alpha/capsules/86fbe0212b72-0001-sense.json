@@ -1,0 +1,13 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "sense",
+  "payload": {
+    "l4_resolve": 2978,
+    "operand": "DOP-f749e5c2",
+    "deep_selected": "SLICE",
+    "weight": 0.20667957010558768
+  },
+  "tick": 1,
+  "trace_id": "86fbe0212b72"
+}

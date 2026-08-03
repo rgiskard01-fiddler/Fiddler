@@ -5,60 +5,64 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "INDEX",
         "fitness": 0,
         "gen": 0
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "INDEX",
         "fitness": 0,
         "gen": 0
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "AWAIT",
+        "proposal": "INDEX",
         "fitness": 0,
         "gen": 0
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "LAMBDA",
         "fitness": 0,
         "gen": 0
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "LAMBDA",
         "fitness": 0,
         "gen": 0
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "INDEX",
+        "proposal": "TRY",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
-      "AWAIT",
       "INDEX",
-      "YIELD"
+      "LAMBDA",
+      "TRY"
     ],
     "counts": {
-      "YIELD": 4,
-      "AWAIT": 1,
-      "INDEX": 1
+      "INDEX": 3,
+      "LAMBDA": 2,
+      "TRY": 1
     },
     "differing_pairs": [
       [
         0,
-        2
+        3
+      ],
+      [
+        0,
+        4
       ],
       [
         0,
@@ -66,7 +70,11 @@
       ],
       [
         1,
-        2
+        3
+      ],
+      [
+        1,
+        4
       ],
       [
         1,
@@ -93,12 +101,9 @@
         5
       ]
     ],
-    "taught": [
-      "agent-2",
-      "subagent-2"
-    ],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "taught": [],
+    "verdict": null,
+    "reason": "no operant reached 2/3 (max 3/6)"
   },
   {
     "tick": 2,
@@ -106,56 +111,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 1,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 1,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 0,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 1,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 1,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 0,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 3,
@@ -163,56 +168,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 2,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 1,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 2,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 1,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 1,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 2,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 1,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 2,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 1,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 1,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 4,
@@ -220,56 +225,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 3,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 3,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 2,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 3,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 3,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 2,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 2,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 5,
@@ -277,56 +282,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 4,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 4,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 3,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 4,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 4,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 3,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 3,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 6,
@@ -334,56 +339,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 5,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 5,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 4,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 5,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 5,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 4,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 4,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 7,
@@ -391,56 +396,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 6,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 5,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 6,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 5,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 5,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 6,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 5,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 6,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 5,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 5,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 8,
@@ -448,56 +453,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 7,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 6,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 7,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 6,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 6,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 7,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 6,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 7,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 6,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 6,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 9,
@@ -505,56 +510,56 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 8,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 7,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 8,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 7,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 7,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 8,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 7,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 8,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 7,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 7,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   {
     "tick": 10,
@@ -562,55 +567,55 @@
       {
         "name": "agent-0",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 9,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 8,
+        "gen": 1
       },
       {
         "name": "agent-1",
         "plane": "L1",
-        "proposal": "YIELD",
-        "fitness": 9,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 8,
+        "gen": 1
       },
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 8,
         "gen": 1
       },
       {
         "name": "subagent-0",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 9,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 8,
+        "gen": 1
       },
       {
         "name": "subagent-1",
         "plane": "L2",
-        "proposal": "YIELD",
-        "fitness": 9,
-        "gen": 0
+        "proposal": "ASSERT",
+        "fitness": 8,
+        "gen": 1
       },
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "YIELD",
+        "proposal": "ASSERT",
         "fitness": 8,
         "gen": 1
       }
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "counts": {
-      "YIELD": 6
+      "ASSERT": 6
     },
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   }
 ]

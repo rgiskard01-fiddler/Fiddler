@@ -3,9 +3,11 @@
   "receiver": "constructor",
   "kind": "compose",
   "payload": {
-    "operant": "YIELD",
-    "program": "I __operant__ <- \"YIELD\" ;\nI state <- 0 ; I y <- state + 1 ; I result <- y ;\nI w <- 1 ;\nI weighted_result <- result + w ;\n",
-    "l4_weight": -0.6498738721264474
+    "operants": [
+      "ASSERT"
+    ],
+    "program": "I __operant__ <- \"ASSERT\" ;\nI cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result_ASSERT <- flag ;",
+    "l4_weight": 0.732153736
   },
   "tick": 9,
   "trace_id": "86fbe0212b72"

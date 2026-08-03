@@ -5,27 +5,7 @@
   "payload": {
     "tick": 1,
     "memory": "ticks=1 capsules=12",
-    "genome": [
-      {
-        "toward": "YIELD",
-        "taught": [
-          "agent-2",
-          "subagent-2"
-        ],
-        "tick": 1
-      },
-      {
-        "toward": "YIELD",
-        "taught": [
-          "agent-2",
-          "subagent-2"
-        ],
-        "tick": 1,
-        "deep": "AWAIT",
-        "ran": false,
-        "weight": -0.6499
-      }
-    ]
+    "genome": []
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

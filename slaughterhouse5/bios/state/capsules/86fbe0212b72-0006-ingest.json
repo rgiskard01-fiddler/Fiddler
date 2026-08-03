@@ -7,88 +7,69 @@
     "memory": "ticks=6 capsules=77",
     "genome": [
       {
-        "toward": "YIELD",
-        "taught": [
-          "agent-2",
-          "subagent-2"
-        ],
-        "tick": 1
-      },
-      {
-        "toward": "YIELD",
-        "taught": [
-          "agent-2",
-          "subagent-2"
-        ],
-        "tick": 1,
-        "deep": "AWAIT",
-        "ran": false,
-        "weight": -0.6499
-      },
-      {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 2
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 2,
-        "deep": "YIELD",
+        "deep": "ASSERT",
         "ran": true,
-        "weight": -0.6499
+        "weight": 0.44
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 3
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 3,
-        "deep": "YIELD",
+        "deep": "ASSERT",
         "ran": true,
-        "weight": -0.6499
+        "weight": 0.496
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 4
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 4,
-        "deep": "YIELD",
+        "deep": "ASSERT",
         "ran": true,
-        "weight": -0.6499
+        "weight": 0.5464
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 5
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 5,
-        "deep": "YIELD",
+        "deep": "ASSERT",
         "ran": true,
-        "weight": -0.6499
+        "weight": 0.5918
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 6
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 6,
-        "deep": "YIELD",
+        "deep": "ASSERT",
         "ran": true,
-        "weight": -0.6499
+        "weight": 0.6326
       }
     ]
   },

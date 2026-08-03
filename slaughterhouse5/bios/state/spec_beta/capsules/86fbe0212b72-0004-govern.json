@@ -1,0 +1,24 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern",
+  "payload": {
+    "population": [
+      "IMPORT",
+      "IMPORT",
+      "IMPORT",
+      "IMPORT",
+      "IMPORT",
+      "IMPORT"
+    ],
+    "distinct": [
+      "IMPORT"
+    ],
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "IMPORT",
+    "reason": "IMPORT adopted by >=2/3 (6/6)"
+  },
+  "tick": 4,
+  "trace_id": "86fbe0212b72"
+}

@@ -4,10 +4,14 @@
   "kind": "execute",
   "payload": {
     "status": "ran",
-    "operant": "YIELD",
-    "program_result": 2,
-    "l4_weight": -0.6499,
-    "steps": 17
+    "operants": [
+      "ASSERT"
+    ],
+    "results": {
+      "result_ASSERT": 1
+    },
+    "l4_weight": 0.496,
+    "steps": 16
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

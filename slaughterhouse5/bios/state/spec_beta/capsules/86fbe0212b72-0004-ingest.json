@@ -1,0 +1,68 @@
+{
+  "sender": "bios",
+  "receiver": "bios",
+  "kind": "ingest",
+  "payload": {
+    "tick": 4,
+    "memory": "ticks=4 capsules=51",
+    "genome": [
+      {
+        "toward": "AWAIT",
+        "taught": [],
+        "tick": 0,
+        "deep": "AWAIT",
+        "ran": true,
+        "weight": 0.6
+      },
+      {
+        "toward": null,
+        "taught": [],
+        "tick": 1,
+        "deep": "IMPORT",
+        "ran": false,
+        "weight": 0.6
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 2
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 2,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.44
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 3,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.496
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 4,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.5464
+      }
+    ]
+  },
+  "tick": 4,
+  "trace_id": "86fbe0212b72"
+}

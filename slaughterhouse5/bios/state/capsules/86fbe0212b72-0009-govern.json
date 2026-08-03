@@ -4,20 +4,20 @@
   "kind": "govern",
   "payload": {
     "population": [
-      "YIELD",
-      "YIELD",
-      "YIELD",
-      "YIELD",
-      "YIELD",
-      "YIELD"
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT"
     ],
     "distinct": [
-      "YIELD"
+      "ASSERT"
     ],
     "differing_pairs": [],
     "taught": [],
-    "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (6/6)"
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (6/6)"
   },
   "tick": 9,
   "trace_id": "86fbe0212b72"

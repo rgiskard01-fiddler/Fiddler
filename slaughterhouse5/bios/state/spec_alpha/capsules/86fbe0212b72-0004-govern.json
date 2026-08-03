@@ -1,0 +1,24 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern",
+  "payload": {
+    "population": [
+      "TRY",
+      "TRY",
+      "TRY",
+      "TRY",
+      "TRY",
+      "TRY"
+    ],
+    "distinct": [
+      "TRY"
+    ],
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (6/6)"
+  },
+  "tick": 4,
+  "trace_id": "86fbe0212b72"
+}

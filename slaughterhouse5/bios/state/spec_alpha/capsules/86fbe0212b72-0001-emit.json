@@ -1,0 +1,13 @@
+{
+  "sender": "bios",
+  "receiver": "subagent-2",
+  "kind": "emit",
+  "payload": {
+    "plane": "L2",
+    "proposes": "SLICE",
+    "l2_address": 255965,
+    "host_symbol": "CALL"
+  },
+  "tick": 1,
+  "trace_id": "86fbe0212b72"
+}

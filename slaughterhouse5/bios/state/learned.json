@@ -1,138 +1,106 @@
 [
   {
-    "toward": "YIELD",
-    "taught": [
-      "agent-2",
-      "subagent-2"
-    ],
-    "tick": 1
+    "toward": "LOOP",
+    "taught": [],
+    "tick": 0,
+    "deep": "LOOP",
+    "ran": true,
+    "weight": 0.6
   },
   {
-    "toward": "YIELD",
-    "taught": [
-      "agent-2",
-      "subagent-2"
-    ],
+    "toward": null,
+    "taught": [],
     "tick": 1,
-    "deep": "AWAIT",
+    "deep": "SLICE",
     "ran": false,
-    "weight": -0.6499
+    "weight": 0.6
   },
   {
-    "toward": "YIELD",
+    "toward": "TRY",
     "taught": [],
     "tick": 2
   },
   {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 2,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
+    "toward": "TRY",
     "taught": [],
     "tick": 3
   },
   {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 3,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
+    "toward": "TRY",
     "taught": [],
     "tick": 4
   },
   {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 4,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
+    "toward": "TRY",
     "taught": [],
     "tick": 5
   },
   {
-    "toward": "YIELD",
+    "toward": "AWAIT",
+    "taught": [],
+    "tick": 0,
+    "deep": "AWAIT",
+    "ran": true,
+    "weight": 0.6
+  },
+  {
+    "toward": null,
+    "taught": [],
+    "tick": 1,
+    "deep": "IMPORT",
+    "ran": false,
+    "weight": 0.6
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 2
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 2,
+    "deep": "IMPORT",
+    "ran": true,
+    "weight": 0.44
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 3
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 3,
+    "deep": "IMPORT",
+    "ran": true,
+    "weight": 0.496
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 4
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 4,
+    "deep": "IMPORT",
+    "ran": true,
+    "weight": 0.5464
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [],
+    "tick": 5
+  },
+  {
+    "toward": "IMPORT",
     "taught": [],
     "tick": 5,
-    "deep": "YIELD",
+    "deep": "IMPORT",
     "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 6
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 6,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 7
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 7,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 8
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 8,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 9
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 9,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 10
-  },
-  {
-    "toward": "YIELD",
-    "taught": [],
-    "tick": 10,
-    "deep": "YIELD",
-    "ran": true,
-    "weight": -0.6499
+    "weight": 0.5918
   }
 ]

@@ -102,3 +102,31 @@
    (real fold verify, real consensus, real IVM execution) — never simulated.
 
 ========================================================================
+
+========================================================================
+| 9. FEATURE STATUS — everything on the roadmap is now built                 |
+========================================================================
+
+  [BUILT] tight structure first (one planet, one repo, ten module organs)
+  [BUILT] kernel + Capsule contract + file-based persistent state
+  [BUILT] wire EXECUTE + FOLD to real organs (jitonf runs, constructor verifies)
+  [BUILT] multi-plane governance: L1 agents + L2 subagents independently propose
+  [BUILT] cortex ARBITRATES the combined population at 2/3; logs EVERY difference
+  [BUILT] COMPOSE weaves an adopted operant's REAL semantics into the program
+  [BUILT] population PERSISTS + EVOLVES (fitness / gen / selection)
+  [BUILT] TEACH signal feeds differences back; minorities are taught to agree
+  [BUILT] taught LESSON persisted in the genome (remembered across runs)
+  [BUILT] L4 deep-operand RESOLVER selects what executes (a wall)
+  [BUILT] L4 trained weight folds into the run + genome reinforcement
+  [BUILT] L4 weight MODULATES the teach strength
+  [BUILT] FUSE: ALL adopted operants woven into ONE program at once
+  [BUILT] REAL operant forms in jitonf (jitonf.operants.lower)
+  [BUILT] agents INGEST prior capsules (self-reference of own output)
+  [BUILT] RESUME: state persists across runs (python -m bios.pulse --continue)
+  [BUILT] L4 weight is a LEARNED parameter (state/learned_weight.json)
+  [BUILT] SPECIATION: separate instances cross-pollinate genomes (bios.speciate)
+  [BUILT] LIVE PULSE viewer generated each run (pulse-view.html)
+
+  Run:  python -m bios.pulse --reset      (fresh) | --continue (resume)
+  Speciate:  python -m bios.speciate 5
+========================================================================

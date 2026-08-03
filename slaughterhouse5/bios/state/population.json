@@ -2,42 +2,42 @@
   {
     "name": "agent-0",
     "plane": "L1",
-    "content": "AGENT-A GENOME:none",
-    "fitness": 10,
-    "gen": 0
+    "content": "EVOLVE GENOME:none",
+    "fitness": 9,
+    "gen": 1
   },
   {
     "name": "agent-1",
     "plane": "L1",
-    "content": "AGENT-A GENOME:none",
-    "fitness": 10,
-    "gen": 0
+    "content": "EVOLVE GENOME:none",
+    "fitness": 9,
+    "gen": 1
   },
   {
     "name": "agent-2",
     "plane": "L1",
-    "content": "AGENT-B GENOME:none TEACH:12",
+    "content": "EVOLVE GENOME:none",
     "fitness": 9,
     "gen": 1
   },
   {
     "name": "subagent-0",
     "plane": "L2",
-    "content": "SUB-A GENOME:none",
-    "fitness": 10,
-    "gen": 0
+    "content": "EVOLVE GENOME:none",
+    "fitness": 9,
+    "gen": 1
   },
   {
     "name": "subagent-1",
     "plane": "L2",
-    "content": "SUB-A GENOME:none",
-    "fitness": 10,
-    "gen": 0
+    "content": "EVOLVE GENOME:none",
+    "fitness": 9,
+    "gen": 1
   },
   {
     "name": "subagent-2",
     "plane": "L2",
-    "content": "SUB-B GENOME:none TEACH:11",
+    "content": "EVOLVE GENOME:none",
     "fitness": 9,
     "gen": 1
   }

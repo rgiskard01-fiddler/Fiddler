@@ -1,0 +1,38 @@
+[
+  {
+    "toward": "LOOP",
+    "taught": [],
+    "tick": 0,
+    "deep": "LOOP",
+    "ran": true,
+    "weight": 0.6
+  },
+  {
+    "toward": null,
+    "taught": [],
+    "tick": 1,
+    "deep": "SLICE",
+    "ran": false,
+    "weight": 0.6
+  },
+  {
+    "toward": "TRY",
+    "taught": [],
+    "tick": 2
+  },
+  {
+    "toward": "TRY",
+    "taught": [],
+    "tick": 3
+  },
+  {
+    "toward": "TRY",
+    "taught": [],
+    "tick": 4
+  },
+  {
+    "toward": "TRY",
+    "taught": [],
+    "tick": 5
+  }
+]

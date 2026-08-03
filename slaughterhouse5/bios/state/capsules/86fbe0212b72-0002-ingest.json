@@ -7,36 +7,17 @@
     "memory": "ticks=2 capsules=25",
     "genome": [
       {
-        "toward": "YIELD",
-        "taught": [
-          "agent-2",
-          "subagent-2"
-        ],
-        "tick": 1
-      },
-      {
-        "toward": "YIELD",
-        "taught": [
-          "agent-2",
-          "subagent-2"
-        ],
-        "tick": 1,
-        "deep": "AWAIT",
-        "ran": false,
-        "weight": -0.6499
-      },
-      {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 2
       },
       {
-        "toward": "YIELD",
+        "toward": "ASSERT",
         "taught": [],
         "tick": 2,
-        "deep": "YIELD",
+        "deep": "ASSERT",
         "ran": true,
-        "weight": -0.6499
+        "weight": 0.44
       }
     ]
   },

@@ -1,0 +1,15 @@
+{
+  "sender": "bios",
+  "receiver": "constructor",
+  "kind": "compose",
+  "payload": {
+    "operants": [
+      "AWAIT",
+      "IMPORT"
+    ],
+    "program": "I __operant__ <- \"AWAIT\" ;\nI ready <- 1 ; I val <- 0 ; if (ready < 1) { val <- 0 ; } else { val <- 42 ; } I result_AWAIT <- val ;\nI __operant__ <- \"IMPORT\" ;\nI result_IMPORT <- 1 ;",
+    "l4_weight": 0.5917600000000001
+  },
+  "tick": 5,
+  "trace_id": "86fbe0212b72"
+}
