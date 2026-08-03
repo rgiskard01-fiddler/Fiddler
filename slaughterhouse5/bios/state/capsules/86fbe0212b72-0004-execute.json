@@ -4,9 +4,9 @@
   "kind": "execute",
   "payload": {
     "status": "ran",
-    "operant": "LOOP",
-    "program_result": 3,
-    "steps": 19
+    "operant": "YIELD",
+    "program_result": 1,
+    "steps": 11
   },
   "tick": 4,
   "trace_id": "86fbe0212b72"

@@ -6,10 +6,10 @@
     "population": [
       "YIELD",
       "YIELD",
-      "INDEX"
+      "SPAWN"
     ],
     "distinct": [
-      "INDEX",
+      "SPAWN",
       "YIELD"
     ],
     "differing_pairs": [
@@ -25,6 +25,6 @@
     "verdict": "YIELD",
     "reason": "YIELD adopted by >=2/3 (2/3)"
   },
-  "tick": 5,
+  "tick": 9,
   "trace_id": "86fbe0212b72"
 }

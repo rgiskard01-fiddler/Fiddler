@@ -7,10 +7,10 @@
     "memory": "ticks=5 capsules=65",
     "genome": [
       "YIELD",
-      "ASSERT",
-      "CAST",
-      "LOOP",
-      "LOOP"
+      "YIELD",
+      "YIELD",
+      "YIELD",
+      "YIELD"
     ]
   },
   "tick": 5,

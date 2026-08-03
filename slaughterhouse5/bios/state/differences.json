@@ -3,16 +3,22 @@
     "tick": 1,
     "population": [
       {
-        "name": "agent@1-0",
-        "proposal": "YIELD"
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 0,
+        "gen": 0
       },
       {
-        "name": "agent@1-1",
-        "proposal": "YIELD"
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 0,
+        "gen": 0
       },
       {
-        "name": "agent@1-2",
-        "proposal": "AWAIT"
+        "name": "agent-2",
+        "proposal": "AWAIT",
+        "fitness": 0,
+        "gen": 0
       }
     ],
     "distinct": [
@@ -40,135 +46,30 @@
     "tick": 2,
     "population": [
       {
-        "name": "agent@2-0",
-        "proposal": "ASSERT"
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 1,
+        "gen": 0
       },
       {
-        "name": "agent@2-1",
-        "proposal": "ASSERT"
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 1,
+        "gen": 0
       },
       {
-        "name": "agent@2-2",
-        "proposal": "MATCH"
-      }
-    ],
-    "distinct": [
-      "ASSERT",
-      "MATCH"
-    ],
-    "counts": {
-      "ASSERT": 2,
-      "MATCH": 1
-    },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        1,
-        2
-      ]
-    ],
-    "verdict": "ASSERT",
-    "reason": "ASSERT adopted by >=2/3 (2/3)"
-  },
-  {
-    "tick": 3,
-    "population": [
-      {
-        "name": "agent@3-0",
-        "proposal": "CAST"
-      },
-      {
-        "name": "agent@3-1",
-        "proposal": "CAST"
-      },
-      {
-        "name": "agent@3-2",
-        "proposal": "AWAIT"
-      }
-    ],
-    "distinct": [
-      "AWAIT",
-      "CAST"
-    ],
-    "counts": {
-      "CAST": 2,
-      "AWAIT": 1
-    },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        1,
-        2
-      ]
-    ],
-    "verdict": "CAST",
-    "reason": "CAST adopted by >=2/3 (2/3)"
-  },
-  {
-    "tick": 4,
-    "population": [
-      {
-        "name": "agent@4-0",
-        "proposal": "LOOP"
-      },
-      {
-        "name": "agent@4-1",
-        "proposal": "LOOP"
-      },
-      {
-        "name": "agent@4-2",
-        "proposal": "SLICE"
-      }
-    ],
-    "distinct": [
-      "LOOP",
-      "SLICE"
-    ],
-    "counts": {
-      "LOOP": 2,
-      "SLICE": 1
-    },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        1,
-        2
-      ]
-    ],
-    "verdict": "LOOP",
-    "reason": "LOOP adopted by >=2/3 (2/3)"
-  },
-  {
-    "tick": 5,
-    "population": [
-      {
-        "name": "agent@5-0",
-        "proposal": "LOOP"
-      },
-      {
-        "name": "agent@5-1",
-        "proposal": "LOOP"
-      },
-      {
-        "name": "agent@5-2",
-        "proposal": "IMPORT"
+        "name": "agent-2",
+        "proposal": "IMPORT",
+        "fitness": 0,
+        "gen": 1
       }
     ],
     "distinct": [
       "IMPORT",
-      "LOOP"
+      "YIELD"
     ],
     "counts": {
-      "LOOP": 2,
+      "YIELD": 2,
       "IMPORT": 1
     },
     "differing_pairs": [
@@ -181,31 +82,37 @@
         2
       ]
     ],
-    "verdict": "LOOP",
-    "reason": "LOOP adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   {
-    "tick": 6,
+    "tick": 3,
     "population": [
       {
-        "name": "agent@6-0",
-        "proposal": "AWAIT"
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 2,
+        "gen": 0
       },
       {
-        "name": "agent@6-1",
-        "proposal": "AWAIT"
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 2,
+        "gen": 0
       },
       {
-        "name": "agent@6-2",
-        "proposal": "ASSERT"
+        "name": "agent-2",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 2
       }
     ],
     "distinct": [
       "ASSERT",
-      "AWAIT"
+      "YIELD"
     ],
     "counts": {
-      "AWAIT": 2,
+      "YIELD": 2,
       "ASSERT": 1
     },
     "differing_pairs": [
@@ -218,32 +125,167 @@
         2
       ]
     ],
-    "verdict": "AWAIT",
-    "reason": "AWAIT adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 3,
+        "gen": 0
+      },
+      {
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 3,
+        "gen": 0
+      },
+      {
+        "name": "agent-2",
+        "proposal": "LAMBDA",
+        "fitness": 0,
+        "gen": 3
+      }
+    ],
+    "distinct": [
+      "LAMBDA",
+      "YIELD"
+    ],
+    "counts": {
+      "YIELD": 2,
+      "LAMBDA": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
+  },
+  {
+    "tick": 5,
+    "population": [
+      {
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 4,
+        "gen": 0
+      },
+      {
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 4,
+        "gen": 0
+      },
+      {
+        "name": "agent-2",
+        "proposal": "INDEX",
+        "fitness": 0,
+        "gen": 4
+      }
+    ],
+    "distinct": [
+      "INDEX",
+      "YIELD"
+    ],
+    "counts": {
+      "YIELD": 2,
+      "INDEX": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
+  },
+  {
+    "tick": 6,
+    "population": [
+      {
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 5,
+        "gen": 0
+      },
+      {
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 5,
+        "gen": 0
+      },
+      {
+        "name": "agent-2",
+        "proposal": "LAMBDA",
+        "fitness": 0,
+        "gen": 5
+      }
+    ],
+    "distinct": [
+      "LAMBDA",
+      "YIELD"
+    ],
+    "counts": {
+      "YIELD": 2,
+      "LAMBDA": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   {
     "tick": 7,
     "population": [
       {
-        "name": "agent@7-0",
-        "proposal": "CAST"
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 6,
+        "gen": 0
       },
       {
-        "name": "agent@7-1",
-        "proposal": "CAST"
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 6,
+        "gen": 0
       },
       {
-        "name": "agent@7-2",
-        "proposal": "TRY"
+        "name": "agent-2",
+        "proposal": "CAST",
+        "fitness": 0,
+        "gen": 6
       }
     ],
     "distinct": [
       "CAST",
-      "TRY"
+      "YIELD"
     ],
     "counts": {
-      "CAST": 2,
-      "TRY": 1
+      "YIELD": 2,
+      "CAST": 1
     },
     "differing_pairs": [
       [
@@ -255,31 +297,37 @@
         2
       ]
     ],
-    "verdict": "CAST",
-    "reason": "CAST adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   {
     "tick": 8,
     "population": [
       {
-        "name": "agent@8-0",
-        "proposal": "SPAWN"
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 7,
+        "gen": 0
       },
       {
-        "name": "agent@8-1",
-        "proposal": "SPAWN"
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 7,
+        "gen": 0
       },
       {
-        "name": "agent@8-2",
-        "proposal": "TRY"
+        "name": "agent-2",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 7
       }
     ],
     "distinct": [
-      "SPAWN",
-      "TRY"
+      "TRY",
+      "YIELD"
     ],
     "counts": {
-      "SPAWN": 2,
+      "YIELD": 2,
       "TRY": 1
     },
     "differing_pairs": [
@@ -292,7 +340,93 @@
         2
       ]
     ],
-    "verdict": "SPAWN",
-    "reason": "SPAWN adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
+  },
+  {
+    "tick": 9,
+    "population": [
+      {
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 8,
+        "gen": 0
+      },
+      {
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 8,
+        "gen": 0
+      },
+      {
+        "name": "agent-2",
+        "proposal": "SPAWN",
+        "fitness": 0,
+        "gen": 8
+      }
+    ],
+    "distinct": [
+      "SPAWN",
+      "YIELD"
+    ],
+    "counts": {
+      "YIELD": 2,
+      "SPAWN": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
+  },
+  {
+    "tick": 10,
+    "population": [
+      {
+        "name": "agent-0",
+        "proposal": "YIELD",
+        "fitness": 9,
+        "gen": 0
+      },
+      {
+        "name": "agent-1",
+        "proposal": "YIELD",
+        "fitness": 9,
+        "gen": 0
+      },
+      {
+        "name": "agent-2",
+        "proposal": "SPAWN",
+        "fitness": 0,
+        "gen": 9
+      }
+    ],
+    "distinct": [
+      "SPAWN",
+      "YIELD"
+    ],
+    "counts": {
+      "YIELD": 2,
+      "SPAWN": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   }
 ]

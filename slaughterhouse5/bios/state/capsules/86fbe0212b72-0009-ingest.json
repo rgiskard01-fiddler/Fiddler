@@ -3,9 +3,11 @@
   "receiver": "bios",
   "kind": "ingest",
   "payload": {
-    "tick": 7,
-    "memory": "ticks=7 capsules=91",
+    "tick": 9,
+    "memory": "ticks=9 capsules=117",
     "genome": [
+      "YIELD",
+      "YIELD",
       "YIELD",
       "YIELD",
       "YIELD",
@@ -15,6 +17,6 @@
       "YIELD"
     ]
   },
-  "tick": 7,
+  "tick": 9,
   "trace_id": "86fbe0212b72"
 }

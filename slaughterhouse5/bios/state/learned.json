@@ -1,10 +1,12 @@
 [
   "YIELD",
-  "ASSERT",
-  "CAST",
-  "LOOP",
-  "LOOP",
-  "AWAIT",
-  "CAST",
-  "SPAWN"
+  "YIELD",
+  "YIELD",
+  "YIELD",
+  "YIELD",
+  "YIELD",
+  "YIELD",
+  "YIELD",
+  "YIELD",
+  "YIELD"
 ]

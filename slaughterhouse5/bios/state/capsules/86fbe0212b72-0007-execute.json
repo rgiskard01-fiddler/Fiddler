@@ -4,9 +4,9 @@
   "kind": "execute",
   "payload": {
     "status": "ran",
-    "operant": "CAST",
-    "program_result": 7,
-    "steps": 9
+    "operant": "YIELD",
+    "program_result": 1,
+    "steps": 11
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"

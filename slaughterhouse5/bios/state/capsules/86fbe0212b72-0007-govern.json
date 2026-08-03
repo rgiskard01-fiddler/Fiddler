@@ -4,13 +4,13 @@
   "kind": "govern",
   "payload": {
     "population": [
-      "CAST",
-      "CAST",
-      "TRY"
+      "YIELD",
+      "YIELD",
+      "CAST"
     ],
     "distinct": [
       "CAST",
-      "TRY"
+      "YIELD"
     ],
     "differing_pairs": [
       [
@@ -22,8 +22,8 @@
         2
       ]
     ],
-    "verdict": "CAST",
-    "reason": "CAST adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"

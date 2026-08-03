@@ -4,13 +4,13 @@
   "kind": "govern",
   "payload": {
     "population": [
-      "AWAIT",
-      "AWAIT",
-      "ASSERT"
+      "YIELD",
+      "YIELD",
+      "LAMBDA"
     ],
     "distinct": [
-      "ASSERT",
-      "AWAIT"
+      "LAMBDA",
+      "YIELD"
     ],
     "differing_pairs": [
       [
@@ -22,8 +22,8 @@
         2
       ]
     ],
-    "verdict": "AWAIT",
-    "reason": "AWAIT adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   "tick": 6,
   "trace_id": "86fbe0212b72"

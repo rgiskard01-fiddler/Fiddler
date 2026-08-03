@@ -7,8 +7,8 @@
     "memory": "ticks=3 capsules=39",
     "genome": [
       "YIELD",
-      "ASSERT",
-      "CAST"
+      "YIELD",
+      "YIELD"
     ]
   },
   "tick": 3,

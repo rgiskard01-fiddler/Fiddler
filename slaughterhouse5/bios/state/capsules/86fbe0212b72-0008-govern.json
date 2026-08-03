@@ -4,13 +4,13 @@
   "kind": "govern",
   "payload": {
     "population": [
-      "SPAWN",
-      "SPAWN",
+      "YIELD",
+      "YIELD",
       "TRY"
     ],
     "distinct": [
-      "SPAWN",
-      "TRY"
+      "TRY",
+      "YIELD"
     ],
     "differing_pairs": [
       [
@@ -22,8 +22,8 @@
         2
       ]
     ],
-    "verdict": "SPAWN",
-    "reason": "SPAWN adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   "tick": 8,
   "trace_id": "86fbe0212b72"

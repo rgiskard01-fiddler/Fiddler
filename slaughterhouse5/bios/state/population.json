@@ -1,0 +1,20 @@
+[
+  {
+    "name": "agent-0",
+    "content": "AGENT-A GENOME:none",
+    "fitness": 10,
+    "gen": 0
+  },
+  {
+    "name": "agent-1",
+    "content": "AGENT-A GENOME:none",
+    "fitness": 10,
+    "gen": 0
+  },
+  {
+    "name": "agent-2",
+    "content": "EVOLVE GENOME:YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD",
+    "fitness": 0,
+    "gen": 10
+  }
+]

@@ -1,10 +1,10 @@
 {
   "sender": "bios",
-  "receiver": "sa@3-agent@3-2",
+  "receiver": "sa@3-agent-2",
   "kind": "emit",
   "payload": {
-    "l2_address": 88055,
-    "host_symbol": "H34"
+    "l2_address": 30669,
+    "host_symbol": "ARG"
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

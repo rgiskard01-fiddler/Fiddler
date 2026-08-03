@@ -4,9 +4,9 @@
   "kind": "execute",
   "payload": {
     "status": "ran",
-    "operant": "SPAWN",
-    "program_result": 17,
-    "steps": 15
+    "operant": "YIELD",
+    "program_result": 1,
+    "steps": 11
   },
   "tick": 8,
   "trace_id": "86fbe0212b72"

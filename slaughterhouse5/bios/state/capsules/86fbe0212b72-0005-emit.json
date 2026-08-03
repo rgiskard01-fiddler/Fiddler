@@ -1,10 +1,10 @@
 {
   "sender": "bios",
-  "receiver": "sa@5-agent@5-2",
+  "receiver": "sa@5-agent-2",
   "kind": "emit",
   "payload": {
-    "l2_address": 2900,
-    "host_symbol": "EXPR"
+    "l2_address": 165033,
+    "host_symbol": "H36"
   },
   "tick": 5,
   "trace_id": "86fbe0212b72"

@@ -1,0 +1,11 @@
+{
+  "sender": "bios",
+  "receiver": "sa@10-agent-2",
+  "kind": "emit",
+  "payload": {
+    "l2_address": 107484,
+    "host_symbol": "TRY"
+  },
+  "tick": 10,
+  "trace_id": "86fbe0212b72"
+}

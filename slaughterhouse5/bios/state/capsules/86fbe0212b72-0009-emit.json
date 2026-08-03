@@ -1,0 +1,11 @@
+{
+  "sender": "bios",
+  "receiver": "sa@9-agent-2",
+  "kind": "emit",
+  "payload": {
+    "l2_address": 31631,
+    "host_symbol": "H32"
+  },
+  "tick": 9,
+  "trace_id": "86fbe0212b72"
+}

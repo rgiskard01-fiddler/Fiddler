@@ -4,13 +4,13 @@
   "kind": "govern",
   "payload": {
     "population": [
-      "LOOP",
-      "LOOP",
-      "SLICE"
+      "YIELD",
+      "YIELD",
+      "LAMBDA"
     ],
     "distinct": [
-      "LOOP",
-      "SLICE"
+      "LAMBDA",
+      "YIELD"
     ],
     "differing_pairs": [
       [
@@ -22,8 +22,8 @@
         2
       ]
     ],
-    "verdict": "LOOP",
-    "reason": "LOOP adopted by >=2/3 (2/3)"
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   "tick": 4,
   "trace_id": "86fbe0212b72"
