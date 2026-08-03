@@ -8,7 +8,7 @@
     "z2": "DEMOCRATIC SUB-AGENTS",
     "z3": "STEWARDSHIP SUB-SUB AGENTS",
     "sovereign_veto": null,
-    "democratic": "INDEX",
+    "democratic": "ASSERT",
     "stewardship_pass": true,
     "seal_ok": true,
     "report": [
@@ -22,6 +22,6 @@
     ],
     "doctrine": "a feature is advice, a veto is a wall"
   },
-  "tick": 1,
+  "tick": 4,
   "trace_id": "86fbe0212b72"
 }

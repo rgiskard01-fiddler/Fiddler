@@ -7,7 +7,7 @@
       "ASSERT"
     ],
     "program": "I __operant__ <- \"ASSERT\" ;\nI cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result_ASSERT <- flag ;",
-    "l4_weight": 0.5917600000000001
+    "l4_weight": 0.44000000000000006
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

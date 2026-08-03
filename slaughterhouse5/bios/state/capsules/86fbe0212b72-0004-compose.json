@@ -9,6 +9,6 @@
     "program": "I __operant__ <- \"ASSERT\" ;\nI cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result_ASSERT <- flag ;",
     "l4_weight": 0.5464000000000001
   },
-  "tick": 1,
+  "tick": 4,
   "trace_id": "86fbe0212b72"
 }

@@ -3,8 +3,8 @@
   "receiver": "bios",
   "kind": "ingest",
   "payload": {
-    "tick": 3,
-    "memory": "ticks=3 capsules=44",
+    "tick": 4,
+    "memory": "ticks=4 capsules=59",
     "genome": [
       {
         "toward": "ASSERT",
@@ -39,9 +39,26 @@
         "deep": "ASSERT",
         "ran": true,
         "weight": 0.496
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 4
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 4,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5464
       }
     ]
   },
-  "tick": 3,
+  "tick": 4,
   "trace_id": "86fbe0212b72"
 }

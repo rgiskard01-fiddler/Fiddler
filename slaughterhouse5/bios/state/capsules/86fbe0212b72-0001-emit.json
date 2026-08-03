@@ -4,7 +4,7 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "LAMBDA",
+    "proposes": "TRY",
     "skills": [
       "propose",
       "probe",
@@ -12,7 +12,7 @@
       "recall"
     ],
     "curiosity": 0.56,
-    "retention": 7
+    "retention": 1
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

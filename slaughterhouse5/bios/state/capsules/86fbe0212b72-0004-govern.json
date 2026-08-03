@@ -10,11 +10,11 @@
       "ASSERT",
       "ASSERT",
       "ASSERT",
-      "AWAIT"
+      "LAMBDA"
     ],
     "distinct": [
       "ASSERT",
-      "AWAIT"
+      "LAMBDA"
     ],
     "differing_pairs": [
       [
@@ -48,6 +48,6 @@
     "verdict": "ASSERT",
     "reason": "ASSERT adopted by >=2/3 (6/7)"
   },
-  "tick": 3,
+  "tick": 4,
   "trace_id": "86fbe0212b72"
 }

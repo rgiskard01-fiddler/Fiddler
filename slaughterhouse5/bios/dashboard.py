@@ -5,6 +5,12 @@ self-contained file; works offline, no CDN). An "enterprise" toolsuite with a
 LIVE SSE stream (Tier 1: ticks push to the browser the instant they happen) and
 clickable agent dossiers (Tier 3: per-agent history). Standard library only.
 
+Refinement: a HONEYCOMB of glowing hexagonal blanks (each = a node, metric
+label inside). Clicking a hex opens a "house style" floating window with five
+sub-windows:
+  w1 product description · w2 contributors/ideas posited · w3 1d fold of 2d/3d
+  (shadow + shadow overlay) · w4 2d instrument running · w5 interactive 3d.
+
   Run:   python -m bios.dashboard     (then open the printed URL)
   Win:   run-biosphere.bat
 """
@@ -143,15 +149,9 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   .grow{flex:1}
   .transport button{background:#13233a;color:var(--fg);border:1px solid var(--edge);border-radius:7px;padding:6px 11px;margin-left:5px;cursor:pointer}
   .transport button:hover{border-color:var(--acc);color:var(--acc)}
-  main{display:grid;grid-template-columns:minmax(380px,1.05fr) 1.25fr;gap:10px;padding:10px;overflow:hidden}
+  main{display:grid;grid-template-columns:minmax(360px,1fr) 1.15fr;gap:10px;padding:10px;overflow:hidden}
   .panel{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:10px;overflow:hidden;position:relative;display:flex;flex-direction:column}
   .panel h2{margin:0 0 8px;font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:1.5px}
-  #glwrap{flex:1;position:relative;border-radius:10px;overflow:hidden;background:radial-gradient(600px 400px at 50% 40%,#0e1a30,#05070c)}
-  #gl{width:100%;height:100%;display:block}
-  #selinfo{position:absolute;left:10px;bottom:10px;right:10px;background:rgba(8,14,24,.92);border:1px solid var(--acc);
-           border-radius:10px;padding:12px;font-size:12px;display:none;max-height:60%;overflow:auto}
-  #selinfo h3{margin:0 0 6px;color:var(--gold);font-size:13px}
-  #selinfo .x{float:right;cursor:pointer;color:var(--mut)}
   .tabs{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
   .tabs button{background:#0f1a2c;border:1px solid var(--edge);color:var(--mut);border-radius:7px;padding:5px 10px;cursor:pointer;font-size:12px}
   .tabs button.on{color:var(--acc);border-color:var(--acc)}
@@ -171,6 +171,32 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   .dot.live{animation:pulse 1s infinite} @keyframes pulse{50%{opacity:.35}}
   .mini{display:inline-block;margin:2px 3px;padding:2px 6px;border-radius:5px;background:#12233a;border:1px solid var(--edge);font-size:11px}
   .mini.sel{border-color:var(--gold);color:var(--gold)} .mini.taught{color:var(--warn)}
+  /* honeycomb */
+  #hexwrap{flex:1;overflow:auto;background:radial-gradient(600px 400px at 50% 35%,#0a1424,#05070c);border-radius:10px}
+  #hex{width:100%;display:block}
+  .hexpoly{fill:#0e1a30;stroke:#3af0cf;stroke-width:2;cursor:pointer;transition:fill .15s,stroke .15s}
+  .hexpoly:hover{fill:#16263e;stroke:#ffd166}
+  .hextx{fill:#e3ecff;font:bold 11px ui-monospace,monospace;text-anchor:middle;pointer-events:none}
+  .hextx.m{fill:#8298c6;font:10px ui-monospace,monospace}
+  /* house-style windows */
+  #houses{position:fixed;inset:0;pointer-events:none;z-index:50}
+  .house{position:absolute;width:540px;max-width:94vw;background:linear-gradient(180deg,#0c1320,#0a0f1a);
+         border:1px solid var(--edge);border-radius:10px;box-shadow:0 18px 55px rgba(0,0,0,.65);
+         pointer-events:auto;display:flex;flex-direction:column;overflow:hidden}
+  .house.max{width:92vw;height:82vh}
+  .house-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;
+             background:linear-gradient(90deg,#13233a,#1c2f4c);border-bottom:1px solid var(--edge);cursor:move}
+  .house-title{font-size:13px;color:var(--acc);letter-spacing:1px}
+  .house-btns .hb{display:inline-block;width:18px;text-align:center;margin-left:5px;color:var(--mut);cursor:pointer;user-select:none}
+  .house-btns .hb.close:hover{color:var(--warn)} .house-btns .hb.max:hover,.house-btns .hb.min:hover{color:var(--acc)}
+  .house-body{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}
+  .w{border:1px solid var(--edge);border-radius:8px;padding:8px;background:#0a121f;min-height:96px;display:flex;flex-direction:column}
+  .w1{grid-column:1/2}.w2{grid-column:2/3}.w3{grid-column:1/2}.w4{grid-column:2/3}.w5{grid-column:1/3}
+  .wlab{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
+  .wcontent{font-size:12px;color:var(--fg);line-height:1.5;overflow:auto}
+  .wcontent .desc{color:var(--fg)} .kv{font-size:12px;color:var(--mut);margin:3px 0} .kv b{color:var(--fg)}
+  .w3 canvas,.w4 canvas,.w5 canvas{width:100%;flex:1;min-height:120px;display:block;background:#070d18;border-radius:6px;margin-top:4px}
+  .w5 canvas{min-height:180px}
 </style></head><body><div id=app>
 <header>
   <h1>SLAUGHTERHOUSE5</h1><span class=pill id=tk>tick 0</span>
@@ -185,10 +211,8 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   </span>
 </header>
 <main>
-  <div class=panel><h2>Biosphere — WebGL (L1→L4, click an agent to inspect)</h2>
-    <div id=glwrap><canvas id=gl></canvas>
-      <div id=selinfo></div>
-    </div>
+  <div class=panel><h2>Node Honeycomb — click a hex to open its house window</h2>
+    <div id=hexwrap><svg id=hex xmlns="http://www.w3.org/2000/svg"></svg></div>
   </div>
   <div class=panel><h2>Toolsuite</h2>
     <div class=tabs>
@@ -211,85 +235,198 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
     <div class=tabbody id=tab-log style="display:none"><div id=clog class=log></div></div>
   </div>
 </main>
-<div id=status><span><span class="dot off" id=playdot></span> <span id=live>offline</span></span><span id=stmsg></span><span class=grow></span><span>drag orbit · scroll zoom · click agent → dossier</span></div>
+<div id=status><span><span class="dot off" id=playdot></span> <span id=live>offline</span></span><span id=stmsg></span><span class=grow></span><span>click a hex → house window · w5 = interactive 3d</span></div>
+<div id=houses></div>
 </div>
 
 <script>/*__THREE__*/</script>
 <script>
-// ---------- WebGL scene ----------
-const cv=document.getElementById('gl'); let renderer,scene,camera,ray,core,picks=[];
-function initGL(){
-  renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  scene=new THREE.Scene(); scene.fog=new THREE.FogExp2(0x05070c,0.0016);
-  camera=new THREE.PerspectiveCamera(55,1,0.1,5000); camera.position.set(0,120,460);
-  scene.add(new THREE.AmbientLight(0x5577aa,0.7));
-  const p=new THREE.PointLight(0x3af0cf,1.2,2000); p.position.set(0,0,0); scene.add(p);
-  const pl=new THREE.PointLight(0xffd166,0.6,2000); pl.position.set(0,300,0); scene.add(pl);
-  const shells=[[182,'#62a9ff',0.10],[130,'#3af0cf',0.12],[78,'#b78cff',0.16],[24,'#ffd166',0.30]];
-  for(const [r,c,o] of shells){
-    const g=new THREE.SphereGeometry(r,40,28);
-    const m=new THREE.MeshBasicMaterial({color:c,wireframe:true,transparent:true,opacity:o});
-    scene.add(new THREE.Mesh(g,m));
-  }
-  core=new THREE.Mesh(new THREE.SphereGeometry(10,24,18),new THREE.MeshBasicMaterial({color:0xffd166}));
-  scene.add(core); ray=new THREE.Raycaster();
+// ---------- node model ----------
+function planeColor(p){
+  return p==='L1'?'#62a9ff':p==='L2'?'#3af0cf':p==='H'?'#ffd166':p==='L4'?'#ffd166':p==='z'?'#3af0cf':'#62a9ff';
 }
-let R=0; const nodeMesh={};
-function syncNodes(S){
-  for(const k in nodeMesh){scene.remove(nodeMesh[k]); delete nodeMesh[k];}
-  picks=[];
-  const pop=(S.members||S.population||[]);
-  const shells={L1:182,L2:130,L3:78,L4:24,H:156};
-  pop.forEach((m,i)=>{
-    const sh=shells[m.plane]||182; const a=i*1.7;
-    const x=Math.cos(a)*sh,y=Math.sin(a*1.3)*sh*0.7,z=Math.sin(a)*sh;
-    const col=m.plane==='L1'?0x62a9ff:m.plane==='L2'?0x3af0cf:m.plane==='H'?0xffd166:0xffffff;
-    const mesh=new THREE.Mesh(new THREE.SphereGeometry(6,16,12),new THREE.MeshBasicMaterial({color:col}));
-    mesh.position.set(x,y,z); mesh.userData={name:m.name,plane:m.plane,fit:m.fitness,gen:m.gen,proposed:m.proposed};
-    scene.add(mesh); nodeMesh[m.name]=mesh; picks.push(mesh);
+function planeDesc(p){
+  return ({
+    L1:'Democratic sub-agent (z2\\l1). Proposes operants and votes in the 2/3 arbitration. Fitness = alignment with the winning verdict.',
+    L2:'Stewardship sub-sub agent (z3\\l2). Bound by guardian rules: preserve genome continuity, no-harm (never delete state).',
+    H:'Special modular citizen (plane H). Skills + retention + curiosity. The external agent, admitted to the sovereign scope.',
+    L4:'Hegemonic sovereign (z1\\l0, S). Deep-operand resolver and seal authority. A veto is a wall.',
+    z:'Zoned protocol: z1 sovereign / z2 democratic / z3 stewardship, sealed <->, enforced at the kernel emit.',
+    core:'The whole biosphere — L1..L4 descending, closed by the i4 identity root. w5 shows the live 3D planet.'
+  })[p] || 'Biosphere organ.';
+}
+function buildNodes(S){
+  const nodes=[];
+  (S.population||[]).forEach(p=>{
+    const plane=p.plane; const kind=plane==='L1'?'agent':plane==='L2'?'subagent':plane==='H'?'hermes':'other';
+    nodes.push({name:p.name, plane, kind, color:planeColor(plane), desc:planeDesc(plane),
+      metric:'fit '+(p.fitness!=null?p.fitness:'?'), proposed:p.proposed, _fit:parseFloat(p.fitness)||0.5});
   });
-  if(S.hermes&&S.hermes.skills){
-    const mesh=new THREE.Mesh(new THREE.SphereGeometry(8,16,12),new THREE.MeshBasicMaterial({color:0xffd166}));
-    mesh.position.set(Math.cos(0.6)*156,Math.sin(0.6)*156,Math.sin(0.6)*156*0.7);
-    mesh.userData={name:'hermes',plane:'H',curiosity:S.hermes.curiosity,retention:S.hermes.retention};
-    scene.add(mesh); nodeMesh['HERMES']=mesh; picks.push(mesh);
-  }
+  if(S.hermes) nodes.push({name:'HERMES', plane:'H', kind:'hermes', color:planeColor('H'), desc:planeDesc('H'),
+      metric:'cur '+(S.hermes.curiosity||0).toFixed(2), _fit:S.hermes.curiosity||0.6});
+  nodes.push({name:'CORTEX', plane:'L4', kind:'cortex', color:planeColor('L4'), desc:planeDesc('L4'),
+      metric:'L4 resolver', _fit:0.9});
+  nodes.push({name:'GOVERNANCE', plane:'z', kind:'gov', color:planeColor('z'), desc:planeDesc('z'),
+      metric:'sealed', _fit:0.7});
+  nodes.push({name:'BIOSPHERE', plane:'core', kind:'core', color:planeColor('core'), desc:planeDesc('core'),
+      metric:'planet', _fit:0.6});
+  return nodes;
 }
-function pick(ev){
-  const r=cv.getBoundingClientRect();
-  const m=new THREE.Vector2(((ev.clientX-r.left)/r.width)*2-1,-((ev.clientY-r.top)/r.height)*2+1);
-  ray.setFromCamera(m,camera);
-  const hit=ray.intersectObjects(picks)[0];
-  if(hit){const d=hit.object.userData; openDossier(d.name);}
-}
-cv.addEventListener('click',pick);
-let drag=false,lx=0,ly=0,theta=0.5,phi=0.6,dist=460;
-cv.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;ly=e.clientY;});
-addEventListener('mouseup',()=>drag=false);
-addEventListener('mousemove',e=>{if(drag){theta-=(e.clientX-lx)*0.005;phi=Math.max(0.15,Math.min(1.5,phi-(e.clientY-ly)*0.005));lx=e.clientX;ly=e.clientY;}});
-cv.addEventListener('wheel',e=>{dist=Math.max(120,Math.min(1200,dist+e.deltaY*0.3));e.preventDefault();},{passive:false});
-function renderGL(S){
-  if(!renderer)return;
-  const r=cv.getBoundingClientRect();
-  renderer.setSize(r.width,r.height,false);
-  camera.position.set(Math.sin(theta)*Math.cos(phi)*dist,Math.sin(phi)*dist,Math.cos(theta)*Math.cos(phi)*dist);
-  camera.lookAt(0,0,0); R+=0.0025; core.rotation.y=R; syncNodes(S); renderer.render(scene,camera);
-}
-// ---------- Tier 3: agent dossier ----------
-function openDossier(name){
-  fetch('/agent?name='+encodeURIComponent(name)).then(r=>r.json()).then(d=>{
-    if(!d){return;}
-    const el=document.getElementById('selinfo'); el.style.display='block';
-    const evs=(d.events||[]).slice().reverse();
-    const spark=evs.map(e=>e.proposed).join(' ');
-    el.innerHTML=`<span class=x onclick="document.getElementById('selinfo').style.display='none'">✕</span>`+
-      `<h3>${name} <span class=${d.plane}>[${d.plane}]</span></h3>`+
-      `<div>proposals by tick (new→old): ${spark||'—'}</div>`+
-      `<div style="margin-top:6px">`+
-      evs.slice(0,12).map(e=>`<span class="mini ${e.selected?'sel':''} ${e.taught?'taught':''}" title="tick ${e.tick} fit ${e.fitness}">${e.proposed}${e.taught?'✗':''}${e.selected?'★':''}</span>`).join('')+
-      `</div><div class=log style="margin-top:8px">latest: tick ${evs[0]?evs[0].tick:'?'} → ${evs[0]?evs[0].proposed:'?'} · fitness ${evs[0]?evs[0].fitness:'?'}</div>`;
+// ---------- honeycomb ----------
+function hexPts(cx,cy,R){let s='';for(let k=0;k<6;k++){const a=Math.PI/180*(60*k);s+=(cx+R*Math.cos(a)).toFixed(1)+','+(cy+R*Math.sin(a)).toFixed(1)+' ';}return s.trim();}
+function drawHex(nodes){
+  const svg=document.getElementById('hex'); if(!svg)return;
+  const R=46, hexH=Math.sqrt(3)*R, xStep=1.5*R, yStep=hexH;
+  const perRow=Math.max(1,Math.ceil(Math.sqrt(nodes.length*1.7)));
+  const rows=Math.ceil(nodes.length/perRow);
+  const W=(perRow-1)*xStep + 2*R + (rows>1?xStep/2:0);
+  const H=(rows-1)*yStep + hexH + R;
+  svg.setAttribute('viewBox','0 0 '+W.toFixed(0)+' '+H.toFixed(0));
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  nodes.forEach((n,i)=>{
+    const row=Math.floor(i/perRow), col=i%perRow;
+    const cx=col*xStep + (row&1?xStep/2:0) + R;
+    const cy=row*yStep + hexH/2 + (R - hexH/2);
+    const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    poly.setAttribute('points',hexPts(cx,cy,R)); poly.setAttribute('class','hexpoly');
+    poly.addEventListener('click',()=>openHouse(n));
+    svg.appendChild(poly);
+    const t1=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t1.setAttribute('x',cx); t1.setAttribute('y',cy-2); t1.setAttribute('class','hextx'); t1.textContent=n.name;
+    svg.appendChild(t1);
+    const t2=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t2.setAttribute('x',cx); t2.setAttribute('y',cy+12); t2.setAttribute('class','hextx m'); t2.textContent=n.metric||'';
+    svg.appendChild(t2);
   });
+}
+// ---------- house-style windows ----------
+let zTop=50; const houses=[];
+function openHouse(node){
+  if(document.getElementById('house-'+node.name)) return;
+  const win=document.createElement('div'); win.className='house'; win.id='house-'+node.name;
+  win.style.left=(70 + houses.length*34)+'px'; win.style.top=(70 + houses.length*26)+'px';
+  win.innerHTML=
+    '<div class="house-bar"><span class="house-title">'+node.name+
+      ' <span style="color:'+node.color+'">['+node.plane+']</span></span>'+
+      '<span class="house-btns"><span class="hb min">_</span><span class="hb max">□</span><span class="hb close">✕</span></span></div>'+
+    '<div class="house-body">'+
+      '<div class="w w1"><div class="wlab">W1 · product</div><div class="wcontent" id="w1-'+node.name+'"></div></div>'+
+      '<div class="w w2"><div class="wlab">W2 · contributors / ideas posited</div><div class="wcontent" id="w2-'+node.name+'"></div></div>'+
+      '<div class="w w3"><div class="wlab">W3 · 1d fold (2d/3d, shadow + overlay)</div><canvas id="w3-'+node.name+'"></canvas></div>'+
+      '<div class="w w4"><div class="wlab">W4 · instrument (2d, running)</div><canvas id="w4-'+node.name+'"></canvas></div>'+
+      '<div class="w w5"><div class="wlab">W5 · 3d (interactive)</div><canvas id="w5-'+node.name+'"></canvas></div>'+
+    '</div>';
+  document.getElementById('houses').appendChild(win);
+  win.style.zIndex=++zTop;
+  const bar=win.querySelector('.house-bar');
+  let dg=false,ox=0,oy=0;
+  bar.addEventListener('mousedown',e=>{if(e.target.classList.contains('hb'))return;dg=true;ox=e.clientX-win.offsetLeft;oy=e.clientY-win.offsetTop;win.style.zIndex=++zTop;});
+  addEventListener('mousemove',e=>{if(dg){win.style.left=(e.clientX-ox)+'px';win.style.top=(e.clientY-oy)+'px';}});
+  addEventListener('mouseup',()=>dg=false);
+  win.querySelector('.close').onclick=()=>closeHouse(node.name);
+  win.querySelector('.min').onclick=()=>{const b=win.querySelector('.house-body');b.style.display=b.style.display==='none'?'flex':'none';};
+  win.querySelector('.max').onclick=()=>win.classList.toggle('max');
+  document.getElementById('w1-'+node.name).innerHTML='<div class="desc">'+node.desc+'</div>';
+  fetch('/agent?name='+encodeURIComponent(node.name)).then(r=>r.json()).then(d=>{
+    const evs=(d&&d.events)?d.events:[];
+    const ideas=[...new Set(evs.map(e=>e.proposed).filter(Boolean))];
+    document.getElementById('w2-'+node.name).innerHTML=
+      '<div class="kv">ideas posited: <b>'+(ideas.slice(0,14).join(', ')||'—')+'</b></div>'+
+      '<div class="kv">ticks active: <b>'+evs.length+'</b></div>'+
+      '<div class="kv">selected ★: <b>'+evs.filter(e=>e.selected).length+'</b></div>'+
+      '<div class="kv">taught ✗: <b>'+evs.filter(e=>e.taught).length+'</b></div>';
+  }).catch(()=>{document.getElementById('w2-'+node.name).innerHTML='<div class="kv">no history</div>';});
+  const anims=[];
+  anims.push(startW3(document.getElementById('w3-'+node.name), node));
+  anims.push(startW4(document.getElementById('w4-'+node.name), node));
+  if(node.kind==='core') anims.push(startPlanet(document.getElementById('w5-'+node.name)));
+  else anims.push(startW5(document.getElementById('w5-'+node.name), node.color, node.kind));
+  houses.push({name:node.name, anims});
+}
+function closeHouse(name){
+  const win=document.getElementById('house-'+name); if(!win)return;
+  const i=houses.findIndex(h=>h.name===name);
+  if(i>=0){houses[i].anims.forEach(a=>a.dispose&&a.dispose());houses.splice(i,1);}
+  win.remove();
+}
+// ---------- w3: 1d fold of 2d/3d (shadow + overlay) ----------
+function startW3(canvas,node){
+  const x=canvas.getContext('2d'); let t=0,raf;
+  function fold(pts,ox,oy,sc,stroke){x.beginPath();pts.forEach((p,i)=>{const px=ox+p[0]*sc,py=oy+p[1]*sc*0.6;if(i===0)x.moveTo(px,py);else x.lineTo(px,py);});x.strokeStyle=stroke;x.lineWidth=2*devicePixelRatio;x.stroke();}
+  function loop(){
+    raf=requestAnimationFrame(loop);
+    const W=canvas.width=canvas.clientWidth*devicePixelRatio, H=canvas.height=canvas.clientHeight*devicePixelRatio;
+    x.fillStyle='#070d18';x.fillRect(0,0,W,H);
+    const cx=W/2, cy=H/2, sc=Math.min(W,H)*0.3;
+    const pts=[];for(let i=0;i<=120;i++){const u=i/120*Math.PI*2;pts.push([Math.sin(u*3+t),Math.sin(u*2+t*0.7+1),Math.cos(u*4+t*0.3)]);}
+    fold(pts,cx+6*devicePixelRatio,cy+10*devicePixelRatio,sc,'rgba(60,90,140,0.35)');   // shadow
+    fold(pts,cx,cy,sc,'#3af0cf');                                                        // main 1d fold
+    fold(pts,cx+6*devicePixelRatio,cy+10*devicePixelRatio,sc,'rgba(98,169,255,0.18)');  // shadow overlay
+    t+=0.02;
+  }
+  loop();return {dispose(){cancelAnimationFrame(raf);}};
+}
+// ---------- w4: 2d instrument running ----------
+function startW4(canvas,node){
+  const x=canvas.getContext('2d'); let t=0,raf; const fit=node._fit||0.5;
+  function loop(){
+    raf=requestAnimationFrame(loop);
+    const W=canvas.width=canvas.clientWidth*devicePixelRatio, H=canvas.height=canvas.clientHeight*devicePixelRatio;
+    x.fillStyle='#070d18';x.fillRect(0,0,W,H);
+    x.beginPath();
+    for(let i=0;i<=W;i+=2){const v=Math.sin(i*0.03+t)*0.4*fit+Math.sin(i*0.011+t*1.7)*0.3*(1-fit)+(Math.random()-0.5)*0.05;const y=H/2-v*H*0.4;if(i===0)x.moveTo(i,y);else x.lineTo(i,y);}
+    x.strokeStyle='#ffd166';x.lineWidth=2*devicePixelRatio;x.stroke();
+    x.fillStyle='#8298c6';x.font=(11*devicePixelRatio)+'px monospace';
+    x.fillText('running: '+(node.proposed||'—')+'  fit '+(node._fit||0).toFixed(2),8*devicePixelRatio,H-8*devicePixelRatio);
+    t+=0.08;
+  }
+  loop();return {dispose(){cancelAnimationFrame(raf);}};
+}
+// ---------- w5: interactive 3d ----------
+function startW5(canvas,color,kind){
+  if(typeof THREE==='undefined'){canvas.parentNode.insertAdjacentHTML('beforeend','<div class=log">THREE.js not loaded</div>');return {dispose(){}};}
+  const r=new THREE.WebGLRenderer({canvas,antialias:true}); r.setPixelRatio(Math.min(devicePixelRatio,2));
+  const sc=new THREE.Scene(); sc.fog=new THREE.FogExp2(0x05070c,0.02);
+  const cam=new THREE.PerspectiveCamera(50,1,0.1,100); cam.position.set(0,0,4);
+  sc.add(new THREE.AmbientLight(0x5577aa,0.8));
+  const pl=new THREE.PointLight(0x3af0cf,1.3,50); pl.position.set(3,3,3); sc.add(pl);
+  const col=parseInt(color.replace('#','0x'));
+  const geo=kind==='core'?new THREE.IcosahedronGeometry(1.15,1):new THREE.IcosahedronGeometry(0.9,0);
+  const mesh=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:col,emissive:col,emissiveIntensity:0.25,metalness:0.4,roughness:0.45,flatShading:true}));
+  sc.add(mesh);
+  const wire=new THREE.LineSegments(new THREE.WireframeGeometry(geo),new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:0.22}));
+  sc.add(wire);
+  let drag=false,lx=0,ly=0,tx=0,ty=0;
+  canvas.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;ly=e.clientY;});
+  addEventListener('mouseup',()=>drag=false);
+  addEventListener('mousemove',e=>{if(drag&&canvas){tx+=(e.clientX-lx)*0.01;ty+=(e.clientY-ly)*0.01;lx=e.clientX;ly=e.clientY;}});
+  let raf;
+  function loop(){raf=requestAnimationFrame(loop);const rc=canvas.getBoundingClientRect();if(rc.width>0){r.setSize(rc.width,rc.height,false);cam.aspect=rc.width/rc.height;cam.updateProjectionMatrix();}if(!drag)tx+=0.006;mesh.rotation.set(ty,tx,0);wire.rotation.copy(mesh.rotation);r.render(sc,cam);}
+  loop();
+  return {dispose(){cancelAnimationFrame(raf);if(r.forceContextLoss)r.forceContextLoss();r.dispose();}};
+}
+// ---------- w5 (BIOSPHERE): live 3d planet ----------
+function startPlanet(canvas){
+  if(typeof THREE==='undefined'){canvas.parentNode.insertAdjacentHTML('beforeend','<div class=log">THREE.js not loaded</div>');return {dispose(){}};}
+  const r=new THREE.WebGLRenderer({canvas,antialias:true}); r.setPixelRatio(Math.min(devicePixelRatio,2));
+  const sc=new THREE.Scene(); sc.fog=new THREE.FogExp2(0x05070c,0.0016);
+  const cam=new THREE.PerspectiveCamera(55,1,0.1,5000); cam.position.set(0,120,460);
+  sc.add(new THREE.AmbientLight(0x5577aa,0.7));
+  const p=new THREE.PointLight(0x3af0cf,1.2,2000); p.position.set(0,0,0); sc.add(p);
+  const pl=new THREE.PointLight(0xffd166,0.6,2000); pl.position.set(0,300,0); sc.add(pl);
+  [[182,'#62a9ff',0.10],[130,'#3af0cf',0.12],[78,'#b78cff',0.16],[24,'#ffd166',0.30]].forEach(([rr,c,o])=>{
+    sc.add(new THREE.Mesh(new THREE.SphereGeometry(rr,40,28),new THREE.MeshBasicMaterial({color:c,wireframe:true,transparent:true,opacity:o})));
+  });
+  const core=new THREE.Mesh(new THREE.SphereGeometry(10,24,18),new THREE.MeshBasicMaterial({color:0xffd166})); sc.add(core);
+  const nodeMesh={}; let theta=0.5,phi=0.6,dist=460,drag=false,lx=0,ly=0,R=0;
+  canvas.addEventListener('mousedown',e=>{drag=true;lx=e.clientX;ly=e.clientY;});
+  addEventListener('mouseup',()=>drag=false);
+  addEventListener('mousemove',e=>{if(drag){theta-=(e.clientX-lx)*0.005;phi=Math.max(0.15,Math.min(1.5,phi-(e.clientY-ly)*0.005));lx=e.clientX;ly=e.clientY;}});
+  function sync(){const pop=(lastStatic.population||[]);pop.forEach((m,i)=>{if(!nodeMesh[m.name]){const sh={L1:182,L2:130,L3:78,L4:24,H:156}[m.plane]||182;const mesh=new THREE.Mesh(new THREE.SphereGeometry(6,16,12),new THREE.MeshBasicMaterial({color:m.plane==='L1'?0x62a9ff:m.plane==='L2'?0x3af0cf:m.plane==='H'?0xffd166:0xffffff}));sc.add(mesh);nodeMesh[m.name]=mesh;}const sh={L1:182,L2:130,L3:78,L4:24,H:156}[m.plane]||182;const a=i*1.7;nodeMesh[m.name].position.set(Math.cos(a)*sh,Math.sin(a*1.3)*sh*0.7,Math.sin(a)*sh);});}
+  let raf;
+  function loop(){raf=requestAnimationFrame(loop);const rc=canvas.getBoundingClientRect();if(rc.width>0){r.setSize(rc.width,rc.height,false);cam.aspect=rc.width/rc.height;cam.updateProjectionMatrix();}cam.position.set(Math.sin(theta)*Math.cos(phi)*dist,Math.sin(phi)*dist,Math.cos(theta)*Math.cos(phi)*dist);cam.lookAt(0,0,0);R+=0.0025;core.rotation.y=R;sync();r.render(sc,cam);}
+  loop();
+  return {dispose(){cancelAnimationFrame(raf);if(r.forceContextLoss)r.forceContextLoss();r.dispose();}};
 }
 // ---------- chart ----------
 function drawChart(hist){
@@ -302,12 +439,12 @@ function drawChart(hist){
   x.beginPath();
   h.forEach((v,i)=>{const px=pad+i/(Math.max(1,h.length-1))*(W-2*pad);const py=H/2-(v)*(H/2-pad);if(i===0)x.moveTo(px,py);else x.lineTo(px,py);});
   x.strokeStyle='#3af0cf';x.lineWidth=2*devicePixelRatio;x.stroke();
-  x.fillStyle='#3af0cf';x.font=`${11*devicePixelRatio}px monospace`;
+  x.fillStyle='#3af0cf';x.font=(11*devicePixelRatio)+'px monospace';
   x.fillText('learned L4 weight ('+h[h.length-1].toFixed(3)+')',pad,H-6*devicePixelRatio);
 }
 // ---------- UI render ----------
-function tab(id,el){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));el.classList.add('on');
-  ['genome','pop','gov','herm','log'].forEach(t=>document.getElementById('tab-'+t).style.display=t===id?'block':'none');}
+function tab(id,el){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(el)el.classList.add('on');
+  ['genome','pop','gov','herm','zones','log'].forEach(t=>document.getElementById('tab-'+t).style.display=t===id?'block':'none');}
 function render(S){
   document.getElementById('tk').textContent='tick '+S.tick;
   document.getElementById('k2').textContent=S.tick;
@@ -317,36 +454,39 @@ function render(S){
   const lw=S.learned_weight||0; document.getElementById('wgt').textContent='L4 weight '+lw.toFixed(3);
   document.getElementById('hm').textContent='HERMES '+(S.hermes.curiosity||0).toFixed(2);
   document.getElementById('genome').innerHTML=(S.genome||[]).slice(-16).map(g=>
-    `<span class=chip><b>${g.toward||'?'}</b> <small>w:${(g.weight||0).toFixed(2)}</small></span>`).join('');
+    '<span class=chip><b>'+(g.toward||'?')+'</b> <small>w:'+(g.weight||0).toFixed(2)+'</small></span>').join('');
   document.getElementById('pop').innerHTML='<table><tr><th>name</th><th>plane</th><th>fit</th><th>gen</th></tr>'+
-    (S.population||[]).map(p=>`<tr style="cursor:pointer" onclick="openDossier('${p.name}')"><td>${p.name}</td><td class=${p.plane}>${p.plane}</td><td>${p.fitness}</td><td>${p.gen}</td></tr>`).join('')+'</table>';
+    (S.population||[]).map(p=>`<tr class="prow" data-name="${p.name}" data-plane="${p.plane}" style="cursor:pointer"><td>${p.name}</td><td class=${p.plane}>${p.plane}</td><td>${p.fitness}</td><td>${p.gen}</td></tr>`).join('')+'</table>';
+  document.querySelectorAll('#pop .prow').forEach(tr=>tr.addEventListener('click',()=>{
+    const nm=tr.getAttribute('data-name'), pl=tr.getAttribute('data-plane');
+    openHouse({name:nm, plane:pl, kind:(pl==='L1'?'agent':pl==='L2'?'subagent':'hermes'),
+      color:planeColor(pl), desc:planeDesc(pl), metric:'fit '+((S.population.find(x=>x.name===nm)||{}).fitness!=null?(S.population.find(x=>x.name===nm)||{}).fitness:'?'), proposed:(S.population.find(x=>x.name===nm)||{}).proposed||'', _fit:(parseFloat((S.population.find(x=>x.name===nm)||{}).fitness)||0.5)});
+  }));
   document.getElementById('gov').innerHTML=(S.govern||[]).slice().reverse().map(g=>
-    `<span class=hl>verdict ${g.verdict||'?'}</span> distinct ${JSON.stringify(g.distinct)} taught ${JSON.stringify(g.taught)}<br>pop ${JSON.stringify(g.population)}<br><br>`).join('')||'no governance yet';
+    '<span class=hl>verdict '+(g.verdict||'?')+'</span> distinct '+JSON.stringify(g.distinct)+' taught '+JSON.stringify(g.taught)+'<br>pop '+JSON.stringify(g.population)+'<br><br>').join('')||'no governance yet';
   const h=S.hermes||{};
-  document.getElementById('herm').innerHTML=`<span class=chip><b>skills</b> <small>${(h.skills||[]).join(', ')}</small></span>
-     <span class=chip><b>curiosity</b> <small>${(h.curiosity||0).toFixed(3)}</small></span>
-     <span class=chip><b>retention</b> <small>${h.retention||0}</small></span>
-     <div class=log style="margin-top:8px">recall:<br>${JSON.stringify(h.last||[],null,1)}</div>`;
+  document.getElementById('herm').innerHTML='<span class=chip><b>skills</b> <small>'+(h.skills||[]).join(', ')+'</small></span>\n     <span class=chip><b>curiosity</b> <small>'+(h.curiosity||0).toFixed(3)+'</small></span>\n     <span class=chip><b>retention</b> <small>'+(h.retention||0)+'</small></span>\n     <div class=log style="margin-top:8px">recall:<br>'+JSON.stringify(h.last||[],null,1)+'</div>';
   document.getElementById('clog').innerHTML=(S.capsule_log||[]).reverse().map(c=>
-    `<span class=hl>${c[0]}</span> · ${c[1]}`).join('<br>');
+    '<span class=hl>'+c[0]+'</span> · '+c[1]).join('<br>');
   const z=S.zones;
   if(z){
     document.getElementById('zones').innerHTML=
-      `<div class="chip"><b>SEALED</b> <small>${(z.sealed?'yes':'no')}</small></div>`+
-      `<div class=chip><b>z1 \\ l0</b> <small>${z.z1}</small></div>`+
-      `<div class=chip><b>z2 \\ l1</b> <small>${z.z2}</small></div>`+
-      `<div class=chip><b>z3 \\ l2</b> <small>${z.z3}</small></div>`+
-      (z.sovereign_veto?`<div class=log style="margin-top:8px;color:var(--warn)">⛔ SOVEREIGN VETO (wall): ${z.sovereign_veto}</div>`
-                        :`<div class=log style="margin-top:8px;color:var(--acc)">✓ no sovereign veto — verdict passes the wall</div>`)+
-      `<div class=log style="margin-top:6px">democratic (z2) verdict: ${z.democratic||'none'}</div>`+
-      `<div class=log">stewardship (z3) pass: ${z.stewardship_pass}</div>`+
-      `<div class=log">seal_ok: ${z.seal_ok}</div>`+
-      `<div class=log" style="margin-top:6px;color:var(--gold)">"${z.doctrine}"</div>`+
-      `<div class=log" style="margin-top:6px">${z.report.join('<br>')}</div>`;
+      '<div class="chip"><b>SEALED</b> <small>'+(z.sealed?'yes':'no')+'</small></div>'+
+      '<div class=chip><b>z1 \\ l0</b> <small>'+z.z1+'</small></div>'+
+      '<div class=chip><b>z2 \\ l1</b> <small>'+z.z2+'</small></div>'+
+      '<div class=chip><b>z3 \\ l2</b> <small>'+z.z3+'</small></div>'+
+      (z.sovereign_veto?'<div class=log style="margin-top:8px;color:var(--warn)">⛔ SOVEREIGN VETO (wall): '+z.sovereign_veto+'</div>'
+                        :'<div class=log style="margin-top:8px;color:var(--acc)">✓ no sovereign veto — verdict passes the wall</div>')+
+      '<div class=log style="margin-top:6px">democratic (z2) verdict: '+(z.democratic||'none')+'</div>'+
+      '<div class=log">stewardship (z3) pass: '+z.stewardship_pass+'</div>'+
+      '<div class=log">seal_ok: '+z.seal_ok+'</div>'+
+      '<div class=log" style="margin-top:6px;color:var(--gold)">"'+z.doctrine+'"</div>'+
+      '<div class=log" style="margin-top:6px">'+z.report.join('<br>')+'</div>';
   }
   drawChart(S.weight_history);
   document.getElementById('playdot').className='dot'+(S.playing?' live':' off');
   document.getElementById('live').textContent=S.playing?'streaming…':'idle';
+  drawHex(buildNodes(S));
 }
 function togglePlay(){fetch('/play');}
 function stepRun(n){fetch('/run?n='+n+'&reset=false');}
@@ -354,23 +494,19 @@ function resetRun(){fetch('/run?n=0&reset=true');}
 function speciate(t){fetch('/speciate?ticks='+t).then(r=>r.json()).then(j=>alert('Speciation: '+JSON.stringify(j)));}
 function setSpeed(v){fetch('/speed?v='+v);}
 // ---------- Tier 1: live SSE stream ----------
-let es;
+let es, lastStatic={};
 function connectStream(){
   es=new EventSource('/stream');
   es.onopen=()=>{document.getElementById('live').textContent='connected';document.getElementById('playdot').className='dot live';};
   es.onmessage=(ev)=>{
-    const S=JSON.parse(ev.data);
-    renderGL(S); render({...lastStatic, tick:S.tick, learned_weight:S.learned_weight,
-      hermes:S.hermes, population:S.members, differences_ticks:lastStatic.differences_ticks,
-      genome:lastStatic.genome, verdicts:lastStatic.verdicts, govern:lastStatic.govern,
-      capsule_log:lastStatic.capsule_log, playing:true, speed:lastStatic.speed, weight_history:lastStatic.weight_history});
+    const S=JSON.parse(ev.data); lastStatic=S;
+    render(S);
     document.getElementById('live').textContent='streaming…';
   };
   es.onerror=()=>{document.getElementById('live').textContent='reconnecting…';};
 }
-let lastStatic={};
-function tickStatic(){fetch('/state').then(r=>r.json()).then(S=>{lastStatic=S;if(!es)renderGL(S);render(S);});}
-initGL(); connectStream(); setInterval(tickStatic,2000); tickStatic();
+function tickStatic(){fetch('/state').then(r=>r.json()).then(S=>{lastStatic=S;if(!es)render(S);});}
+connectStream(); setInterval(tickStatic,2000); tickStatic();
 </script></body></html>"""
 
 
@@ -481,7 +617,7 @@ def main():
         print("Could not bind any port in 8753,8760-8799")
         return
     print(f"Slaughterhouse5 console -> http://127.0.0.1:{port}/")
-    print("  WebGL planet + live SSE stream + clickable agent dossiers. Run/Step/Reset/Speciate/speed.")
+    print("  Honeycomb + house-style windows (w1-w5) + live SSE stream. Run/Step/Reset/Speciate/speed.")
     try:
         webbrowser.open(f"http://127.0.0.1:{port}/")
     except Exception:

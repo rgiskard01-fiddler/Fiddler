@@ -8,7 +8,7 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "LAMBDA"
+      "operant": "TRY"
     },
     {
       "event": "probe",
@@ -18,7 +18,7 @@
     },
     {
       "event": "propose",
-      "operant": "YIELD"
+      "operant": "INDEX"
     },
     {
       "event": "probe",
@@ -28,7 +28,7 @@
     },
     {
       "event": "propose",
-      "operant": "ASSERT"
+      "operant": "AWAIT"
     },
     {
       "event": "probe",
@@ -45,28 +45,8 @@
       "l4": 194,
       "tag": "DOP-1ffff64e",
       "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.5,
-  "proposed": "ASSERT"
+  "curiosity": 0.7400000000000002,
+  "proposed": "LAMBDA"
 }

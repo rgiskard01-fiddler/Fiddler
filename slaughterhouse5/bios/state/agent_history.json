@@ -27,25 +27,9 @@
 "selected": true
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "ASSERT",
 "fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 4,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 5,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -80,25 +64,9 @@
 "selected": true
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "ASSERT",
 "fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 4,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 5,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -133,25 +101,9 @@
 "selected": true
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "ASSERT",
 "fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 4,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 5,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -186,25 +138,9 @@
 "selected": true
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "ASSERT",
 "fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 4,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 5,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -239,25 +175,9 @@
 "selected": true
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "ASSERT",
 "fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 4,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 5,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -292,25 +212,9 @@
 "selected": true
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "ASSERT",
 "fitness": 3,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 4,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 5,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -322,7 +226,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "LAMBDA",
+"proposed": "TRY",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -330,7 +234,7 @@
 },
 {
 "tick": 2,
-"proposed": "YIELD",
+"proposed": "INDEX",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -338,35 +242,19 @@
 },
 {
 "tick": 3,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
+"proposed": "AWAIT",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
 },
 {
-"tick": 1,
+"tick": 4,
 "proposed": "LAMBDA",
 "fitness": 0,
 "gen": 1,
 "taught": true,
 "selected": false
-},
-{
-"tick": 2,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
-},
-{
-"tick": 3,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
 }
 ]
 }

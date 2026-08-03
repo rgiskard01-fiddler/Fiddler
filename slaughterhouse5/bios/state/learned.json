@@ -18,12 +18,16 @@
   },
   {
     "toward": "ASSERT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 3
   },
   {
     "toward": "ASSERT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 3,
     "deep": "ASSERT",
     "ran": true,
@@ -34,42 +38,16 @@
     "taught": [
       "hermes"
     ],
-    "tick": 1
+    "tick": 4
   },
   {
     "toward": "ASSERT",
     "taught": [
       "hermes"
     ],
-    "tick": 1,
+    "tick": 4,
     "deep": "ASSERT",
     "ran": true,
     "weight": 0.5464
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 2
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 2,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.5918
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 3
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 3,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.6326
   }
 ]
