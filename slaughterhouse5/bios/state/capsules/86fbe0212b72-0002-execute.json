@@ -5,13 +5,21 @@
   "payload": {
     "status": "ran",
     "operants": [
-      "ASSERT"
+      "ASSERT",
+      "AWAIT",
+      "IMPORT",
+      "LOOP",
+      "TRY"
     ],
     "results": {
-      "result_ASSERT": 1
+      "result_ASSERT": 1,
+      "result_AWAIT": 42,
+      "result_IMPORT": 1,
+      "result_LOOP": 3,
+      "result_TRY": 1
     },
-    "l4_weight": 0.44,
-    "steps": 16
+    "l4_weight": 0.8047,
+    "steps": 68
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

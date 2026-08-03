@@ -4,8 +4,125 @@
   "kind": "ingest",
   "payload": {
     "tick": 3,
-    "memory": "ticks=3 capsules=38",
+    "memory": "ticks=10 capsules=169",
     "genome": [
+      {
+        "toward": "LOOP",
+        "taught": [],
+        "tick": 0,
+        "deep": "LOOP",
+        "ran": true,
+        "weight": 0.6
+      },
+      {
+        "toward": null,
+        "taught": [],
+        "tick": 1,
+        "deep": "SLICE",
+        "ran": false,
+        "weight": 0.6
+      },
+      {
+        "toward": "TRY",
+        "taught": [],
+        "tick": 2
+      },
+      {
+        "toward": "TRY",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "TRY",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "TRY",
+        "taught": [],
+        "tick": 5
+      },
+      {
+        "toward": "AWAIT",
+        "taught": [],
+        "tick": 0,
+        "deep": "AWAIT",
+        "ran": true,
+        "weight": 0.6
+      },
+      {
+        "toward": null,
+        "taught": [],
+        "tick": 1,
+        "deep": "IMPORT",
+        "ran": false,
+        "weight": 0.6
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 2
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 2,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.44
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 3,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.496
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 4
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 4,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.5464
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 5
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [],
+        "tick": 5,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.5918
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 1
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 1,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.783
+      },
       {
         "toward": "ASSERT",
         "taught": [],
@@ -17,7 +134,7 @@
         "tick": 2,
         "deep": "ASSERT",
         "ran": true,
-        "weight": 0.44
+        "weight": 0.8047
       },
       {
         "toward": "ASSERT",
@@ -30,7 +147,7 @@
         "tick": 3,
         "deep": "ASSERT",
         "ran": true,
-        "weight": 0.496
+        "weight": 0.8243
       }
     ]
   },

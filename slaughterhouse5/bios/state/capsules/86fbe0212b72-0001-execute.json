@@ -3,8 +3,23 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "VETOED",
-    "reason": "L4 address void (cortex boundary)"
+    "status": "ran",
+    "operants": [
+      "ASSERT",
+      "AWAIT",
+      "IMPORT",
+      "LOOP",
+      "TRY"
+    ],
+    "results": {
+      "result_ASSERT": 1,
+      "result_AWAIT": 42,
+      "result_IMPORT": 1,
+      "result_LOOP": 3,
+      "result_TRY": 1
+    },
+    "l4_weight": 0.783,
+    "steps": 68
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

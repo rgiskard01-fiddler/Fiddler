@@ -102,5 +102,44 @@
     "deep": "IMPORT",
     "ran": true,
     "weight": 0.5918
+  },
+  {
+    "toward": "ASSERT",
+    "taught": [],
+    "tick": 1
+  },
+  {
+    "toward": "ASSERT",
+    "taught": [],
+    "tick": 1,
+    "deep": "ASSERT",
+    "ran": true,
+    "weight": 0.783
+  },
+  {
+    "toward": "ASSERT",
+    "taught": [],
+    "tick": 2
+  },
+  {
+    "toward": "ASSERT",
+    "taught": [],
+    "tick": 2,
+    "deep": "ASSERT",
+    "ran": true,
+    "weight": 0.8047
+  },
+  {
+    "toward": "ASSERT",
+    "taught": [],
+    "tick": 3
+  },
+  {
+    "toward": "ASSERT",
+    "taught": [],
+    "tick": 3,
+    "deep": "ASSERT",
+    "ran": true,
+    "weight": 0.8243
   }
 ]

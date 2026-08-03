@@ -130,3 +130,16 @@
   Run:  python -m bios.pulse --reset      (fresh) | --continue (resume)
   Speciate:  python -m bios.speciate 5
 ========================================================================
+
+========================================================================
+| 10. LOCAL DASHBOARD — run it on your machine                                |
+========================================================================
+
+  Windows:        double-click  run-biosphere.bat   (opens browser + server)
+  Any OS:         python -m bios.dashboard          (then open the URL it prints)
+  Endpoints:      /            live HTML dashboard (genome, population, weight)
+                  /state       JSON snapshot of bios/state/
+                  /run?n=10     trigger a 10-tick PULSE run (threaded)
+  The dashboard reads the git-versioned bios/state/ files, so it shows exactly
+  what the biosphere has persisted. No database, no external services.
+========================================================================
