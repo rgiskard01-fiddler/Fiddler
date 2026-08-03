@@ -5,7 +5,8 @@
   "payload": {
     "l4_resolve": 6072,
     "operand": "DOP-15853eb4",
-    "deep_selected": "YIELD"
+    "deep_selected": "YIELD",
+    "weight": -0.6498738721264474
   },
   "tick": 10,
   "trace_id": "86fbe0212b72"

@@ -131,6 +131,21 @@ def _compose_program(op: str) -> str:
     return f'I __operant__ <- "{op}" ;\n{sem}\n'
 
 
+def _weighted_gjoin(genome):
+    """Join the genome's 'toward' operants, repeating each by its trained L4
+    weight magnitude so a strongly-weighted deep selection dominates the bias
+    fed back into future seeding/evolution."""
+    parts = []
+    for d in genome:
+        toward = d.get("toward", "")
+        if not toward:
+            continue
+        w = d.get("weight", 1.0) or 0.0
+        k = max(1, int(round(abs(w) * 3)))
+        parts.append(",".join([toward] * k))
+    return ",".join(parts) or "none"
+
+
 def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
     from agent import Agent
     from subagent import SubAgent
@@ -143,7 +158,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
     diff_log = _load(bio, "differences.json", [])
     pop = _load(bio, "population.json", None)
     if pop is None:
-        g_join = ",".join(d.get("toward", "") for d in genome) or "none"
+        g_join = _weighted_gjoin(genome)
         pop = _seed_population(g_join)
         _save(bio, "population.json", pop)
 
@@ -220,7 +235,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "verdict": verdict["verdict"], "reason": verdict["reason"]}))
 
         # ---- EVOLVE : teach signal feeds differences back; genome biases future ----
-        g_join = ",".join(d.get("toward", "") for d in genome) or "none"
+        g_join = _weighted_gjoin(genome)
         members = _evolve(members, verdict["verdict"], g_join)
         _save(bio, "population.json", pop)
 
@@ -238,24 +253,32 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             operand = resolve(l4_addr)
             op_tag = getattr(operand, "tag", "?")
             deep_op = candidates[operand.addr % len(candidates)] if candidates else None
+            deep_weight = operand.weight
         except CortexBoundary:
             op_tag = "void"
             deep_op = None
+            deep_weight = None
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
-                         {"l4_resolve": l4_addr, "operand": op_tag, "deep_selected": deep_op}))
+                         {"l4_resolve": l4_addr, "operand": op_tag,
+                          "deep_selected": deep_op, "weight": deep_weight}))
 
         # ---- EXECUTE : run only the deep-resolved + ratified operant ----
         # L4 SELECTION FEEDBACK: the deep-resolved choice is written into the
         # genome so it is remembered and reinforced across ticks/runs.
         if deep_op is not None and deep_op == ratified:
-            program = _compose_program(deep_op)
+            w_int = int(round((deep_weight + 1) * 2)) if deep_weight is not None else 0
+            program = (_compose_program(deep_op)
+                       + f"I w <- {w_int} ;\nI weighted_result <- result + w ;\n")
             bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
-                             {"operant": deep_op, "program": program}))
+                             {"operant": deep_op, "program": program, "l4_weight": deep_weight}))
             res = jit_run(program)
             ex = {"status": "ran", "operant": deep_op,
-                  "program_result": res["env"].get("result"), "steps": res["steps"]}
+                  "program_result": res["env"].get("weighted_result"),
+                  "l4_weight": round(deep_weight, 4) if deep_weight is not None else None,
+                  "steps": res["steps"]}
             genome.append({"toward": deep_op, "taught": taught_names,
-                           "tick": bio.tick, "deep": deep_op, "ran": True})
+                           "tick": bio.tick, "deep": deep_op, "ran": True,
+                           "weight": round(deep_weight, 4) if deep_weight is not None else 0.0})
             _save(bio, "learned.json", genome)
         else:
             reason = (f"L4 deep-operand selected {deep_op}, not the ratified {ratified}"
@@ -263,7 +286,8 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             ex = {"status": "VETOED", "reason": reason}
             if deep_op is not None:   # negative feedback: rejected selection not reinforced
                 genome.append({"toward": ratified, "taught": taught_names,
-                               "tick": bio.tick, "deep": deep_op, "ran": False})
+                               "tick": bio.tick, "deep": deep_op, "ran": False,
+                               "weight": round(deep_weight, 4) if deep_weight is not None else 0.0})
                 _save(bio, "learned.json", genome)
         bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
 

@@ -22,7 +22,8 @@
         ],
         "tick": 1,
         "deep": "AWAIT",
-        "ran": false
+        "ran": false,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -34,7 +35,8 @@
         "taught": [],
         "tick": 2,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -46,7 +48,8 @@
         "taught": [],
         "tick": 3,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -58,7 +61,8 @@
         "taught": [],
         "tick": 4,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -70,7 +74,8 @@
         "taught": [],
         "tick": 5,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -82,7 +87,8 @@
         "taught": [],
         "tick": 6,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -94,7 +100,8 @@
         "taught": [],
         "tick": 7,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -106,7 +113,8 @@
         "taught": [],
         "tick": 8,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -118,7 +126,8 @@
         "taught": [],
         "tick": 9,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -130,7 +139,8 @@
         "taught": [],
         "tick": 10,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       }
     ]
   },

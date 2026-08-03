@@ -5,8 +5,9 @@
   "payload": {
     "status": "ran",
     "operant": "YIELD",
-    "program_result": 1,
-    "steps": 11
+    "program_result": 2,
+    "l4_weight": -0.6499,
+    "steps": 17
   },
   "tick": 6,
   "trace_id": "86fbe0212b72"

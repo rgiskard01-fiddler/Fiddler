@@ -22,7 +22,8 @@
         ],
         "tick": 1,
         "deep": "AWAIT",
-        "ran": false
+        "ran": false,
+        "weight": -0.6499
       },
       {
         "toward": "YIELD",
@@ -34,7 +35,8 @@
         "taught": [],
         "tick": 2,
         "deep": "YIELD",
-        "ran": true
+        "ran": true,
+        "weight": -0.6499
       }
     ]
   },
