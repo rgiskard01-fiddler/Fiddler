@@ -245,6 +245,8 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                          {"l4_resolve": l4_addr, "operand": op_tag, "deep_selected": deep_op}))
 
         # ---- EXECUTE : run only the deep-resolved + ratified operant ----
+        # L4 SELECTION FEEDBACK: the deep-resolved choice is written into the
+        # genome so it is remembered and reinforced across ticks/runs.
         if deep_op is not None and deep_op == ratified:
             program = _compose_program(deep_op)
             bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
@@ -252,13 +254,17 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             res = jit_run(program)
             ex = {"status": "ran", "operant": deep_op,
                   "program_result": res["env"].get("result"), "steps": res["steps"]}
-            genome.append({"toward": ratified, "taught": taught_names,
-                           "tick": bio.tick, "deep": deep_op})
+            genome.append({"toward": deep_op, "taught": taught_names,
+                           "tick": bio.tick, "deep": deep_op, "ran": True})
             _save(bio, "learned.json", genome)
         else:
             reason = (f"L4 deep-operand selected {deep_op}, not the ratified {ratified}"
                       if deep_op is not None else "L4 address void (cortex boundary)")
             ex = {"status": "VETOED", "reason": reason}
+            if deep_op is not None:   # negative feedback: rejected selection not reinforced
+                genome.append({"toward": ratified, "taught": taught_names,
+                               "tick": bio.tick, "deep": deep_op, "ran": False})
+                _save(bio, "learned.json", genome)
         bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
 
         # ---- INGEST ----

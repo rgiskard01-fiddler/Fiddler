@@ -9,6 +9,16 @@
   },
   {
     "toward": "YIELD",
+    "taught": [
+      "agent-2",
+      "subagent-2"
+    ],
+    "tick": 1,
+    "deep": "AWAIT",
+    "ran": false
+  },
+  {
+    "toward": "YIELD",
     "taught": [],
     "tick": 2
   },
@@ -16,7 +26,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 2,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -27,7 +38,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 3,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -38,7 +50,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 4,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -49,7 +62,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 5,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -60,7 +74,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 6,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -71,7 +86,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 7,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -82,7 +98,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 8,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -93,7 +110,8 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 9,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   },
   {
     "toward": "YIELD",
@@ -104,6 +122,7 @@
     "toward": "YIELD",
     "taught": [],
     "tick": 10,
-    "deep": "YIELD"
+    "deep": "YIELD",
+    "ran": true
   }
 ]

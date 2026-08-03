@@ -13,6 +13,16 @@
           "subagent-2"
         ],
         "tick": 1
+      },
+      {
+        "toward": "YIELD",
+        "taught": [
+          "agent-2",
+          "subagent-2"
+        ],
+        "tick": 1,
+        "deep": "AWAIT",
+        "ran": false
       }
     ]
   },
