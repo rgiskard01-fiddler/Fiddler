@@ -95,8 +95,118 @@
       "l4": 194,
       "tag": "DOP-1ffff64e",
       "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "YIELD"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "MATCH"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "AWAIT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "MATCH"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "AWAIT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "LAMBDA"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "LOOP"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "SPAWN"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.9500000000000004,
+  "curiosity": 1.0,
   "proposed": "ASSERT"
 }

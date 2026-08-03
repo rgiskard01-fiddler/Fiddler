@@ -9,15 +9,44 @@
       "TRY",
       "TRY",
       "TRY",
-      "TRY"
+      "TRY",
+      "ASSERT"
     ],
     "distinct": [
+      "ASSERT",
       "TRY"
     ],
-    "differing_pairs": [],
-    "taught": [],
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
     "verdict": "TRY",
-    "reason": "TRY adopted by >=2/3 (6/6)"
+    "reason": "TRY adopted by >=2/3 (6/7)"
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

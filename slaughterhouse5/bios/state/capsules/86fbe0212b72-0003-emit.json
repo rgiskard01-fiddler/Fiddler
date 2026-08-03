@@ -11,8 +11,8 @@
       "garden",
       "recall"
     ],
-    "curiosity": 0.95,
-    "retention": 17
+    "curiosity": 1.0,
+    "retention": 39
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

@@ -342,5 +342,662 @@
     "taught": [],
     "verdict": "TRY",
     "reason": "TRY adopted by >=2/3 (6/6)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 4,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "LOOP",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "LOOP",
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 6,
+      "LOOP": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 5,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 5,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 5,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 5,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 5,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 5,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 6,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 6,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 6,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 6,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 6,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 6,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "SPAWN",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "SPAWN",
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 6,
+      "SPAWN": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 7,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 7,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 7,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 7,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 7,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 7,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 1,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 8,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 8,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 8,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 8,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 8,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 8,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "LOOP",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "LOOP",
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 6,
+      "LOOP": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 2,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 9,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 9,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 9,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 9,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 9,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 9,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "TRY",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 7
+    },
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (7/7)"
+  },
+  {
+    "tick": 3,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 10,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 10,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 10,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 10,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 10,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 10,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "ASSERT",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "ASSERT",
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 6,
+      "ASSERT": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (6/7)"
+  },
+  {
+    "tick": 4,
+    "population": [
+      {
+        "name": "agent-0",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 11,
+        "gen": 1
+      },
+      {
+        "name": "agent-1",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 11,
+        "gen": 1
+      },
+      {
+        "name": "agent-2",
+        "plane": "L1",
+        "proposal": "TRY",
+        "fitness": 11,
+        "gen": 1
+      },
+      {
+        "name": "subagent-0",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 11,
+        "gen": 1
+      },
+      {
+        "name": "subagent-1",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 11,
+        "gen": 1
+      },
+      {
+        "name": "subagent-2",
+        "plane": "L2",
+        "proposal": "TRY",
+        "fitness": 11,
+        "gen": 1
+      },
+      {
+        "name": "hermes",
+        "plane": "H",
+        "proposal": "SPAWN",
+        "fitness": 0,
+        "gen": 0
+      }
+    ],
+    "distinct": [
+      "SPAWN",
+      "TRY"
+    ],
+    "counts": {
+      "TRY": 6,
+      "SPAWN": 1
+    },
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
+    "verdict": "TRY",
+    "reason": "TRY adopted by >=2/3 (6/7)"
   }
 ]

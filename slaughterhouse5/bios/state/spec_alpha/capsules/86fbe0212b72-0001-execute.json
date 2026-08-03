@@ -4,7 +4,7 @@
   "kind": "execute",
   "payload": {
     "status": "VETOED",
-    "reason": "L4 deep-operand selected SLICE, not the ratified None"
+    "reason": "L4 address void (cortex boundary)"
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

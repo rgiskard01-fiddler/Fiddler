@@ -1,0 +1,92 @@
+{
+  "skills": [
+    "propose",
+    "probe",
+    "garden",
+    "recall"
+  ],
+  "retention": [
+    {
+      "event": "propose",
+      "operant": "LAMBDA"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "SPAWN"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "CAST"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "CAST"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 609,
+      "tag": "DOP-563cb7ec",
+      "weight": 0.1972219212891526
+    }
+  ],
+  "curiosity": 0.9800000000000004,
+  "proposed": "SLICE"
+}

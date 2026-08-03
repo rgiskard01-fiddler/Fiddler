@@ -1,12 +1,18 @@
 {
   "sender": "bios",
-  "receiver": "subagent-2",
+  "receiver": "hermes",
   "kind": "emit",
   "payload": {
-    "plane": "L2",
+    "plane": "H",
     "proposes": "TRY",
-    "l2_address": 64699,
-    "host_symbol": "H08"
+    "skills": [
+      "propose",
+      "probe",
+      "garden",
+      "recall"
+    ],
+    "curiosity": 0.41,
+    "retention": 11
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

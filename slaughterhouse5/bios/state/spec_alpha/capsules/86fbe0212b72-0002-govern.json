@@ -9,6 +9,7 @@
       "TRY",
       "TRY",
       "TRY",
+      "TRY",
       "TRY"
     ],
     "distinct": [
@@ -17,7 +18,7 @@
     "differing_pairs": [],
     "taught": [],
     "verdict": "TRY",
-    "reason": "TRY adopted by >=2/3 (6/6)"
+    "reason": "TRY adopted by >=2/3 (7/7)"
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"

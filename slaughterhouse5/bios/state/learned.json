@@ -1,126 +1,112 @@
 [
   {
-    "toward": "ASSERT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 2
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 2,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.44
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 3
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 3,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.496
-  },
-  {
-    "toward": "ASSERT",
+    "toward": "LOOP",
     "taught": [],
-    "tick": 4
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 4,
-    "deep": "ASSERT",
+    "tick": 0,
+    "deep": "LOOP",
     "ran": true,
-    "weight": 0.5464
+    "weight": 0.6
   },
   {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 5
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [],
-    "tick": 5,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.5918
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 6
-  },
-  {
-    "toward": "ASSERT",
-    "taught": [
-      "hermes"
-    ],
-    "tick": 6,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.6326
-  },
-  {
-    "toward": "ASSERT",
+    "toward": "TRY",
     "taught": [
       "hermes"
     ],
     "tick": 1
   },
   {
-    "toward": "ASSERT",
+    "toward": "TRY",
+    "taught": [],
+    "tick": 2
+  },
+  {
+    "toward": "TRY",
+    "taught": [
+      "hermes"
+    ],
+    "tick": 3
+  },
+  {
+    "toward": "TRY",
+    "taught": [
+      "hermes"
+    ],
+    "tick": 4
+  },
+  {
+    "toward": "AWAIT",
+    "taught": [],
+    "tick": 0,
+    "deep": "AWAIT",
+    "ran": true,
+    "weight": 0.6
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
+    "tick": 1
+  },
+  {
+    "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
     "tick": 1,
-    "deep": "ASSERT",
+    "deep": "IMPORT",
     "ran": true,
-    "weight": 0.6693
+    "weight": 0.4331
   },
   {
-    "toward": "ASSERT",
+    "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
     "tick": 2
   },
   {
-    "toward": "ASSERT",
+    "toward": "IMPORT",
     "taught": [
       "hermes"
     ],
     "tick": 2,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.7024
+    "deep": "TRY",
+    "ran": false,
+    "weight": 0.4898
   },
   {
-    "toward": "ASSERT",
-    "taught": [],
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
     "tick": 3
   },
   {
-    "toward": "ASSERT",
-    "taught": [],
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
     "tick": 3,
-    "deep": "ASSERT",
-    "ran": true,
-    "weight": 0.7322
+    "deep": "TRY",
+    "ran": false,
+    "weight": 0.3408
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
+    "tick": 4
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
+    "tick": 4,
+    "deep": "SLICE",
+    "ran": false,
+    "weight": 0.2068
   }
 ]

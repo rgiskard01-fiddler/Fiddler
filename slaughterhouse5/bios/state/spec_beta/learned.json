@@ -8,63 +8,71 @@
     "weight": 0.6
   },
   {
-    "toward": null,
-    "taught": [],
-    "tick": 1,
-    "deep": "IMPORT",
-    "ran": false,
-    "weight": 0.6
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
+    "tick": 1
   },
   {
     "toward": "IMPORT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
+    "tick": 1,
+    "deep": "IMPORT",
+    "ran": true,
+    "weight": 0.4331
+  },
+  {
+    "toward": "IMPORT",
+    "taught": [
+      "hermes"
+    ],
     "tick": 2
   },
   {
     "toward": "IMPORT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 2,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": 0.44
+    "deep": "TRY",
+    "ran": false,
+    "weight": 0.4898
   },
   {
     "toward": "IMPORT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 3
   },
   {
     "toward": "IMPORT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 3,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": 0.496
+    "deep": "TRY",
+    "ran": false,
+    "weight": 0.3408
   },
   {
     "toward": "IMPORT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 4
   },
   {
     "toward": "IMPORT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 4,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": 0.5464
-  },
-  {
-    "toward": "IMPORT",
-    "taught": [],
-    "tick": 5
-  },
-  {
-    "toward": "IMPORT",
-    "taught": [],
-    "tick": 5,
-    "deep": "IMPORT",
-    "ran": true,
-    "weight": 0.5918
+    "deep": "SLICE",
+    "ran": false,
+    "weight": 0.2068
   }
 ]

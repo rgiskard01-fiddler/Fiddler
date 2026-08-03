@@ -1,12 +1,18 @@
 {
   "sender": "bios",
-  "receiver": "subagent-2",
+  "receiver": "hermes",
   "kind": "emit",
   "payload": {
-    "plane": "L2",
-    "proposes": "IMPORT",
-    "l2_address": 141757,
-    "host_symbol": "BINOP"
+    "plane": "H",
+    "proposes": "CAST",
+    "skills": [
+      "propose",
+      "probe",
+      "garden",
+      "recall"
+    ],
+    "curiosity": 0.8,
+    "retention": 9
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

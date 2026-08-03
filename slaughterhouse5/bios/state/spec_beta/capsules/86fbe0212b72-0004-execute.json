@@ -3,17 +3,8 @@
   "receiver": "jitonf",
   "kind": "execute",
   "payload": {
-    "status": "ran",
-    "operants": [
-      "AWAIT",
-      "IMPORT"
-    ],
-    "results": {
-      "result_AWAIT": 42,
-      "result_IMPORT": 1
-    },
-    "l4_weight": 0.5464,
-    "steps": 20
+    "status": "VETOED",
+    "reason": "L4 deep-operand selected SLICE, not the ratified IMPORT"
   },
   "tick": 4,
   "trace_id": "86fbe0212b72"

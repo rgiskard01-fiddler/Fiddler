@@ -1,0 +1,92 @@
+{
+  "skills": [
+    "propose",
+    "probe",
+    "garden",
+    "recall"
+  ],
+  "retention": [
+    {
+      "event": "propose",
+      "operant": "LOOP"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SPAWN"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "LOOP"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    },
+    {
+      "event": "propose",
+      "operant": "SPAWN"
+    },
+    {
+      "event": "probe",
+      "l4": 7355,
+      "tag": "void",
+      "weight": null
+    }
+  ],
+  "curiosity": 0.5299999999999999,
+  "proposed": "SPAWN"
+}

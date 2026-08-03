@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 2,
-    "memory": "ticks=6 capsules=112",
+    "memory": "ticks=8 capsules=268",
     "genome": [
       {
         "toward": "ASSERT",
@@ -116,6 +116,189 @@
         "deep": "ASSERT",
         "ran": true,
         "weight": 0.7024
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 3
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [],
+        "tick": 3,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.7322
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.7589
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.783
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 3
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 3,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8047
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 4
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 4,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8243
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 5
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 5,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8418
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 6
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 6,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8577
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 7
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 7,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8719
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 8
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 8,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8847
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.8962
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.9066
       }
     ]
   },

@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 4,
-    "memory": "ticks=4 capsules=51",
+    "memory": "ticks=5 capsules=173",
     "genome": [
       {
         "toward": "AWAIT",
@@ -15,51 +15,72 @@
         "weight": 0.6
       },
       {
-        "toward": null,
-        "taught": [],
-        "tick": 1,
-        "deep": "IMPORT",
-        "ran": false,
-        "weight": 0.6
+        "toward": "IMPORT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1
       },
       {
         "toward": "IMPORT",
-        "taught": [],
+        "taught": [
+          "hermes"
+        ],
+        "tick": 1,
+        "deep": "IMPORT",
+        "ran": true,
+        "weight": 0.4331
+      },
+      {
+        "toward": "IMPORT",
+        "taught": [
+          "hermes"
+        ],
         "tick": 2
       },
       {
         "toward": "IMPORT",
-        "taught": [],
+        "taught": [
+          "hermes"
+        ],
         "tick": 2,
-        "deep": "IMPORT",
-        "ran": true,
-        "weight": 0.44
+        "deep": "TRY",
+        "ran": false,
+        "weight": 0.4898
       },
       {
         "toward": "IMPORT",
-        "taught": [],
+        "taught": [
+          "hermes"
+        ],
         "tick": 3
       },
       {
         "toward": "IMPORT",
-        "taught": [],
+        "taught": [
+          "hermes"
+        ],
         "tick": 3,
-        "deep": "IMPORT",
-        "ran": true,
-        "weight": 0.496
+        "deep": "TRY",
+        "ran": false,
+        "weight": 0.3408
       },
       {
         "toward": "IMPORT",
-        "taught": [],
+        "taught": [
+          "hermes"
+        ],
         "tick": 4
       },
       {
         "toward": "IMPORT",
-        "taught": [],
+        "taught": [
+          "hermes"
+        ],
         "tick": 4,
-        "deep": "IMPORT",
-        "ran": true,
-        "weight": 0.5464
+        "deep": "SLICE",
+        "ran": false,
+        "weight": 0.2068
       }
     ]
   },
