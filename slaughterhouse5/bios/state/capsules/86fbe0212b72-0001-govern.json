@@ -10,12 +10,13 @@
       "LAMBDA",
       "LAMBDA",
       "TRY",
-      "TRY"
+      "YIELD"
     ],
     "distinct": [
       "INDEX",
       "LAMBDA",
-      "TRY"
+      "TRY",
+      "YIELD"
     ],
     "differing_pairs": [
       [
@@ -80,6 +81,10 @@
       ],
       [
         4,
+        6
+      ],
+      [
+        5,
         6
       ]
     ],

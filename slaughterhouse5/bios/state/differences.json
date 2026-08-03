@@ -47,7 +47,7 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "TRY",
+        "proposal": "YIELD",
         "fitness": 0,
         "gen": 0
       }
@@ -55,12 +55,14 @@
     "distinct": [
       "INDEX",
       "LAMBDA",
-      "TRY"
+      "TRY",
+      "YIELD"
     ],
     "counts": {
       "INDEX": 3,
       "LAMBDA": 2,
-      "TRY": 2
+      "TRY": 1,
+      "YIELD": 1
     },
     "differing_pairs": [
       [
@@ -126,6 +128,10 @@
       [
         4,
         6
+      ],
+      [
+        5,
+        6
       ]
     ],
     "taught": [],
@@ -180,18 +186,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "SLICE",
+        "proposal": "YIELD",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "SLICE"
+      "YIELD"
     ],
     "counts": {
       "ASSERT": 6,
-      "SLICE": 1
+      "YIELD": 1
     },
     "differing_pairs": [
       [
@@ -273,50 +279,21 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "SLICE",
+        "proposal": "ASSERT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
-      "ASSERT",
-      "SLICE"
+      "ASSERT"
     ],
     "counts": {
-      "ASSERT": 6,
-      "SLICE": 1
+      "ASSERT": 7
     },
-    "differing_pairs": [
-      [
-        0,
-        6
-      ],
-      [
-        1,
-        6
-      ],
-      [
-        2,
-        6
-      ],
-      [
-        3,
-        6
-      ],
-      [
-        4,
-        6
-      ],
-      [
-        5,
-        6
-      ]
-    ],
-    "taught": [
-      "hermes"
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "ASSERT",
-    "reason": "ASSERT adopted by >=2/3 (6/7)"
+    "reason": "ASSERT adopted by >=2/3 (7/7)"
   },
   {
     "tick": 4,
@@ -366,49 +343,20 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "INDEX",
+        "proposal": "ASSERT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
-      "ASSERT",
-      "INDEX"
+      "ASSERT"
     ],
     "counts": {
-      "ASSERT": 6,
-      "INDEX": 1
+      "ASSERT": 7
     },
-    "differing_pairs": [
-      [
-        0,
-        6
-      ],
-      [
-        1,
-        6
-      ],
-      [
-        2,
-        6
-      ],
-      [
-        3,
-        6
-      ],
-      [
-        4,
-        6
-      ],
-      [
-        5,
-        6
-      ]
-    ],
-    "taught": [
-      "hermes"
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "ASSERT",
-    "reason": "ASSERT adopted by >=2/3 (6/7)"
+    "reason": "ASSERT adopted by >=2/3 (7/7)"
   }
 ]

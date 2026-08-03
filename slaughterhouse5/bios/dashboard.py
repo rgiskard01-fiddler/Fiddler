@@ -553,16 +553,8 @@ function render(S){
     openHouse({name:nm, plane:pl, kind:(pl==='L1'?'agent':pl==='L2'?'subagent':'hermes'),
       color:planeColor(pl), desc:planeDesc(pl), metric:'fit '+((S.population.find(x=>x.name===nm)||{}).fitness!=null?(S.population.find(x=>x.name===nm)||{}).fitness:'?'), proposed:(S.population.find(x=>x.name===nm)||{}).proposed||'', _fit:(parseFloat((S.population.find(x=>x.name===nm)||{}).fitness)||0.5)});
   }));
-  document.getElementById('gov').innerHTML=(S.govern||[]).slice().reverse().map(g=>
-    '<span class=hl>verdict '+(g.verdict||'?')+'</span> distinct '+JSON.stringify(g.distinct)+' taught '+JSON.stringify(g.taught)+'<br>pop '+JSON.stringify(g.population)+'<br><br>').join('')||'no governance yet';
-  const h=S.hermes||{};
-  document.getElementById('herm').innerHTML='<span class=chip><b>skills</b> <small>'+(h.skills||[]).join(', ')+'</small></span>\n     <span class=chip><b>curiosity</b> <small>'+(h.curiosity||0).toFixed(3)+'</small></span>\n     <span class=chip><b>retention</b> <small>'+(h.retention||0)+'</small></span>\n     <div class=log style="margin-top:8px">recall:<br>'+JSON.stringify(h.last||[],null,1)+'</div>';
-  document.getElementById('clog').innerHTML=(S.capsule_log||[]).reverse().map(c=>
-    '<span class=hl>'+c[0]+'</span> · '+c[1]).join('<br>');
-  const z=S.zones;
-  if(z){
-    document.getElementById('zones').innerHTML=
-      '<div class="chip"><b>SEALED</b> <small>'+(z.sealed?'yes':'no')+'</small></div>'+
+  function renderZones(z){
+    return '<div class="chip"><b>SEALED</b> <small>'+(z.sealed?'yes':'no')+'</small></div>'+
       '<div class=chip><b>z1 \\ l0</b> <small>'+z.z1+'</small></div>'+
       '<div class=chip><b>z2 \\ l1</b> <small>'+z.z2+'</small></div>'+
       '<div class=chip><b>z3 \\ l2</b> <small>'+z.z3+'</small></div>'+
@@ -574,6 +566,14 @@ function render(S){
       '<div class=log" style="margin-top:6px;color:var(--gold)">"'+z.doctrine+'"</div>'+
       '<div class=log" style="margin-top:6px">'+z.report.join('<br>')+'</div>';
   }
+  const oldGov=(S.govern||[]).slice().reverse().map(g=>
+    '<span class=hl>verdict '+(g.verdict||'?')+'</span> distinct '+JSON.stringify(g.distinct)+' taught '+JSON.stringify(g.taught)+'<br>pop '+JSON.stringify(g.population)+'<br><br>').join('')||'no governance yet';
+  document.getElementById('gov').innerHTML = S.zones ? renderZones(S.zones) : oldGov;
+  const h=S.hermes||{};
+  document.getElementById('herm').innerHTML='<span class=chip><b>skills</b> <small>'+(h.skills||[]).join(', ')+'</small></span>\n     <span class=chip><b>curiosity</b> <small>'+(h.curiosity||0).toFixed(3)+'</small></span>\n     <span class=chip><b>retention</b> <small>'+(h.retention||0)+'</small></span>\n     <div class=log style="margin-top:8px">recall:<br>'+JSON.stringify(h.last||[],null,1)+'</div>';
+  document.getElementById('clog').innerHTML=(S.capsule_log||[]).reverse().map(c=>
+    '<span class=hl>'+c[0]+'</span> · '+c[1]).join('<br>');
+  document.getElementById('zones').innerHTML = S.zones ? renderZones(S.zones) : 'no zoned governance yet';
   drawChart(S.weight_history);
   document.getElementById('playdot').className='dot'+(S.playing?' live':' off');
   document.getElementById('live').textContent=S.playing?'streaming…':'idle';
