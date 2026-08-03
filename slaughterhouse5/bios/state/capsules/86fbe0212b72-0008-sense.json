@@ -4,7 +4,8 @@
   "kind": "sense",
   "payload": {
     "l4_resolve": 6072,
-    "operand": "DOP-15853eb4"
+    "operand": "DOP-15853eb4",
+    "deep_selected": "YIELD"
   },
   "tick": 8,
   "trace_id": "86fbe0212b72"

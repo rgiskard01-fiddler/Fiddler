@@ -224,30 +224,41 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
         members = _evolve(members, verdict["verdict"], g_join)
         _save(bio, "population.json", pop)
 
-        # ---- L3 COMPOSE : (b) weave the arbitrated operant's semantics ----
+        # ---- L3 COMPOSE : (b) weave the ratified operant's semantics (staged) ----
+        ratified = verdict["verdict"]
         program = None
-        if verdict["verdict"]:
-            program = _compose_program(verdict["verdict"])
-            bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
-                             {"operant": verdict["verdict"], "program": program}))
 
-        # ---- L4 : resolve a deep operand (void = real cortex boundary) ----
+        # ---- L4 DEEP-OPERAND RESOLVER : SELECTS which operant executes ----
+        # The cortex resolves a 13-bit deep operand; its address selects one of
+        # the population's distinct proposals. L4 is a WALL: only when the
+        # deep-resolved operant IS the 2/3 ratified verdict may it run.
+        candidates = verdict["distinct"] or ([ratified] if ratified else [])
         l4_addr = int(agents[0].content_sha256, 16) % (L4_ADDR_MAX + 1)
         try:
             operand = resolve(l4_addr)
             op_tag = getattr(operand, "tag", "?")
+            deep_op = candidates[operand.addr % len(candidates)] if candidates else None
         except CortexBoundary:
             op_tag = "void"
+            deep_op = None
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
-                         {"l4_resolve": l4_addr, "operand": op_tag}))
+                         {"l4_resolve": l4_addr, "operand": op_tag, "deep_selected": deep_op}))
 
-        # ---- EXECUTE : run the arbitrated program (gated by the verdict) ----
-        if verdict["verdict"]:
+        # ---- EXECUTE : run only the deep-resolved + ratified operant ----
+        if deep_op is not None and deep_op == ratified:
+            program = _compose_program(deep_op)
+            bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
+                             {"operant": deep_op, "program": program}))
             res = jit_run(program)
-            ex = {"status": "ran", "operant": verdict["verdict"],
+            ex = {"status": "ran", "operant": deep_op,
                   "program_result": res["env"].get("result"), "steps": res["steps"]}
+            genome.append({"toward": ratified, "taught": taught_names,
+                           "tick": bio.tick, "deep": deep_op})
+            _save(bio, "learned.json", genome)
         else:
-            ex = {"status": "VETOED", "reason": verdict["reason"]}
+            reason = (f"L4 deep-operand selected {deep_op}, not the ratified {ratified}"
+                      if deep_op is not None else "L4 address void (cortex boundary)")
+            ex = {"status": "VETOED", "reason": reason}
         bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
 
         # ---- INGEST ----
@@ -259,7 +270,7 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             fit = [s["fitness"] for s in pop]
             print(f"[pulse {bio.tick}] {bio.store.summary()} | L1={[a.proposes_operant for a in agents]} "
                   f"L2={[sa.proposes_operant for sa in subagents]} verdict={verdict['verdict']} "
-                  f"exec={ex['status']} diffs={len(diff_pairs)} op={op_tag}")
+                  f"deep={deep_op} exec={ex['status']} diffs={len(diff_pairs)} op={op_tag}")
 
     return bio
 

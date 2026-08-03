@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 10,
-    "memory": "ticks=10 capsules=261",
+    "memory": "ticks=10 capsules=129",
     "genome": [
       {
         "toward": "YIELD",
@@ -22,52 +22,8 @@
       {
         "toward": "YIELD",
         "taught": [],
-        "tick": 3
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 4
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 5
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 6
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 7
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 8
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 9
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 10
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 1
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 2
+        "tick": 2,
+        "deep": "YIELD"
       },
       {
         "toward": "YIELD",
@@ -77,7 +33,19 @@
       {
         "toward": "YIELD",
         "taught": [],
+        "tick": 3,
+        "deep": "YIELD"
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
         "tick": 4
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 4,
+        "deep": "YIELD"
       },
       {
         "toward": "YIELD",
@@ -87,7 +55,19 @@
       {
         "toward": "YIELD",
         "taught": [],
+        "tick": 5,
+        "deep": "YIELD"
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
         "tick": 6
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 6,
+        "deep": "YIELD"
       },
       {
         "toward": "YIELD",
@@ -97,7 +77,19 @@
       {
         "toward": "YIELD",
         "taught": [],
+        "tick": 7,
+        "deep": "YIELD"
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
         "tick": 8
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 8,
+        "deep": "YIELD"
       },
       {
         "toward": "YIELD",
@@ -107,7 +99,19 @@
       {
         "toward": "YIELD",
         "taught": [],
+        "tick": 9,
+        "deep": "YIELD"
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
         "tick": 10
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 10,
+        "deep": "YIELD"
       }
     ]
   },

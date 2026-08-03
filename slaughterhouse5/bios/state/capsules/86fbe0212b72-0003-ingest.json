@@ -4,7 +4,7 @@
   "kind": "ingest",
   "payload": {
     "tick": 3,
-    "memory": "ticks=10 capsules=170",
+    "memory": "ticks=3 capsules=38",
     "genome": [
       {
         "toward": "YIELD",
@@ -22,57 +22,19 @@
       {
         "toward": "YIELD",
         "taught": [],
-        "tick": 3
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 4
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 5
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 6
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 7
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 8
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 9
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 10
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 1
-      },
-      {
-        "toward": "YIELD",
-        "taught": [],
-        "tick": 2
+        "tick": 2,
+        "deep": "YIELD"
       },
       {
         "toward": "YIELD",
         "taught": [],
         "tick": 3
+      },
+      {
+        "toward": "YIELD",
+        "taught": [],
+        "tick": 3,
+        "deep": "YIELD"
       }
     ]
   },
