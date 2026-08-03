@@ -8,7 +8,7 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "YIELD"
+      "operant": "TRY"
     },
     {
       "event": "probe",
@@ -18,7 +18,7 @@
     },
     {
       "event": "propose",
-      "operant": "YIELD"
+      "operant": "SLICE"
     },
     {
       "event": "probe",
@@ -28,7 +28,7 @@
     },
     {
       "event": "propose",
-      "operant": "ASSERT"
+      "operant": "SLICE"
     },
     {
       "event": "probe",
@@ -38,7 +38,7 @@
     },
     {
       "event": "propose",
-      "operant": "ASSERT"
+      "operant": "INDEX"
     },
     {
       "event": "probe",
@@ -47,6 +47,6 @@
       "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.3799999999999999,
-  "proposed": "ASSERT"
+  "curiosity": 0.7400000000000002,
+  "proposed": "INDEX"
 }

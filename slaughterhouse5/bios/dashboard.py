@@ -176,8 +176,10 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   /* honeycomb */
   #hexwrap{flex:1;overflow:auto;background:radial-gradient(600px 400px at 50% 35%,#0a1424,#05070c);border-radius:10px}
   #hex{width:100%;display:block}
-  .hexpoly{fill:#0e1a30;stroke:#3af0cf;stroke-width:2;cursor:pointer;transition:fill .15s,stroke .15s}
-  .hexpoly:hover{fill:#16263e;stroke:#ffd166}
+  .hexpoly{fill:#0e1a30;stroke:#3af0cf;stroke-width:2;cursor:grab;transition:fill .15s,stroke .15s}
+  .hexpoly:hover{fill:#16263e;stroke-width:3}
+  @keyframes hexpulse{0%,100%{filter:drop-shadow(0 0 2px var(--neon));stroke-width:2}
+    50%{filter:drop-shadow(0 0 9px var(--neon)) drop-shadow(0 0 16px var(--neon));stroke-width:3.4}}
   .hextx{fill:#e3ecff;font:bold 11px ui-monospace,monospace;text-anchor:middle;pointer-events:none}
   .hextx.m{fill:#8298c6;font:10px ui-monospace,monospace}
   /* house-style windows */
@@ -267,7 +269,9 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
 <script>
 // ---------- node model ----------
 function planeColor(p){
-  return p==='L1'?'#62a9ff':p==='L2'?'#3af0cf':p==='H'?'#ffd166':p==='L4'?'#ffd166':p==='z'?'#3af0cf':'#62a9ff';
+  // natural per-function neon: L1 democratic=blue, L2 stewardship=cyan,
+  // H hermes=gold, L4 cortex=violet (sovereign), z governance=pink (the wall), core=green (life)
+  return p==='L1'?'#4da6ff':p==='L2'?'#3af0cf':p==='H'?'#ffd166':p==='L4'?'#c77dff':p==='z'?'#ff5d8f':p==='core'?'#5dff9b':'#4da6ff';
 }
 function planeDesc(p){
   return ({
@@ -300,6 +304,21 @@ function buildNodes(S){
 const hexPos={};   // name -> {x,y}
 const polyById={}; // name -> polygon element (for live drag)
 function hexPts(cx,cy,R){let s='';for(let k=0;k<6;k++){const a=Math.PI/180*(60*k);s+=(cx+R*Math.cos(a)).toFixed(1)+','+(cy+R*Math.sin(a)).toFixed(1)+' ';}return s.trim();}
+// axial hex spiral -> nearest neighbours touch (true honeycomb lock)
+function honeycombSpiral(n){
+  const cells=[]; let q=0,r=0;
+  cells.push([q,r]);
+  const dirs=[[1,0],[0,1],[-1,1],[-1,0],[0,-1],[1,-1]];
+  let d=0, steps=1;
+  while(cells.length<n){
+    for(let s=0;s<2;s++){ // repeat each step length twice (hex spiral)
+      for(let i=0;i<steps;i++){ if(cells.length>=n) break; q+=dirs[d][0]; r+=dirs[d][1]; cells.push([q,r]); }
+      d=(d+1)%6;
+    }
+    steps++;
+  }
+  return cells;
+}
 function drawHex(nodes){
   const svg=document.getElementById('hex'); if(!svg)return;
   const R=46, W=svg.clientWidth||900, H=svg.clientHeight||640;
@@ -307,10 +326,11 @@ function drawHex(nodes){
   while(svg.firstChild) svg.removeChild(svg.firstChild);
   const cx=W/2, cy=H/2;
   if(!Object.keys(hexPos).length){
+    const cells=honeycombSpiral(nodes.length);
     nodes.forEach((n,i)=>{
       if(n.name==='CORTEX'){hexPos[n.name]={x:cx,y:cy,locked:true};}
-      else{const k=i-0.3, rad=Math.min(W,H)*0.30;
-        hexPos[n.name]={x:cx+Math.cos(k)*rad, y:cy+Math.sin(k*1.3)*rad*0.8};}
+      else{const [q,r]=cells[i]; const dx=R*1.5, dy=R*Math.sqrt(3);
+        hexPos[n.name]={x:cx+q*dx, y:cy+r*dy + q*dy/2};}
     });
   }
   nodes.forEach(n=>{
@@ -320,6 +340,9 @@ function drawHex(nodes){
     const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
     poly.setAttribute('points',hexPts(p.x,p.y,R));
     poly.setAttribute('class','hexpoly'+(p.locked?' locked':''));
+    poly.style.stroke=n.color;
+    poly.style.setProperty('--neon', n.color);
+    poly.style.animation='hexpulse 2.4s ease-in-out infinite';
     poly.addEventListener('mousedown',e=>startHexDrag(e,n,p));
     poly.addEventListener('click',e=>{if(!p._moved)openHouse(n);});
     svg.appendChild(poly);

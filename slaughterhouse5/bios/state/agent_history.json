@@ -226,7 +226,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "YIELD",
+"proposed": "TRY",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -234,7 +234,7 @@
 },
 {
 "tick": 2,
-"proposed": "YIELD",
+"proposed": "SLICE",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -242,19 +242,19 @@
 },
 {
 "tick": 3,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
+"proposed": "SLICE",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
 },
 {
 "tick": 4,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
+"proposed": "INDEX",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
 }
 ]
 }
