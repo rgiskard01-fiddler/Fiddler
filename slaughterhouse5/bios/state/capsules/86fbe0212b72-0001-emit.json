@@ -4,9 +4,9 @@
   "kind": "emit",
   "payload": {
     "plane": "L2",
-    "proposes": "ASSERT",
-    "l2_address": 139458,
-    "host_symbol": "RETURN"
+    "proposes": "TRY",
+    "l2_address": 25287,
+    "host_symbol": "CALL"
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

@@ -4,14 +4,10 @@
   "kind": "compose",
   "payload": {
     "operants": [
-      "ASSERT",
-      "AWAIT",
-      "IMPORT",
-      "LOOP",
-      "TRY"
+      "ASSERT"
     ],
-    "program": "I __operant__ <- \"ASSERT\" ;\nI cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result_ASSERT <- flag ;\nI __operant__ <- \"AWAIT\" ;\nI ready <- 1 ; I val <- 0 ; if (ready < 1) { val <- 0 ; } else { val <- 42 ; } I result_AWAIT <- val ;\nI __operant__ <- \"IMPORT\" ;\nI result_IMPORT <- 1 ;\nI __operant__ <- \"LOOP\" ;\nI acc <- 0 ; acc <- acc + 1 ; acc <- acc + 1 ; acc <- acc + 1 ; I result_LOOP <- acc ;\nI __operant__ <- \"TRY\" ;\nI ok <- 1 ; I safe <- 0 ; if (ok < 1) { safe <- 0 ; } else { safe <- 1 ; } I result_TRY <- safe ;",
-    "l4_weight": 0.8242660661896
+    "program": "I __operant__ <- \"ASSERT\" ;\nI cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result_ASSERT <- flag ;",
+    "l4_weight": 0.4960000000000001
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

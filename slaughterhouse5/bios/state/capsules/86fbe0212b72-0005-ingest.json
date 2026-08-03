@@ -1,0 +1,81 @@
+{
+  "sender": "bios",
+  "receiver": "bios",
+  "kind": "ingest",
+  "payload": {
+    "tick": 5,
+    "memory": "ticks=5 capsules=69",
+    "genome": [
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 2,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.44
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 3
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 3,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.496
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 4
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 4,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5464
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 5
+      },
+      {
+        "toward": "ASSERT",
+        "taught": [
+          "hermes"
+        ],
+        "tick": 5,
+        "deep": "ASSERT",
+        "ran": true,
+        "weight": 0.5918
+      }
+    ]
+  },
+  "tick": 5,
+  "trace_id": "86fbe0212b72"
+}

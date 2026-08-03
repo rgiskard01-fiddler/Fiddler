@@ -165,7 +165,7 @@ def _write_viewer(bio):
             pass
 
 
-def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = False) -> BioSphere:
+def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = False, extra_agent: str = None) -> BioSphere:
     from agent import Agent
     from subagent import SubAgent
     from cortex import SENSE_L1, SENSE_L2, arbitrate, resolve, L4_ADDR_MAX, CortexBoundary
@@ -202,6 +202,10 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True, reset: bool = Fa
         agents = [Agent.from_content(s["name"], (s["content"] + " " + prior).encode()) for s in agents_spec]
         subagents = [SubAgent.from_content(s["name"], (s["content"] + " " + prior).encode(), l2_address=None)
                      for s in sub_specs]
+        if extra_agent:   # (ADOPTION) an external agent is taken into the biosphere
+            agents_spec = agents_spec + [{"name": "hermes", "plane": "L1",
+                                          "content": extra_agent, "fitness": 0, "gen": 0}]
+            agents = agents + [Agent.from_content("hermes", extra_agent.encode())]
         for a in agents:
             bio.emit(Capsule("bios", a.name, CapsuleKind.EMIT,
                              {"plane": "L1", "proposes": a.proposes_operant,
