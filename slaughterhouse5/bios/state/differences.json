@@ -47,7 +47,7 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "TRY",
+        "proposal": "INDEX",
         "fitness": 0,
         "gen": 0
       }
@@ -58,9 +58,9 @@
       "TRY"
     ],
     "counts": {
-      "INDEX": 3,
+      "INDEX": 4,
       "LAMBDA": 2,
-      "TRY": 2
+      "TRY": 1
     },
     "differing_pairs": [
       [
@@ -76,10 +76,6 @@
         5
       ],
       [
-        0,
-        6
-      ],
-      [
         1,
         3
       ],
@@ -92,10 +88,6 @@
         5
       ],
       [
-        1,
-        6
-      ],
-      [
         2,
         3
       ],
@@ -106,10 +98,6 @@
       [
         2,
         5
-      ],
-      [
-        2,
-        6
       ],
       [
         3,
@@ -125,12 +113,16 @@
       ],
       [
         4,
+        6
+      ],
+      [
+        5,
         6
       ]
     ],
     "taught": [],
     "verdict": null,
-    "reason": "no operant reached 2/3 (max 3/7)"
+    "reason": "no operant reached 2/3 (max 4/7)"
   },
   {
     "tick": 2,
@@ -180,18 +172,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "INDEX",
+        "proposal": "AWAIT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "INDEX"
+      "AWAIT"
     ],
     "counts": {
       "ASSERT": 6,
-      "INDEX": 1
+      "AWAIT": 1
     },
     "differing_pairs": [
       [
@@ -273,18 +265,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "AWAIT",
+        "proposal": "IMPORT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "AWAIT"
+      "IMPORT"
     ],
     "counts": {
       "ASSERT": 6,
-      "AWAIT": 1
+      "IMPORT": 1
     },
     "differing_pairs": [
       [
@@ -366,18 +358,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "LAMBDA",
+        "proposal": "AWAIT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "LAMBDA"
+      "AWAIT"
     ],
     "counts": {
       "ASSERT": 6,
-      "LAMBDA": 1
+      "AWAIT": 1
     },
     "differing_pairs": [
       [

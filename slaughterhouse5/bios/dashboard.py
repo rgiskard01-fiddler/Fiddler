@@ -149,7 +149,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   .grow{flex:1}
   .transport button{background:#13233a;color:var(--fg);border:1px solid var(--edge);border-radius:7px;padding:6px 11px;margin-left:5px;cursor:pointer}
   .transport button:hover{border-color:var(--acc);color:var(--acc)}
-  main{display:grid;grid-template-columns:minmax(360px,1fr) 1.15fr;gap:10px;padding:10px;overflow:hidden}
+  main{position:relative;overflow:hidden;padding:0}
   .panel{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:10px;overflow:hidden;position:relative;display:flex;flex-direction:column}
   .panel h2{margin:0 0 8px;font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:1.5px}
   .tabs{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
@@ -197,6 +197,25 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   .wcontent .desc{color:var(--fg)} .kv{font-size:12px;color:var(--mut);margin:3px 0} .kv b{color:var(--fg)}
   .w3 canvas,.w4 canvas,.w5 canvas{width:100%;flex:1;min-height:120px;display:block;background:#070d18;border-radius:6px;margin-top:4px}
   .w5 canvas{min-height:180px}
+  /* full-window honeycomb */
+  #hexwrap{position:absolute;inset:0;border-radius:0}
+  #hex{width:100%;height:100%}
+  .hexpoly{cursor:grab}
+  .hexpoly.drag{cursor:grabbing}
+  .hexpoly.locked{stroke:#ffd166;fill:#3a2f12}
+  /* slide-in toolsuite */
+  #toolbtn{position:absolute;top:12px;right:12px;z-index:20;background:#13233a;color:var(--acc);
+           border:1px solid var(--acc);border-radius:8px;padding:7px 14px;cursor:pointer;font:12px ui-monospace,monospace}
+  #toolbtn:hover{background:#1c2f4c}
+  #suite{position:absolute;top:0;right:0;height:100%;width:46%;min-width:340px;max-width:680px;
+         background:rgba(10,16,26,.96);border-left:1px solid var(--edge);box-shadow:-12px 0 40px rgba(0,0,0,.5);
+         transform:translateX(102%);transition:transform .25s ease;z-index:19;display:flex;flex-direction:column;padding:10px;overflow:hidden}
+  #suite.open{transform:translateX(0)}
+  #suite .close{position:absolute;top:8px;right:10px;color:var(--mut);cursor:pointer}
+  #suite .close:hover{color:var(--warn)}
+  #hint{position:absolute;bottom:10px;left:12px;z-index:18;color:var(--mut);font-size:11px;
+        background:rgba(10,16,26,.7);border:1px solid var(--edge);border-radius:6px;padding:4px 8px}
+
 </style></head><body><div id=app>
 <header>
   <h1>SLAUGHTERHOUSE5</h1><span class=pill id=tk>tick 0</span>
@@ -211,10 +230,13 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   </span>
 </header>
 <main>
-  <div class=panel><h2>Node Honeycomb — click a hex to open its house window</h2>
+  <div class=panel style="position:absolute;inset:0;border-radius:0"><h2>Node Honeycomb — drag the hexes · CORTEX is locked at center · click a hex to open its house window</h2>
     <div id=hexwrap><svg id=hex xmlns="http://www.w3.org/2000/svg"></svg></div>
   </div>
-  <div class=panel><h2>Toolsuite</h2>
+  <div id=toolbtn onclick="document.getElementById('suite').classList.toggle('open')">☰ Toolsuite</div>
+  <div id=hint>drag hexes to arrange · CORTEX locked center · click hex → house window (w1–w5) · <span style=cursor:pointer;color:var(--acc) onclick=fitHex()>[fit]</span></div>
+  <div id=suite>
+    <span class=close onclick="document.getElementById('suite').classList.remove('open')">✕</span>
     <div class=tabs>
       <button class=on onclick=tab('genome',this)>Genome + L4</button>
       <button onclick=tab('pop',this)>Population</button>
@@ -273,32 +295,67 @@ function buildNodes(S){
   return nodes;
 }
 // ---------- honeycomb ----------
+const hexPos={};   // name -> {x,y}
+const polyById={}; // name -> polygon element (for live drag)
 function hexPts(cx,cy,R){let s='';for(let k=0;k<6;k++){const a=Math.PI/180*(60*k);s+=(cx+R*Math.cos(a)).toFixed(1)+','+(cy+R*Math.sin(a)).toFixed(1)+' ';}return s.trim();}
 function drawHex(nodes){
   const svg=document.getElementById('hex'); if(!svg)return;
-  const R=46, hexH=Math.sqrt(3)*R, xStep=1.5*R, yStep=hexH;
-  const perRow=Math.max(1,Math.ceil(Math.sqrt(nodes.length*1.7)));
-  const rows=Math.ceil(nodes.length/perRow);
-  const W=(perRow-1)*xStep + 2*R + (rows>1?xStep/2:0);
-  const H=(rows-1)*yStep + hexH + R;
-  svg.setAttribute('viewBox','0 0 '+W.toFixed(0)+' '+H.toFixed(0));
+  const R=46, W=svg.clientWidth||900, H=svg.clientHeight||640;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
   while(svg.firstChild) svg.removeChild(svg.firstChild);
-  nodes.forEach((n,i)=>{
-    const row=Math.floor(i/perRow), col=i%perRow;
-    const cx=col*xStep + (row&1?xStep/2:0) + R;
-    const cy=row*yStep + hexH/2 + (R - hexH/2);
+  const cx=W/2, cy=H/2;
+  if(!Object.keys(hexPos).length){
+    nodes.forEach((n,i)=>{
+      if(n.name==='CORTEX'){hexPos[n.name]={x:cx,y:cy,locked:true};}
+      else{const k=i-0.3, rad=Math.min(W,H)*0.30;
+        hexPos[n.name]={x:cx+Math.cos(k)*rad, y:cy+Math.sin(k*1.3)*rad*0.8};}
+    });
+  }
+  nodes.forEach(n=>{
+    let p=hexPos[n.name]; if(!p){p={x:cx,y:cy}; hexPos[n.name]=p;}
+    if(p.locked){p.x=cx; p.y=cy;}
+    if(n.name==='CORTEX') n.metric='★ center';
     const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
-    poly.setAttribute('points',hexPts(cx,cy,R)); poly.setAttribute('class','hexpoly');
-    poly.addEventListener('click',()=>openHouse(n));
+    poly.setAttribute('points',hexPts(p.x,p.y,R));
+    poly.setAttribute('class','hexpoly'+(p.locked?' locked':''));
+    poly.addEventListener('mousedown',e=>startHexDrag(e,n,p));
+    poly.addEventListener('click',e=>{if(!p._moved)openHouse(n);});
     svg.appendChild(poly);
     const t1=document.createElementNS('http://www.w3.org/2000/svg','text');
-    t1.setAttribute('x',cx); t1.setAttribute('y',cy-2); t1.setAttribute('class','hextx'); t1.textContent=n.name;
+    t1.setAttribute('x',p.x); t1.setAttribute('y',p.y-2); t1.setAttribute('class','hextx'); t1.textContent=n.name;
     svg.appendChild(t1);
     const t2=document.createElementNS('http://www.w3.org/2000/svg','text');
-    t2.setAttribute('x',cx); t2.setAttribute('y',cy+12); t2.setAttribute('class','hextx m'); t2.textContent=n.metric||'';
+    t2.setAttribute('x',p.x); t2.setAttribute('y',p.y+12); t2.setAttribute('class','hextx m'); t2.textContent=n.metric||'';
     svg.appendChild(t2);
+    polyById[n.name]=poly; p._t1=t1; p._t2=t2;
   });
 }
+function fitHex(){ for(const k in hexPos) delete hexPos[k]; drawHex(buildNodes(lastStatic)); }
+function startHexDrag(e,n,p){
+  if(p.locked) return;
+  e.preventDefault(); e.stopPropagation();
+  const svg=document.getElementById('hex');
+  const r=svg.getBoundingClientRect();
+  const sx=r.width/svg.viewBox.baseVal.width, sy=r.height/svg.viewBox.baseVal.height;
+  const ox=p.x - (e.clientX-r.left)/sx, oy=p.y - (e.clientY-r.top)/sy;
+  p._moved=false;
+  const el=polyById[n.name];
+  if(el){el.setAttribute('class','hexpoly drag');}
+  function move(ev){
+    p.x=ox+(ev.clientX-r.left)/sx; p.y=oy+(ev.clientY-r.top)/sy; p._moved=true;
+    if(el){el.setAttribute('points',hexPts(p.x,p.y,46));}
+    if(p._t1) p._t1.setAttribute('x',p.x); if(p._t1) p._t1.setAttribute('y',p.y-2);
+    if(p._t2) p._t2.setAttribute('x',p.x); if(p._t2) p._t2.setAttribute('y',p.y+12);
+  }
+  function up(){
+    document.removeEventListener('mousemove',move);
+    document.removeEventListener('mouseup',up);
+    if(el) el.setAttribute('class','hexpoly');
+  }
+  document.addEventListener('mousemove',move);
+  document.addEventListener('mouseup',up);
+}
+
 // ---------- house-style windows ----------
 let zTop=50; const houses=[];
 function openHouse(node){

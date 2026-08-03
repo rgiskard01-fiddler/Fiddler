@@ -8,7 +8,7 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "TRY"
+      "operant": "INDEX"
     },
     {
       "event": "probe",
@@ -18,7 +18,17 @@
     },
     {
       "event": "propose",
-      "operant": "INDEX"
+      "operant": "AWAIT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "IMPORT"
     },
     {
       "event": "probe",
@@ -35,18 +45,8 @@
       "l4": 194,
       "tag": "DOP-1ffff64e",
       "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "LAMBDA"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
     }
   ],
   "curiosity": 0.7400000000000002,
-  "proposed": "LAMBDA"
+  "proposed": "AWAIT"
 }

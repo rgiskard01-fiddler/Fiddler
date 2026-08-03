@@ -226,7 +226,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "TRY",
+"proposed": "INDEX",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -234,14 +234,6 @@
 },
 {
 "tick": 2,
-"proposed": "INDEX",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
-},
-{
-"tick": 3,
 "proposed": "AWAIT",
 "fitness": 0,
 "gen": 1,
@@ -249,8 +241,16 @@
 "selected": false
 },
 {
+"tick": 3,
+"proposed": "IMPORT",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
+},
+{
 "tick": 4,
-"proposed": "LAMBDA",
+"proposed": "AWAIT",
 "fitness": 0,
 "gen": 1,
 "taught": true,
