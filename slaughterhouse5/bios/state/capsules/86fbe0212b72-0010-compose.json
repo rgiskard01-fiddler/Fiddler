@@ -1,0 +1,14 @@
+{
+  "sender": "bios",
+  "receiver": "constructor",
+  "kind": "compose",
+  "payload": {
+    "operants": [
+      "ASSERT"
+    ],
+    "program": "I __operant__ <- \"ASSERT\" ;\nI cond <- 1 ; I flag <- 0 ; if (cond < 1) { flag <- 0 ; } else { flag <- 1 ; } I result_ASSERT <- flag ;",
+    "l4_weight": 0.7589383624
+  },
+  "tick": 10,
+  "trace_id": "86fbe0212b72"
+}

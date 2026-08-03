@@ -10,13 +10,13 @@
       "LAMBDA",
       "LAMBDA",
       "TRY",
-      "YIELD"
+      "ASSERT"
     ],
     "distinct": [
+      "ASSERT",
       "INDEX",
       "LAMBDA",
-      "TRY",
-      "YIELD"
+      "TRY"
     ],
     "differing_pairs": [
       [

@@ -1,0 +1,25 @@
+{
+  "sender": "bios",
+  "receiver": "cortex",
+  "kind": "govern",
+  "payload": {
+    "population": [
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT",
+      "ASSERT"
+    ],
+    "distinct": [
+      "ASSERT"
+    ],
+    "differing_pairs": [],
+    "taught": [],
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (7/7)"
+  },
+  "tick": 10,
+  "trace_id": "86fbe0212b72"
+}

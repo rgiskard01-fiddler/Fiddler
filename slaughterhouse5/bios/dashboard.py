@@ -28,6 +28,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from .kernel import BioSphere
 from . import pulse
 from .hermes import Hermes, NOVEL_POOL
+from . import seal as _seal
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE = os.path.join(HERE, "state")
@@ -247,6 +248,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
       <button onclick=tab('gov',this)>Governance</button>
       <button onclick=tab('herm',this)>Hermes</button>
       <button onclick=tab('zones',this)>Zoned Gov</button>
+      <button onclick=tab('seals',this)>Seals</button>
       <button onclick=tab('log',this)>Capsule log</button>
     </div>
     <div class=tabbody id=tab-genome>
@@ -258,6 +260,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
     <div class=tabbody id=tab-gov style="display:none"><div id=gov class=log></div></div>
     <div class=tabbody id=tab-herm style="display:none"><div id=herm></div></div>
     <div class=tabbody id=tab-zones style="display:none"><div id=zones class=log></div></div>
+    <div class=tabbody id=tab-seals style="display:none"><div id=seals class=log></div></div>
     <div class=tabbody id=tab-log style="display:none"><div id=clog class=log></div></div>
   </div>
 </main>
@@ -325,21 +328,26 @@ function drawHex(nodes){
   svg.setAttribute('viewBox','0 0 '+W+' '+H);
   while(svg.firstChild) svg.removeChild(svg.firstChild);
   const cx=W/2, cy=H/2;
-  if(!Object.keys(hexPos).length){
-    const cells=honeycombSpiral(nodes.length);
-    nodes.forEach((n,i)=>{
-      if(n.name==='CORTEX'){hexPos[n.name]={x:cx,y:cy,locked:true};}
-      else{const [q,r]=cells[i]; const dx=R*1.5, dy=R*Math.sqrt(3);
-        hexPos[n.name]={x:cx+q*dx, y:cy+r*dy + q*dy/2};}
-    });
-  }
+  if(nodes.length===0) return;
+  // STABLE ordering: CORTEX locked at centre; the rest sorted by name. The lattice is
+  // recomputed EVERY draw from this fixed order, so it LOCKS on every tick no matter
+  // who reseeds the population (previously the lattice was computed once and stale
+  // names fell back to (cx,cy), stacking on CORTEX and vanishing).
+  const others=nodes.filter(n=>n.name!=='CORTEX').sort((a,b)=>a.name<b.name?-1:1);
+  const cells=honeycombSpiral(others.length+1).slice(1); // centre cell dropped
+  const dx=R*1.5, dy=R*Math.sqrt(3);
   nodes.forEach(n=>{
-    let p=hexPos[n.name]; if(!p){p={x:cx,y:cy}; hexPos[n.name]=p;}
-    if(p.locked){p.x=cx; p.y=cy;}
+    let base;
+    if(n.name==='CORTEX') base={x:cx,y:cy,locked:true};
+    else{ const idx=others.findIndex(o=>o.name===n.name); const [q,r]=cells[idx];
+          base={x:cx+q*dx, y:cy+r*dy + q*dy/2}; }
+    // manual drag override (persists across ticks); otherwise the locked lattice.
+    let p=hexPos[n.name]||base; if(!hexPos[n.name]) hexPos[n.name]=p;
+    if(base.locked){ p.x=cx; p.y=cy; p.locked=true; } // cortex re-locked every draw
     if(n.name==='CORTEX') n.metric='★ center';
     const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
     poly.setAttribute('points',hexPts(p.x,p.y,R));
-    poly.setAttribute('class','hexpoly'+(p.locked?' locked':''));
+    poly.setAttribute('class','hexpoly'+(base.locked?' locked':''));
     poly.style.stroke=n.color;
     poly.style.setProperty('--neon', n.color);
     poly.style.animation='hexpulse 2.4s ease-in-out infinite';
@@ -533,9 +541,28 @@ function drawChart(hist){
   x.fillStyle='#3af0cf';x.font=(11*devicePixelRatio)+'px monospace';
   x.fillText('learned L4 weight ('+h[h.length-1].toFixed(3)+')',pad,H-6*devicePixelRatio);
 }
+// ---------- seals (modular "seal when it works") ----------
+function renderSeals(){
+  const box=document.getElementById('seals'); if(!box)return;
+  fetch('/seals').then(r=>r.json()).then(j=>{
+    const rows=j.seals||[];
+    if(!rows.length){box.innerHTML='no sealable units registered';return;}
+    const tag={SEALED:'#5dff9b',BROKEN:'#ff6b6b',STALE:'#ffd166',UNSEALED:'#8298c6'};
+    box.innerHTML=rows.map(r=>{
+      const c=tag[r.state]||'#8298c6';
+      const chg=r.changed&&r.changed.length?(' changed: '+r.changed.join(', ')):'';
+      return '<div style="margin:4px 0;padding:6px 8px;border:1px solid var(--edge);border-radius:7px;background:#0d1626">'+
+        '<b style="color:'+c+'">'+r.state+'</b> &nbsp; <b>'+r.name+'</b>'+
+        '<span style="color:var(--mut);font-size:11px"> · '+ (r.files||[]).join(', ')+'</span>'+
+        '<span style="color:'+c+';font-size:11px">'+chg+'</span></div>';
+    }).join('')+'<div class=log style="margin-top:8px">A SEALED unit is verified + frozen (sha256 of its files). An edit breaks it → BROKEN. Run <b>python -m bios.seal</b> to seal all working units.</div>';
+  }).catch(()=>{box.innerHTML='seal check failed';});
+}
+setInterval(()=>{ if(document.getElementById('tab-seals').style.display!=='none') renderSeals(); }, 4000);
 // ---------- UI render ----------
 function tab(id,el){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(el)el.classList.add('on');
-  ['genome','pop','gov','herm','zones','log'].forEach(t=>document.getElementById('tab-'+t).style.display=t===id?'block':'none');}
+  ['genome','pop','gov','herm','zones','seals','log'].forEach(t=>document.getElementById('tab-'+t).style.display=t===id?'block':'none');
+  if(id==='seals') renderSeals();}
 function render(S){
   document.getElementById('tk').textContent='tick '+S.tick;
   document.getElementById('k2').textContent=S.tick;
@@ -723,6 +750,17 @@ class Handler(BaseHTTPRequestHandler):
             hm = Hermes(STATE)
             self._send(200, json.dumps({"skills": hm.skills, "curiosity": hm.curiosity,
                                         "retention": len(hm.retention), "last": hm.recall(4)}))
+        elif path == "/seals":
+            # verify every registered unit live; list which are sealed/broken/unsealed
+            states = _seal.seal_states()
+            rows = []
+            for st in states:
+                rec = _load("seals.json", {}).get(st["name"])
+                rows.append({"name": st["name"], "state": st["state"],
+                             "sealed_at": (rec or {}).get("sealed_at"),
+                             "changed": st.get("changed", []),
+                             "files": (rec or {}).get("files", _seal.REGISTRY.get(st["name"], ([], None))[0])})
+            self._send(200, json.dumps({"seals": rows}))
         elif path in ("/", "/index.html"):
             html = HTML.replace("/*__THREE__*/", THREE_JS or "console.warn('three.min.js missing')")
             self._send(200, html, "text/html")
