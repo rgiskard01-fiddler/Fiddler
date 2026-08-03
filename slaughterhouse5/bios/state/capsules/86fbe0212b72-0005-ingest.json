@@ -4,10 +4,13 @@
   "kind": "ingest",
   "payload": {
     "tick": 5,
-    "memory": "ticks=5 capsules=45",
+    "memory": "ticks=5 capsules=65",
     "genome": [
-      "IMPORT",
-      "YIELD"
+      "YIELD",
+      "ASSERT",
+      "CAST",
+      "LOOP",
+      "LOOP"
     ]
   },
   "tick": 5,

@@ -238,6 +238,31 @@ def govern(proposal: str, adopted) -> "tuple[bool, str]":
     return False, f"veto: '{proposal}' is neither a core form nor adopted"
 
 
+def arbitrate(proposals) -> dict:
+    """The cortex arbitrates a POPULATION of agent proposals.
+
+    Verdict = the operant with >= 2/3 of the population; otherwise None (the
+    cortex cannot unify the agents). Returns the verdict, the reason, the
+    distinct proposals, and the per-agent breakdown -- so EVERY difference
+    between agents is observable and logged, never hidden.
+    """
+    from math import ceil
+    n = len(proposals)
+    if n == 0:
+        return {"verdict": None, "reason": "no agents", "distinct": [], "counts": {}, "n": 0}
+    thr = ceil(2 * n / 3)
+    counts = {}
+    for p in proposals:
+        counts[p] = counts.get(p, 0) + 1
+    distinct = sorted(counts.keys())
+    winners = [op for op, c in counts.items() if c >= thr]
+    verdict = winners[0] if winners else None
+    reason = (f"{verdict} adopted by >=2/3 ({counts.get(verdict, 0)}/{n})"
+              if verdict else f"no operant reached 2/3 (max {max(counts.values())}/{n})")
+    return {"verdict": verdict, "reason": reason, "distinct": distinct,
+            "counts": counts, "n": n}
+
+
 def resolve(addr: int):
     """Resolve a deep operand on the L4 13-bit address space (cortex-only)."""
     return Cortex().resolve(addr)

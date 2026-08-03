@@ -3,12 +3,27 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "IMPORT",
-    "allowed": true,
-    "reason": "adopted by >= 2/3 consensus",
-    "adopted": [
-      "IMPORT"
-    ]
+    "population": [
+      "YIELD",
+      "YIELD",
+      "AWAIT"
+    ],
+    "distinct": [
+      "AWAIT",
+      "YIELD"
+    ],
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "YIELD",
+    "reason": "YIELD adopted by >=2/3 (2/3)"
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"

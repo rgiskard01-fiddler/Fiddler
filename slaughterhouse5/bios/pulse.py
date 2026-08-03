@@ -1,20 +1,15 @@
-"""The PULSE — one metabolic tick: a descent L1->L2->L3->L4 of the biosphere.
+"""The PULSE — one metabolic tick: a MULTI-AGENT descent L1->L2->L3->L4.
 
-seed(i4) -> emit(agent, L1) -> emit(subagent, L2) -> sense(L2)
--> compose(constructor, L3) -> compose(bios) -> govern+resolve(cortex, L4)
--> execute(jitonf, GATED) -> ingest.
+Each tick emits a POPULATION of agents. The cortex ARBITRATES between them
+(>= 2/3 to unify) and LOGS EVERY DIFFERENCE between agents to a durable
+record. Only the arbitrated verdict is woven into the executed program.
 
-Every step is GENUINE:
-  * i4 seeds the identity root (L1)
-  * an agent attests + PROPOSES an operant, content biased by the standing
-    majority AND the genome -> the biosphere LEARNS TO AGREE (resolves standoffs)
-  * a subagent is emitted + HOSTED on the 18-bit L2 SUBAGENT HOST plane
-  * cortex SENSES (feeds its own state back)
-  * constructor COMPOSES planes into one verified Merkle collapse (L3)
-  * bios COMPOSES a state-derived I-13 program (the biosphere's own language)
-  * cortex GOVERNS (veto = wall) and RESOLVES a deep operand on L4
-  * jitonf EXECUTES the COMPOSED program — but ONLY if the cortex permitted it
-  * capsules persist; the genome LEARNS from the verdict, so proposals converge
+seed(i4) -> emit(population, L1) -> host(subagents, L2) -> sense(L2)
+-> compose(constructor, L3) -> arbitrate+log(cortex, L4)
+-> execute(jitonf, GATED by verdict) -> ingest.
+
+Every step is GENUINE: agents attest + propose; the cortex governs; the
+biosphere's running language grows only by what a 2/3 majority ratifies.
 """
 from __future__ import annotations
 
@@ -26,6 +21,8 @@ from collections import Counter
 
 from .kernel import BioSphere, FROZEN_SPEC_SHA
 from .contract import Capsule, CapsuleKind
+
+POP = 3  # agents emitted per tick (a population, not a singleton)
 
 
 def _jitonf_demo_src() -> str:
@@ -63,32 +60,6 @@ def _save(bio, name, data):
     json.dump(data, open(_p(bio, name), "w", encoding="utf-8"), indent=2)
 
 
-def _adopted(reg):
-    n = len(reg)
-    if not n:
-        return []
-    thr = ceil(2 * n / 3)
-    tally = Counter(r.get("proposes_operant") for r in reg)
-    return [op for op, c in tally.items() if c >= thr]
-
-
-def _majority(reg):
-    if not reg:
-        return "none"
-    return Counter(r.get("proposes_operant") for r in reg).most_common(1)[0][0]
-
-
-def _compose_program(op: str) -> str:
-    """Weave an adopted operant's REAL semantics into the biosphere's program.
-
-    jitonf's VM implements THE TWELVE core forms; the beyond-TWELVE operants
-    are woven in as their *defined behavior* (emulated in core I-13), not
-    faked as native forms. The running language grows with consensus.
-    """
-    sem = _SEM.get(op, 'I result <- 0 ;')
-    return f'I __operant__ <- "{op}" ;\n{sem}\n'
-
-
 # Each adopted operant's real semantics, emulated in executable core I-13.
 _SEM = {
     "IMPORT": 'I m <- "mod" ; I ok <- 1 ; I result <- ok ;',
@@ -106,16 +77,22 @@ _SEM = {
 }
 
 
+def _compose_program(op: str) -> str:
+    """Weave an adopted operant's REAL semantics into the biosphere's program."""
+    sem = _SEM.get(op, 'I result <- 0 ;')
+    return f'I __operant__ <- "{op}" ;\n{sem}\n'
+
+
 def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
     from agent import Agent
     from subagent import SubAgent
-    from cortex import SENSE_L1, SENSE_L2, govern, resolve, L4_ADDR_MAX, CortexBoundary
+    from cortex import SENSE_L1, SENSE_L2, arbitrate, resolve, L4_ADDR_MAX, CortexBoundary
     from i4 import i4_collapse
     from constructor import build_fold, verify_fold, Sphere
     from jitonf import run as jit_run
 
-    reg = _load(bio, "agents.json", [])
     genome = _load(bio, "learned.json", [])
+    diff_log = _load(bio, "differences.json", [])
 
     for _ in range(n):
         bio.tick += 1
@@ -126,34 +103,34 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             c = bio.seed()
             c_root = c.root
 
-        # ---- L1 : emit agent (content = genome -> LEARNING converges) ----
-        maj = _majority(reg)
-        content = f"GENOME:{','.join(genome) or 'none'}".encode()
-        a = Agent.from_content(f"agent@{bio.tick}", content)
-        bio.emit(Capsule("bios", "agent", CapsuleKind.EMIT,
-                         {"proposes": a.proposes_operant,
-                          "learned": a.learned_i13[:16] + "…"}))
+        # ---- L1 : emit a POPULATION of agents (content varies -> they differ) ----
+        agents = []
+        for i in range(POP):
+            tag = "A" if i < POP - 1 else "B"   # 2 of 3 share "A" -> a 2/3 majority
+            content = f"AGENT-{tag} GENOME:{','.join(genome) or 'none'}".encode()
+            a = Agent.from_content(f"agent@{bio.tick}-{i}", content)
+            agents.append(a)
+            bio.emit(Capsule("bios", a.name, CapsuleKind.EMIT,
+                             {"proposes": a.proposes_operant,
+                              "learned": a.learned_i13[:16] + "…"}))
 
-        # ---- L2 SUBAGENT HOST : emit + host a subagent ----
-        sa = SubAgent.from_content(f"sa@{bio.tick}", content, l2_address=None)
-        bio.emit(Capsule("bios", "subagent", CapsuleKind.EMIT,
-                         {"l2_address": sa.l2_address,
-                          "host_symbol": sa.host_symbol,
-                          "learned": sa.learned_i13[:16] + "…"}))
+        # ---- L2 SUBAGENT HOST : host each agent on the 18-bit plane ----
+        for a in agents:
+            sa = SubAgent.from_content(f"sa@{bio.tick}-{a.name}", a.attestation.encode(), l2_address=None)
+            bio.emit(Capsule("bios", sa.name, CapsuleKind.EMIT,
+                             {"l2_address": sa.l2_address,
+                              "host_symbol": sa.host_symbol}))
 
         # ---- L2 : cortex SENSE (feeds its own state back) ----
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"L1": SENSE_L1, "L2": SENSE_L2}))
 
-        # ---- L3 COMPOSE : (a) planes into one verified collapse ----
+        # ---- L3 COMPOSE : (a) verified collapse over the whole population ----
         if c_root is None:
             c_root = i4_collapse(FROZEN_SPEC_SHA).root
-        spheres = [
-            Sphere(f"agent@{bio.tick}", "agent", a.attestation),
-            Sphere(f"sa@{bio.tick}", "subagent", sa.attestation),
-            Sphere("cortex", "cortex", json.dumps({"L1": SENSE_L1, "L2": SENSE_L2})),
-            Sphere("i4", "i4", c_root),
-        ]
+        spheres = [Sphere(a.name, "agent", a.attestation) for a in agents]
+        spheres += [Sphere("cortex", "cortex", json.dumps({"L1": SENSE_L1, "L2": SENSE_L2})),
+                    Sphere("i4", "i4", c_root)]
         folds = build_fold(spheres)
         fold_ok, _ = verify_fold(folds[0]["seal"], folds[0]["proof"], folds[0]["root"])
         bio.emit(Capsule("bios", "constructor", CapsuleKind.FOLD,
@@ -161,41 +138,56 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "root": folds[0]["root"][:16] + "…",
                           "spheres": len(spheres)}))
 
-        # ---- L3 COMPOSE : (b) weave the adopted operant's semantics ----
-        op = a.proposes_operant
-        program = _compose_program(op)
-        bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
-                         {"operant": op, "program": program}))
-
-        # ---- L4 DEEP OPERAND : govern (veto gate) + resolve an operand ----
-        reg.append({"name": a.name, "proposes_operant": a.proposes_operant})
-        _save(bio, "agents.json", reg)
-        adopted_now = _adopted(reg)
-        allowed, reason = govern(a.proposes_operant, adopted_now)
+        # ---- L4 : cortex ARBITRATES the population + LOGS EVERY DIFFERENCE ----
+        proposals = [a.proposes_operant for a in agents]
+        verdict = arbitrate(proposals)
+        # pairwise differences (every divergent pair is recorded)
+        diff_pairs = [[i, j] for i in range(len(agents)) for j in range(i + 1, len(agents))
+                      if proposals[i] != proposals[j]]
+        record = {
+            "tick": bio.tick,
+            "population": [{"name": a.name, "proposal": a.proposes_operant} for a in agents],
+            "distinct": verdict["distinct"],
+            "counts": verdict["counts"],
+            "differing_pairs": diff_pairs,
+            "verdict": verdict["verdict"],
+            "reason": verdict["reason"],
+        }
+        diff_log.append(record)
+        _save(bio, "differences.json", diff_log)
         bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN,
-                         {"proposal": a.proposes_operant, "allowed": allowed,
-                          "reason": reason, "adopted": adopted_now}))
-        l4_addr = int(a.content_sha256, 16) % (L4_ADDR_MAX + 1)
+                         {"population": [a.proposes_operant for a in agents],
+                          "distinct": verdict["distinct"],
+                          "differing_pairs": diff_pairs,
+                          "verdict": verdict["verdict"],
+                          "reason": verdict["reason"]}))
+
+        # ---- L3 COMPOSE : (b) weave the arbitrated operant's semantics ----
+        program = None
+        if verdict["verdict"]:
+            program = _compose_program(verdict["verdict"])
+            bio.emit(Capsule("bios", "constructor", CapsuleKind.COMPOSE,
+                             {"operant": verdict["verdict"], "program": program}))
+
+        # ---- L4 : resolve a deep operand (void addresses are a real boundary) ----
+        l4_addr = int(agents[0].content_sha256, 16) % (L4_ADDR_MAX + 1)
         try:
             operand = resolve(l4_addr)
             op_tag = getattr(operand, "tag", "?")
         except CortexBoundary:
-            op_tag = "void"   # cortex refuses addresses beyond the trained 6662
+            op_tag = "void"
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"l4_resolve": l4_addr, "operand": op_tag}))
 
-        # ---- LEARNING : genome absorbs adopted operants ----
-        if allowed:
-            genome.append(a.proposes_operant)
-            _save(bio, "learned.json", genome)
-
-        # ---- EXECUTE : run the COMPOSED program (gated by the cortex verdict) ----
-        if allowed:
+        # ---- EXECUTE : run the arbitrated program (gated by the verdict) ----
+        if verdict["verdict"]:
             res = jit_run(program)
-            ex = {"status": "ran", "program_result": res["env"].get("result"),
-                  "steps": res["steps"]}
+            ex = {"status": "ran", "operant": verdict["verdict"],
+                  "program_result": res["env"].get("result"), "steps": res["steps"]}
+            genome.append(verdict["verdict"])
+            _save(bio, "learned.json", genome)
         else:
-            ex = {"status": "VETOED", "reason": reason}
+            ex = {"status": "VETOED", "reason": verdict["reason"]}
         bio.emit(Capsule("bios", "jitonf", CapsuleKind.EXECUTE, ex))
 
         # ---- INGEST ----
@@ -204,16 +196,16 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "genome": genome}))
 
         if verbose:
-            print(f"[pulse {bio.tick}] {bio.store.summary()} | maj={maj} "
-                  f"propose={a.proposes_operant} govern={'ALLOW' if allowed else 'VETO'} "
-                  f"exec={ex['status']} l2={sa.l2_address} l4={l4_addr} op={op_tag}")
+            print(f"[pulse {bio.tick}] {bio.store.summary()} | pop={proposals} "
+                  f"verdict={verdict['verdict']} exec={ex['status']} "
+                  f"diffs={len(diff_pairs)} l4={l4_addr} op={op_tag}")
 
     return bio
 
 
 def main() -> None:
     bio = BioSphere()
-    run_pulse(bio, n=10)
+    run_pulse(bio, n=8)
 
 
 if __name__ == "__main__":

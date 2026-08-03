@@ -1,11 +1,10 @@
 {
   "sender": "bios",
-  "receiver": "subagent",
+  "receiver": "sa@7-agent@7-2",
   "kind": "emit",
   "payload": {
-    "l2_address": 209630,
-    "host_symbol": "NAME",
-    "learned": "64881ebf502b87bb\u2026"
+    "l2_address": 92464,
+    "host_symbol": "H17"
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"

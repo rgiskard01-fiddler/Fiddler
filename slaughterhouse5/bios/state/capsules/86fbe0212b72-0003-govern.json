@@ -3,12 +3,27 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "YIELD",
-    "allowed": true,
-    "reason": "adopted by >= 2/3 consensus",
-    "adopted": [
-      "YIELD"
-    ]
+    "population": [
+      "CAST",
+      "CAST",
+      "AWAIT"
+    ],
+    "distinct": [
+      "AWAIT",
+      "CAST"
+    ],
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "CAST",
+    "reason": "CAST adopted by >=2/3 (2/3)"
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

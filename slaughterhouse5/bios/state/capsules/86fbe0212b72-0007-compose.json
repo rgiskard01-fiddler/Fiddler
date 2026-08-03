@@ -3,8 +3,8 @@
   "receiver": "constructor",
   "kind": "compose",
   "payload": {
-    "operant": "SPAWN",
-    "program": "I __operant__ <- \"SPAWN\" ;\nI p1 <- 3 + 4 ; I p2 <- 5 + 5 ; I result <- p1 + p2 ;\n"
+    "operant": "CAST",
+    "program": "I __operant__ <- \"CAST\" ;\nI n <- 7 ; I c <- n ; I result <- c ;\n"
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"

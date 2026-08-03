@@ -4,9 +4,9 @@
   "kind": "ingest",
   "payload": {
     "tick": 1,
-    "memory": "ticks=1 capsules=9",
+    "memory": "ticks=1 capsules=13",
     "genome": [
-      "IMPORT"
+      "YIELD"
     ]
   },
   "tick": 1,

@@ -3,8 +3,8 @@
   "receiver": "constructor",
   "kind": "compose",
   "payload": {
-    "operant": "YIELD",
-    "program": "I __operant__ <- \"YIELD\" ;\nI state <- 0 ; I y <- state + 1 ; I result <- y ;\n"
+    "operant": "CAST",
+    "program": "I __operant__ <- \"CAST\" ;\nI n <- 7 ; I c <- n ; I result <- c ;\n"
   },
   "tick": 3,
   "trace_id": "86fbe0212b72"

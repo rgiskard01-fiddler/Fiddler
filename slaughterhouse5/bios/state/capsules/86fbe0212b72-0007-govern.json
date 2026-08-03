@@ -3,10 +3,27 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "SPAWN",
-    "allowed": false,
-    "reason": "veto: 'SPAWN' is neither a core form nor adopted",
-    "adopted": []
+    "population": [
+      "CAST",
+      "CAST",
+      "TRY"
+    ],
+    "distinct": [
+      "CAST",
+      "TRY"
+    ],
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "CAST",
+    "reason": "CAST adopted by >=2/3 (2/3)"
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"

@@ -3,8 +3,8 @@
   "receiver": "cortex",
   "kind": "sense",
   "payload": {
-    "l4_resolve": 4830,
-    "operand": "DOP-93074f62"
+    "l4_resolve": 695,
+    "operand": "DOP-b2cb0d52"
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"

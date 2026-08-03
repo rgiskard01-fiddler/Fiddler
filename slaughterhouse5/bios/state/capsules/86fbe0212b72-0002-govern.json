@@ -3,10 +3,27 @@
   "receiver": "cortex",
   "kind": "govern",
   "payload": {
-    "proposal": "YIELD",
-    "allowed": false,
-    "reason": "veto: 'YIELD' is neither a core form nor adopted",
-    "adopted": []
+    "population": [
+      "ASSERT",
+      "ASSERT",
+      "MATCH"
+    ],
+    "distinct": [
+      "ASSERT",
+      "MATCH"
+    ],
+    "differing_pairs": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "verdict": "ASSERT",
+    "reason": "ASSERT adopted by >=2/3 (2/3)"
   },
   "tick": 2,
   "trace_id": "86fbe0212b72"
