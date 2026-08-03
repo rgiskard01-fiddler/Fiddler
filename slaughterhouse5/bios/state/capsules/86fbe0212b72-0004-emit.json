@@ -11,7 +11,7 @@
       "garden",
       "recall"
     ],
-    "curiosity": 0.65,
+    "curiosity": 0.56,
     "retention": 7
   },
   "tick": 4,

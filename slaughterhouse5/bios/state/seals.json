@@ -1,0 +1,70 @@
+{
+  "kernel_seal": {
+    "name": "kernel_seal",
+    "files": [
+      "kernel.py",
+      "../cortex/zones.py"
+    ],
+    "hashes": {
+      "kernel.py": "47e1c88da4946ae2ecd72075f0985cac877f1d422efc2cc1696e349648ffeaf8",
+      "../cortex/zones.py": "ebeb5a7fae388c73a033f4993c3a8bfea6703240fefb332a4e7076fe9cf82088"
+    },
+    "sealed_at": 1785781795.8829193,
+    "predicate": "_pred_kernel_seal"
+  },
+  "honeycomb": {
+    "name": "honeycomb",
+    "files": [
+      "dashboard.py"
+    ],
+    "hashes": {
+      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+    },
+    "sealed_at": 1785781795.8924425,
+    "predicate": "_pred_honeycomb"
+  },
+  "governance_tab": {
+    "name": "governance_tab",
+    "files": [
+      "dashboard.py"
+    ],
+    "hashes": {
+      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+    },
+    "sealed_at": 1785781795.898975,
+    "predicate": "_pred_governance_tab"
+  },
+  "spinor_favicon": {
+    "name": "spinor_favicon",
+    "files": [
+      "dashboard.py"
+    ],
+    "hashes": {
+      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+    },
+    "sealed_at": 1785781795.9201064,
+    "predicate": "_pred_spinor"
+  },
+  "house_windows": {
+    "name": "house_windows",
+    "files": [
+      "dashboard.py"
+    ],
+    "hashes": {
+      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+    },
+    "sealed_at": 1785781795.929729,
+    "predicate": "_pred_house"
+  },
+  "sse_stream": {
+    "name": "sse_stream",
+    "files": [
+      "dashboard.py"
+    ],
+    "hashes": {
+      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+    },
+    "sealed_at": 1785781795.9408047,
+    "predicate": "_pred_sse"
+  }
+}

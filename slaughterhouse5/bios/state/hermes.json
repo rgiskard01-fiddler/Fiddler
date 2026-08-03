@@ -8,63 +8,13 @@
   "retention": [
     {
       "event": "propose",
-      "operant": "ASSERT"
+      "operant": "IMPORT"
     },
     {
       "event": "probe",
       "l4": 7988,
       "tag": "void",
       "weight": null
-    },
-    {
-      "event": "propose",
-      "operant": "INDEX"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
     },
     {
       "event": "propose",
@@ -78,7 +28,7 @@
     },
     {
       "event": "propose",
-      "operant": "AWAIT"
+      "operant": "ASSERT"
     },
     {
       "event": "probe",
@@ -88,7 +38,27 @@
     },
     {
       "event": "propose",
-      "operant": "LOOP"
+      "operant": "ASSERT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "SLICE"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "TRY"
     },
     {
       "event": "probe",
@@ -107,6 +77,6 @@
       "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.9200000000000004,
+  "curiosity": 0.6500000000000001,
   "proposed": "ASSERT"
 }

@@ -10,10 +10,10 @@
       "LAMBDA",
       "LAMBDA",
       "TRY",
-      "ASSERT"
+      "IMPORT"
     ],
     "distinct": [
-      "ASSERT",
+      "IMPORT",
       "INDEX",
       "LAMBDA",
       "TRY"

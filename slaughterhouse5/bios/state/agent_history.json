@@ -57,30 +57,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 8,
-"proposed": "ASSERT",
-"fitness": 7,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 9,
-"proposed": "ASSERT",
-"fitness": 8,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 10,
-"proposed": "ASSERT",
-"fitness": 9,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -139,30 +115,6 @@
 "tick": 7,
 "proposed": "ASSERT",
 "fitness": 6,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 8,
-"proposed": "ASSERT",
-"fitness": 7,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 9,
-"proposed": "ASSERT",
-"fitness": 8,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 10,
-"proposed": "ASSERT",
-"fitness": 9,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -227,30 +179,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 8,
-"proposed": "ASSERT",
-"fitness": 7,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 9,
-"proposed": "ASSERT",
-"fitness": 8,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 10,
-"proposed": "ASSERT",
-"fitness": 9,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -309,30 +237,6 @@
 "tick": 7,
 "proposed": "ASSERT",
 "fitness": 6,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 8,
-"proposed": "ASSERT",
-"fitness": 7,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 9,
-"proposed": "ASSERT",
-"fitness": 8,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 10,
-"proposed": "ASSERT",
-"fitness": 9,
 "gen": 1,
 "taught": false,
 "selected": true
@@ -397,30 +301,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 8,
-"proposed": "ASSERT",
-"fitness": 7,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 9,
-"proposed": "ASSERT",
-"fitness": 8,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 10,
-"proposed": "ASSERT",
-"fitness": 9,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -482,30 +362,6 @@
 "gen": 1,
 "taught": false,
 "selected": true
-},
-{
-"tick": 8,
-"proposed": "ASSERT",
-"fitness": 7,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 9,
-"proposed": "ASSERT",
-"fitness": 8,
-"gen": 1,
-"taught": false,
-"selected": true
-},
-{
-"tick": 10,
-"proposed": "ASSERT",
-"fitness": 9,
-"gen": 1,
-"taught": false,
-"selected": true
 }
 ]
 },
@@ -514,7 +370,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "ASSERT",
+"proposed": "IMPORT",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -522,7 +378,7 @@
 },
 {
 "tick": 2,
-"proposed": "INDEX",
+"proposed": "SPAWN",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -530,11 +386,11 @@
 },
 {
 "tick": 3,
-"proposed": "TRY",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
+"proposed": "ASSERT",
+"fitness": 1,
+"gen": 0,
+"taught": false,
+"selected": true
 },
 {
 "tick": 4,
@@ -546,7 +402,7 @@
 },
 {
 "tick": 5,
-"proposed": "TRY",
+"proposed": "SLICE",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -554,38 +410,14 @@
 },
 {
 "tick": 6,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
+"proposed": "TRY",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
 },
 {
 "tick": 7,
-"proposed": "SPAWN",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
-},
-{
-"tick": 8,
-"proposed": "AWAIT",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
-},
-{
-"tick": 9,
-"proposed": "LOOP",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
-},
-{
-"tick": 10,
 "proposed": "ASSERT",
 "fitness": 1,
 "gen": 0,

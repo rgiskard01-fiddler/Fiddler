@@ -4,7 +4,7 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "ASSERT",
+    "proposes": "TRY",
     "skills": [
       "propose",
       "probe",

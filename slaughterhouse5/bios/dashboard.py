@@ -47,6 +47,21 @@ except Exception:
     THREE_JS = ""  # degraded: 3D canvas will show a clear error in-console
 
 
+def seal_working_units():
+    """On boot, seal any verified-working unit that isn't already SEALED. A fresh
+    clone has no seals.json, so this makes the Seals view show SEALED out of the box
+    without committing runtime state. Re-running is idempotent (skips already-sealed
+    units). Called at module-bottom, after HTML/SPINOR_SVG exist, so the predicates
+    that read dashboard.HTML can run."""
+    try:
+        from . import seal as _seal
+        for _nm in _seal.REGISTRY:
+            if _seal.verify_seal(_nm)["state"] != "SEALED":
+                _seal.seal(_nm)
+    except Exception:
+        pass
+
+
 def _load(name, default=None):
     p = os.path.join(STATE, name)
     if os.path.isfile(p):
@@ -800,3 +815,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+else:
+    # boot auto-seal (HTML/SPINOR_SVG now defined): verify + freeze working units
+    seal_working_units()
