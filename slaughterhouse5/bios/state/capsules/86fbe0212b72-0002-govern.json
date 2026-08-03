@@ -10,11 +10,11 @@
       "ASSERT",
       "ASSERT",
       "ASSERT",
-      "AWAIT"
+      "YIELD"
     ],
     "distinct": [
       "ASSERT",
-      "AWAIT"
+      "YIELD"
     ],
     "differing_pairs": [
       [

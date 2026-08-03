@@ -226,7 +226,7 @@
 "events": [
 {
 "tick": 1,
-"proposed": "INDEX",
+"proposed": "MATCH",
 "fitness": 0,
 "gen": 1,
 "taught": null,
@@ -234,7 +234,7 @@
 },
 {
 "tick": 2,
-"proposed": "AWAIT",
+"proposed": "YIELD",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -242,7 +242,7 @@
 },
 {
 "tick": 3,
-"proposed": "IMPORT",
+"proposed": "SPAWN",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -250,11 +250,11 @@
 },
 {
 "tick": 4,
-"proposed": "AWAIT",
-"fitness": 0,
-"gen": 1,
-"taught": true,
-"selected": false
+"proposed": "ASSERT",
+"fitness": 1,
+"gen": 0,
+"taught": false,
+"selected": true
 }
 ]
 }

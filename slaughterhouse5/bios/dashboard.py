@@ -134,14 +134,15 @@ def agent_dossier(name):
 
 
 HTML = r"""<!doctype html><html><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
 <title>Slaughterhouse5 — Biosphere Console</title>
 <style>
   :root{--bg:#05070c;--panel:#0c1320;--edge:#1c2940;--fg:#e3ecff;--mut:#8298c6;
         --acc:#3af0cf;--warn:#ff6b6b;--gold:#ffd166;--blue:#62a9ff;--teal:#3af0cf}
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
-            font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow:hidden}
-  #app{display:grid;grid-template-rows:48px 1fr 30px;height:100%}
+  html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);
+            font:13px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  #app{display:grid;grid-template-rows:48px 1fr 30px;height:100vh;min-height:100vh}
   header{display:flex;align-items:center;gap:12px;padding:0 16px;border-bottom:1px solid var(--edge);
          background:linear-gradient(90deg,#0a1120,#0c1320)}
   h1{font-size:15px;margin:0;color:var(--acc);letter-spacing:2px}
@@ -180,7 +181,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   .hextx.m{fill:#8298c6;font:10px ui-monospace,monospace}
   /* house-style windows */
   #houses{position:fixed;inset:0;pointer-events:none;z-index:50}
-  .house{position:absolute;width:540px;max-width:94vw;background:linear-gradient(180deg,#0c1320,#0a0f1a);
+  .house{position:fixed;width:540px;max-width:94vw;background:linear-gradient(180deg,#0c1320,#0a0f1a);
          border:1px solid var(--edge);border-radius:10px;box-shadow:0 18px 55px rgba(0,0,0,.65);
          pointer-events:auto;display:flex;flex-direction:column;overflow:hidden}
   .house.max{width:92vw;height:82vh}
@@ -376,10 +377,19 @@ function openHouse(node){
   document.getElementById('houses').appendChild(win);
   win.style.zIndex=++zTop;
   const bar=win.querySelector('.house-bar');
-  let dg=false,ox=0,oy=0;
-  bar.addEventListener('mousedown',e=>{if(e.target.classList.contains('hb'))return;dg=true;ox=e.clientX-win.offsetLeft;oy=e.clientY-win.offsetTop;win.style.zIndex=++zTop;});
-  addEventListener('mousemove',e=>{if(dg){win.style.left=(e.clientX-ox)+'px';win.style.top=(e.clientY-oy)+'px';}});
-  addEventListener('mouseup',()=>dg=false);
+  // standard pointer-capture drag (works in all directions; webpage-first)
+  bar.addEventListener('pointerdown',e=>{
+    if(e.target.classList.contains('hb')) return;
+    e.preventDefault();
+    win.style.zIndex=++zTop;
+    const sx=e.clientX, sy=e.clientY, ox=win.offsetLeft, oy=win.offsetTop;
+    bar.setPointerCapture(e.pointerId);
+    bar.style.cursor='grabbing';
+    const mv=ev=>{ win.style.left=(ox+ev.clientX-sx)+'px'; win.style.top=(oy+ev.clientY-sy)+'px'; };
+    const up2=ev=>{ bar.releasePointerCapture(e.pointerId); bar.style.cursor='move';
+      bar.removeEventListener('pointermove',mv); bar.removeEventListener('pointerup',up2); };
+    bar.addEventListener('pointermove',mv); bar.addEventListener('pointerup',up2);
+  });
   win.querySelector('.close').onclick=()=>closeHouse(node.name);
   win.querySelector('.min').onclick=()=>{const b=win.querySelector('.house-body');b.style.display=b.style.display==='none'?'flex':'none';};
   win.querySelector('.max').onclick=()=>win.classList.toggle('max');

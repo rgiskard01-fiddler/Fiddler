@@ -10,11 +10,12 @@
       "LAMBDA",
       "LAMBDA",
       "TRY",
-      "INDEX"
+      "MATCH"
     ],
     "distinct": [
       "INDEX",
       "LAMBDA",
+      "MATCH",
       "TRY"
     ],
     "differing_pairs": [
@@ -31,6 +32,10 @@
         5
       ],
       [
+        0,
+        6
+      ],
+      [
         1,
         3
       ],
@@ -43,6 +48,10 @@
         5
       ],
       [
+        1,
+        6
+      ],
+      [
         2,
         3
       ],
@@ -53,6 +62,10 @@
       [
         2,
         5
+      ],
+      [
+        2,
+        6
       ],
       [
         3,
@@ -77,7 +90,7 @@
     ],
     "taught": [],
     "verdict": null,
-    "reason": "no operant reached 2/3 (max 4/7)"
+    "reason": "no operant reached 2/3 (max 3/7)"
   },
   "tick": 1,
   "trace_id": "86fbe0212b72"
