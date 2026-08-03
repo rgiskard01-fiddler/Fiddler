@@ -186,18 +186,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "SPAWN",
+        "proposal": "IMPORT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "SPAWN"
+      "IMPORT"
     ],
     "counts": {
       "ASSERT": 6,
-      "SPAWN": 1
+      "IMPORT": 1
     },
     "differing_pairs": [
       [
@@ -279,21 +279,50 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "ASSERT",
+        "proposal": "AWAIT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
-      "ASSERT"
+      "ASSERT",
+      "AWAIT"
     ],
     "counts": {
-      "ASSERT": 7
+      "ASSERT": 6,
+      "AWAIT": 1
     },
-    "differing_pairs": [],
-    "taught": [],
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
     "verdict": "ASSERT",
-    "reason": "ASSERT adopted by >=2/3 (7/7)"
+    "reason": "ASSERT adopted by >=2/3 (6/7)"
   },
   {
     "tick": 4,
@@ -407,18 +436,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "SLICE",
+        "proposal": "IMPORT",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "SLICE"
+      "IMPORT"
     ],
     "counts": {
       "ASSERT": 6,
-      "SLICE": 1
+      "IMPORT": 1
     },
     "differing_pairs": [
       [
@@ -500,18 +529,18 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "TRY",
+        "proposal": "INDEX",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
       "ASSERT",
-      "TRY"
+      "INDEX"
     ],
     "counts": {
       "ASSERT": 6,
-      "TRY": 1
+      "INDEX": 1
     },
     "differing_pairs": [
       [
@@ -593,20 +622,49 @@
       {
         "name": "hermes",
         "plane": "H",
-        "proposal": "ASSERT",
+        "proposal": "CAST",
         "fitness": 0,
         "gen": 0
       }
     ],
     "distinct": [
-      "ASSERT"
+      "ASSERT",
+      "CAST"
     ],
     "counts": {
-      "ASSERT": 7
+      "ASSERT": 6,
+      "CAST": 1
     },
-    "differing_pairs": [],
-    "taught": [],
+    "differing_pairs": [
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        5,
+        6
+      ]
+    ],
+    "taught": [
+      "hermes"
+    ],
     "verdict": "ASSERT",
-    "reason": "ASSERT adopted by >=2/3 (7/7)"
+    "reason": "ASSERT adopted by >=2/3 (6/7)"
   }
 ]

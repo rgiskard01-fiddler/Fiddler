@@ -378,7 +378,7 @@
 },
 {
 "tick": 2,
-"proposed": "SPAWN",
+"proposed": "IMPORT",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -386,11 +386,11 @@
 },
 {
 "tick": 3,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
+"proposed": "AWAIT",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
 },
 {
 "tick": 4,
@@ -402,7 +402,7 @@
 },
 {
 "tick": 5,
-"proposed": "SLICE",
+"proposed": "IMPORT",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -410,7 +410,7 @@
 },
 {
 "tick": 6,
-"proposed": "TRY",
+"proposed": "INDEX",
 "fitness": 0,
 "gen": 1,
 "taught": true,
@@ -418,11 +418,11 @@
 },
 {
 "tick": 7,
-"proposed": "ASSERT",
-"fitness": 1,
-"gen": 0,
-"taught": false,
-"selected": true
+"proposed": "CAST",
+"fitness": 0,
+"gen": 1,
+"taught": true,
+"selected": false
 }
 ]
 }

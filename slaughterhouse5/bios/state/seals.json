@@ -9,7 +9,7 @@
       "kernel.py": "47e1c88da4946ae2ecd72075f0985cac877f1d422efc2cc1696e349648ffeaf8",
       "../cortex/zones.py": "ebeb5a7fae388c73a033f4993c3a8bfea6703240fefb332a4e7076fe9cf82088"
     },
-    "sealed_at": 1785781795.8829193,
+    "sealed_at": 1785783133.0196898,
     "predicate": "_pred_kernel_seal"
   },
   "honeycomb": {
@@ -18,9 +18,9 @@
       "dashboard.py"
     ],
     "hashes": {
-      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+      "dashboard.py": "3c6078aed7ce0668d37094b4f24a77ceb2ba65d4e05cab119bd0d87962330940"
     },
-    "sealed_at": 1785781795.8924425,
+    "sealed_at": 1785783133.0304077,
     "predicate": "_pred_honeycomb"
   },
   "governance_tab": {
@@ -29,9 +29,9 @@
       "dashboard.py"
     ],
     "hashes": {
-      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+      "dashboard.py": "3c6078aed7ce0668d37094b4f24a77ceb2ba65d4e05cab119bd0d87962330940"
     },
-    "sealed_at": 1785781795.898975,
+    "sealed_at": 1785783133.0413816,
     "predicate": "_pred_governance_tab"
   },
   "spinor_favicon": {
@@ -40,9 +40,9 @@
       "dashboard.py"
     ],
     "hashes": {
-      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+      "dashboard.py": "3c6078aed7ce0668d37094b4f24a77ceb2ba65d4e05cab119bd0d87962330940"
     },
-    "sealed_at": 1785781795.9201064,
+    "sealed_at": 1785783133.060882,
     "predicate": "_pred_spinor"
   },
   "house_windows": {
@@ -51,9 +51,9 @@
       "dashboard.py"
     ],
     "hashes": {
-      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+      "dashboard.py": "3c6078aed7ce0668d37094b4f24a77ceb2ba65d4e05cab119bd0d87962330940"
     },
-    "sealed_at": 1785781795.929729,
+    "sealed_at": 1785783133.0719607,
     "predicate": "_pred_house"
   },
   "sse_stream": {
@@ -62,9 +62,9 @@
       "dashboard.py"
     ],
     "hashes": {
-      "dashboard.py": "3534bce4af428328f400282a4e2211e5072177e66e58fae293e6de8da9062dba"
+      "dashboard.py": "3c6078aed7ce0668d37094b4f24a77ceb2ba65d4e05cab119bd0d87962330940"
     },
-    "sealed_at": 1785781795.9408047,
+    "sealed_at": 1785783133.0873384,
     "predicate": "_pred_sse"
   }
 }

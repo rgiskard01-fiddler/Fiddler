@@ -223,6 +223,11 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
   .hexpoly{cursor:grab}
   .hexpoly.drag{cursor:grabbing}
   .hexpoly.locked{stroke:#ffd166;fill:#3a2f12}
+  .hexpoly.snapped{filter:drop-shadow(0 0 7px var(--neon));stroke-width:2.6}
+  .hexpoly.solo{stroke-width:3.8;filter:drop-shadow(0 0 13px var(--neon))}
+  .hexpoly.composite{fill:#13233a;filter:drop-shadow(0 0 14px var(--gold))}
+  .pk{color:var(--mut);cursor:pointer;margin-left:6px}
+  .pk:hover{color:var(--acc)}
   /* slide-in toolsuite */
   #toolbtn{position:absolute;top:12px;right:12px;z-index:20;background:#13233a;color:var(--acc);
            border:1px solid var(--acc);border-radius:8px;padding:7px 14px;cursor:pointer;font:12px ui-monospace,monospace}
@@ -254,7 +259,7 @@ HTML = r"""<!doctype html><html><head><meta charset=utf-8>
     <div id=hexwrap><svg id=hex xmlns="http://www.w3.org/2000/svg"></svg></div>
   </div>
   <div id=toolbtn onclick="document.getElementById('suite').classList.toggle('open')">☰ Toolsuite</div>
-  <div id=hint>drag hexes to arrange · CORTEX locked center · click hex → house window (w1–w5) · <span style=cursor:pointer;color:var(--acc) onclick=fitHex()>[fit]</span></div>
+  <div id=hint>drag hexes to arrange (they <b>magnetise</b> near the cluster) · CORTEX locked center · click hex → house window (w1–w5) · <span style=cursor:pointer;color:var(--acc) onclick=fitHex()>[fit]</span> · <span class=pk onclick=soloAll()>solo all</span> · <span class=pk onclick=mergeAll()>stack all</span> · <span class=pk onclick=clearModes()>reset</span> · right-click = stack · dbl-click = solo</div>
   <div id=suite>
     <span class=close onclick="document.getElementById('suite').classList.remove('open')">✕</span>
     <div class=tabs>
@@ -319,8 +324,11 @@ function buildNodes(S){
   return nodes;
 }
 // ---------- honeycomb ----------
-const hexPos={};   // name -> {x,y}
+const hexPos={};   // name -> {x,y}   (manual drag override; persists across ticks)
 const polyById={}; // name -> polygon element (for live drag)
+const MAG=34;      // magnetic snap radius (px in viewBox units) — drag near the slot and it clicks in
+const soloSet=new Set();          // SOLO mode: only these names render (each alone)
+const compositeSet=new Set();     // STACK mode: these names collapse into one draggable composite hex
 function hexPts(cx,cy,R){let s='';for(let k=0;k<6;k++){const a=Math.PI/180*(60*k);s+=(cx+R*Math.cos(a)).toFixed(1)+','+(cy+R*Math.sin(a)).toFixed(1)+' ';}return s.trim();}
 // axial hex spiral -> nearest neighbours touch (true honeycomb lock)
 function honeycombSpiral(n){
@@ -344,42 +352,88 @@ function drawHex(nodes){
   while(svg.firstChild) svg.removeChild(svg.firstChild);
   const cx=W/2, cy=H/2;
   if(nodes.length===0) return;
-  // STABLE ordering: CORTEX locked at centre; the rest sorted by name. The lattice is
-  // recomputed EVERY draw from this fixed order, so it LOCKS on every tick no matter
-  // who reseeds the population (previously the lattice was computed once and stale
-  // names fell back to (cx,cy), stacking on CORTEX and vanishing).
-  const others=nodes.filter(n=>n.name!=='CORTEX').sort((a,b)=>a.name<b.name?-1:1);
+  // ---- SOLO / STACK mode handling ----
+  // SOLO: only the named nodes render, each parked ALONE (off the lattice) so you can
+  //       inspect one module without the swarm. STACK: named nodes collapse into a
+  //       single draggable composite hex (multi-plane module you can move as one).
+  let solo=nodes.filter(n=>soloSet.size===0 || soloSet.has(n.name));
+  const comp=solo.filter(n=>compositeSet.has(n.name));
+  const soloNames=comp.map(n=>n.name);
+  const compKey=soloNames.slice().sort().join('|');
+  solo=solo.filter(n=>!compositeSet.has(n.name)); // composites removed from the per-node pass
+  // ---- stable lattice for the NON-composite, NON-solo nodes ----
+  const others=solo.filter(n=>n.name!=='CORTEX'&&!compositeSet.has(n.name)).sort((a,b)=>a.name<b.name?-1:1);
   const cells=honeycombSpiral(others.length+1).slice(1); // centre cell dropped
   const dx=R*1.5, dy=R*Math.sqrt(3);
-  nodes.forEach(n=>{
+  // composite slot = near cortex but offset; solo nodes park at the RIGHT margin, alone
+  const compPos=hexPos["__comp__"]||{x:cx, y:cy-150};
+  function place(n){
     let base;
     if(n.name==='CORTEX') base={x:cx,y:cy,locked:true};
-    else{ const idx=others.findIndex(o=>o.name===n.name); const [q,r]=cells[idx];
-          base={x:cx+q*dx, y:cy+r*dy + q*dy/2}; }
-    // manual drag override (persists across ticks); otherwise the locked lattice.
-    let p=hexPos[n.name]||base; if(!hexPos[n.name]) hexPos[n.name]=p;
-    if(base.locked){ p.x=cx; p.y=cy; p.locked=true; } // cortex re-locked every draw
-    if(n.name==='CORTEX') n.metric='★ center';
+    else if(compositeSet.has(n.name)&&compKey) base={x:compPos.x,y:compPos.y,composite:true};
+    else if(soloSet.size>0){
+      if(soloSet.has(n.name)){
+        // park EACH soloed node alone in its own evenly-spaced column (no swarm)
+        const arr=Array.from(soloSet).sort(); const i=arr.indexOf(n.name);
+        const cols=arr.length; const gap=Math.min(140, (W-120)/Math.max(1,cols));
+        base={x:70 + i*gap, y:cy, solo:true};
+      } else base={x:cx, y:cy};
+    } // solo parks right, alone
+    else { const idx=others.findIndex(o=>o.name===n.name); const [q,r]=cells[idx];
+           base={x:cx+q*dx, y:cy+r*dy + q*dy/2}; }
+    return base;
+  }
+  function makeHex(n, pos, opts){
+    opts=opts||{};
     const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
-    poly.setAttribute('points',hexPts(p.x,p.y,R));
-    poly.setAttribute('class','hexpoly'+(base.locked?' locked':''));
-    poly.style.stroke=n.color;
-    poly.style.setProperty('--neon', n.color);
+    poly.setAttribute('points',hexPts(pos.x,pos.y,R));
+    let cls='hexpoly';
+    if(pos.locked) cls+=' locked';
+    if(opts.composite) cls+=' composite';
+    if(opts.solo) cls+=' solo';
+    if(opts.snapped) cls+=' snapped';
+    poly.setAttribute('class',cls);
+    poly.style.stroke=opts.color||n.color;
+    poly.style.setProperty('--neon', opts.color||n.color);
     poly.style.animation='hexpulse 2.4s ease-in-out infinite';
-    poly.addEventListener('mousedown',e=>startHexDrag(e,n,p));
-    poly.addEventListener('click',e=>{if(!p._moved)openHouse(n);});
+    poly.addEventListener('mousedown',e=>startHexDrag(e,n,pos,soloNames.length?{name:compKey,color:'#ffd166'}:null));
+    poly.addEventListener('click',e=>{if(!pos._moved){ if(opts.composite) openComposite(soloNames,pos); else openHouse(n); }});
+    // right-click toggles STACK membership; double-click solos this one module
+    poly.addEventListener('contextmenu',e=>{ e.preventDefault(); toggleStack(n.name); });
+    poly.addEventListener('dblclick',e=>{ e.preventDefault(); toggleSolo(n.name); });
     svg.appendChild(poly);
     const t1=document.createElementNS('http://www.w3.org/2000/svg','text');
-    t1.setAttribute('x',p.x); t1.setAttribute('y',p.y-2); t1.setAttribute('class','hextx'); t1.textContent=n.name;
+    t1.setAttribute('x',pos.x); t1.setAttribute('y',pos.y-2); t1.setAttribute('class','hextx'); t1.textContent=opts.label||n.name;
     svg.appendChild(t1);
     const t2=document.createElementNS('http://www.w3.org/2000/svg','text');
-    t2.setAttribute('x',p.x); t2.setAttribute('y',p.y+12); t2.setAttribute('class','hextx m'); t2.textContent=n.metric||'';
+    t2.setAttribute('x',pos.x); t2.setAttribute('y',pos.y+12); t2.setAttribute('class','hextx m');
+    t2.textContent=opts.metric||n.metric||'';
     svg.appendChild(t2);
-    polyById[n.name]=poly; p._t1=t1; p._t2=t2;
+    if(!opts.composite&&!pos.locked){ polyById[n.name]=poly; }
+    else if(opts.composite){ polyById[compKey]=poly; } // composite drags as one
+    return {poly,t1,t2};
+  }
+  // 1) composite hex (one draggable stack)
+  if(comp.length){
+    const ids=comp.map(n=>n.name);
+    const fits=comp.map(n=>n._fit||0); const avg=(fits.reduce((a,b)=>a+b,0)/Math.max(1,fits.length)).toFixed(2);
+    const pos=hexPos["__comp__"]||compPos; pos.composite=true;
+    makeHex({name:compKey,color:'#ffd166',metric:'stack '+comp.length+' · fit '+avg}, pos,
+            {composite:true, color:'#ffd166', label:'STACK {'+comp.length+'}', metric:'fit '+avg});
+  }
+  // 2) normal + solo nodes
+  solo.forEach(n=>{
+    let base=place(n);
+    let p=hexPos[n.name]||base; if(!hexPos[n.name]) hexPos[n.name]=p;
+    if(base.locked){ p.x=cx; p.y=cy; p.locked=true; }
+    if(n.name==='CORTEX') n.metric='★ center';
+    const opts={snapped:!!n._snapped};
+    if(base.solo) opts.solo=true;
+    makeHex(n, p, opts);
   });
 }
-function fitHex(){ for(const k in hexPos) delete hexPos[k]; drawHex(buildNodes(lastStatic)); }
-function startHexDrag(e,n,p){
+function fitHex(){ for(const k in hexPos) delete hexPos[k]; soloSet.clear(); compositeSet.clear(); drawHex(buildNodes(lastStatic)); }
+function startHexDrag(e,n,p,stack){
   if(p.locked) return;
   e.preventDefault(); e.stopPropagation();
   const svg=document.getElementById('hex');
@@ -387,18 +441,28 @@ function startHexDrag(e,n,p){
   const sx=r.width/svg.viewBox.baseVal.width, sy=r.height/svg.viewBox.baseVal.height;
   const ox=p.x - (e.clientX-r.left)/sx, oy=p.y - (e.clientY-r.top)/sy;
   p._moved=false;
-  const el=polyById[n.name];
+  const el=polyById[stack?stack.name:n.name];
   if(el){el.setAttribute('class','hexpoly drag');}
   function move(ev){
     p.x=ox+(ev.clientX-r.left)/sx; p.y=oy+(ev.clientY-r.top)/sy; p._moved=true;
-    if(el){el.setAttribute('points',hexPts(p.x,p.y,46));}
-    if(p._t1) p._t1.setAttribute('x',p.x); if(p._t1) p._t1.setAttribute('y',p.y-2);
-    if(p._t2) p._t2.setAttribute('x',p.x); if(p._t2) p._t2.setAttribute('y',p.y+12);
+    // MAGNETIC SNAP: if released near a sibling slot, it clicks into place
+    const snapped=[];
+    for(const k in hexPos){
+      if(k===n.name||k==='__comp__') continue;
+      const s=hexPos[k]; const d=Math.hypot(p.x-s.x,p.y-s.y);
+      if(d<MAG){ p.x=s.x; p.y=s.y; p._snapped=true; break; }
+    }
+    if(el){el.setAttribute('points',hexPts(p.x,p.y,46)); if(p._snapped)el.setAttribute('class','hexpoly snapped');}
+    if(p._t1){ p._t1.setAttribute('x',p.x); p._t1.setAttribute('y',p.y-2); }
+    if(p._t2){ p._t2.setAttribute('x',p.x); p._t2.setAttribute('y',p.y+12); }
   }
   function up(){
     document.removeEventListener('mousemove',move);
     document.removeEventListener('mouseup',up);
-    if(el) el.setAttribute('class','hexpoly');
+    if(el) el.setAttribute('class', (stack?'hexpoly composite':'hexpoly'+(p.locked?' locked':''))+(p._snapped?' snapped':''));
+    // persist the (possibly snapped) position
+    if(stack) hexPos['__comp__']={x:p.x,y:p.y};
+    else hexPos[n.name]={x:p.x,y:p.y,locked:p.locked};
   }
   document.addEventListener('mousemove',move);
   document.addEventListener('mouseup',up);
@@ -463,6 +527,54 @@ function closeHouse(name){
   if(i>=0){houses[i].anims.forEach(a=>a.dispose&&a.dispose());houses.splice(i,1);}
   win.remove();
 }
+// ---------- composite (STACK) house window ----------
+function openComposite(names, pos){
+  if(names.length===0) return;
+  const key='comp-'+names.slice().sort().join('|');
+  if(document.getElementById('house-'+key)) return;
+  const nodeMap={}; buildNodes(lastStatic).forEach(n=>nodeMap[n.name]=n);
+  const members=names.map(nm=>nodeMap[nm]).filter(Boolean);
+  const win=document.createElement('div'); win.className='house'; win.id='house-'+key;
+  win.style.left=(90)+'px'; win.style.top=(90)+'px';
+  win.innerHTML=
+    '<div class="house-bar"><span class="house-title">STACK {'+members.length+'} '+
+      '<span style="color:var(--gold)">[multi-plane module]</span></span>'+
+      '<span class="house-btns"><span class="hb min">_</span><span class="hb max">□</span><span class="hb close">✕</span></span></div>'+
+    '<div class="house-body"><div class="w w1" style="grid-column:1/3"><div class="wlab">STACK · '+members.length+' modules combined</div>'+
+      '<div class="wcontent" id="w1-'+key+'"></div></div>'+
+      '<div class="w w2" style="grid-column:1/3"><div class="wlab">members</div><div class="wcontent" id="w2-'+key+'"></div></div>'+
+    '</div>';
+  document.getElementById('houses').appendChild(win);
+  win.style.zIndex=++zTop;
+  const bar=win.querySelector('.house-bar');
+  bar.addEventListener('pointerdown',e=>{
+    if(e.target.classList.contains('hb')) return;
+    e.preventDefault(); win.style.zIndex=++zTop;
+    const sx=e.clientX, sy=e.clientY, ox=win.offsetLeft, oy=win.offsetTop;
+    bar.setPointerCapture(e.pointerId); bar.style.cursor='grabbing';
+    const mv=ev=>{ win.style.left=(ox+ev.clientX-sx)+'px'; win.style.top=(oy+ev.clientY-sy)+'px'; };
+    const up2=ev=>{ bar.releasePointerCapture(e.pointerId); bar.style.cursor='move';
+      bar.removeEventListener('pointermove',mv); bar.removeEventListener('pointerup',up2); };
+    bar.addEventListener('pointermove',mv); bar.addEventListener('pointerup',up2);
+  });
+  win.querySelector('.close').onclick=()=>win.remove();
+  win.querySelector('.min').onclick=()=>{const b=win.querySelector('.house-body');b.style.display=b.style.display==='none'?'flex':'none';};
+  win.querySelector('.max').onclick=()=>win.classList.toggle('max');
+  document.getElementById('w1-'+key).innerHTML='<div class="desc">A combined module: '+members.map(m=>m.name).join(', ')+'. Fit avg '+
+    (members.reduce((a,b)=>a+(b._fit||0),0)/Math.max(1,members.length)).toFixed(2)+'. Drag the STACK hex to relocate the whole cluster as one.</div>';
+  document.getElementById('w2-'+key).innerHTML=members.map(m=>
+    '<div class="kv"><b style="color:'+m.color+'">'+m.name+'</b> ['+m.plane+'] '+m.metric+'</div>').join('');
+}
+// ---------- SOLO / STACK mode toggles ----------
+function soloAll(){ // park every node ALONE in its own column (inspect modules one-by-one, no swarm)
+  soloSet.clear(); compositeSet.clear(); if(hexPos.__comp__) delete hexPos.__comp__;
+  const names=buildNodes(lastStatic).map(n=>n.name); names.forEach(n=>soloSet.add(n)); // every node is "solo"
+  drawHex(buildNodes(lastStatic));
+}
+function mergeAll(){ compositeSet.clear(); soloSet.clear(); buildNodes(lastStatic).forEach(n=>compositeSet.add(n.name)); drawHex(buildNodes(lastStatic)); }
+function clearModes(){ soloSet.clear(); compositeSet.clear(); if(hexPos.__comp__) delete hexPos.__comp__; drawHex(buildNodes(lastStatic)); }
+function toggleSolo(name){ soloSet.clear(); compositeSet.clear(); soloSet.add(name); drawHex(buildNodes(lastStatic)); }
+function toggleStack(name){ if(compositeSet.has(name)) compositeSet.delete(name); else compositeSet.add(name); drawHex(buildNodes(lastStatic)); }
 // ---------- w3: 1d fold of 2d/3d (shadow + overlay) ----------
 function startW3(canvas,node){
   const x=canvas.getContext('2d'); let t=0,raf;

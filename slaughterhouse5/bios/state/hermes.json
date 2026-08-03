@@ -18,7 +18,17 @@
     },
     {
       "event": "propose",
-      "operant": "SPAWN"
+      "operant": "IMPORT"
+    },
+    {
+      "event": "probe",
+      "l4": 194,
+      "tag": "DOP-1ffff64e",
+      "weight": 0.05137770751573423
+    },
+    {
+      "event": "propose",
+      "operant": "AWAIT"
     },
     {
       "event": "probe",
@@ -38,7 +48,7 @@
     },
     {
       "event": "propose",
-      "operant": "ASSERT"
+      "operant": "IMPORT"
     },
     {
       "event": "probe",
@@ -48,7 +58,7 @@
     },
     {
       "event": "propose",
-      "operant": "SLICE"
+      "operant": "INDEX"
     },
     {
       "event": "probe",
@@ -58,17 +68,7 @@
     },
     {
       "event": "propose",
-      "operant": "TRY"
-    },
-    {
-      "event": "probe",
-      "l4": 194,
-      "tag": "DOP-1ffff64e",
-      "weight": 0.05137770751573423
-    },
-    {
-      "event": "propose",
-      "operant": "ASSERT"
+      "operant": "CAST"
     },
     {
       "event": "probe",
@@ -77,6 +77,6 @@
       "weight": 0.05137770751573423
     }
   ],
-  "curiosity": 0.6500000000000001,
-  "proposed": "ASSERT"
+  "curiosity": 0.8300000000000003,
+  "proposed": "CAST"
 }

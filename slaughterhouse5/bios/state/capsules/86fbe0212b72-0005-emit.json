@@ -4,14 +4,14 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "SLICE",
+    "proposes": "IMPORT",
     "skills": [
       "propose",
       "probe",
       "garden",
       "recall"
     ],
-    "curiosity": 0.62,
+    "curiosity": 0.71,
     "retention": 9
   },
   "tick": 5,

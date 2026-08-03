@@ -4,14 +4,14 @@
   "kind": "emit",
   "payload": {
     "plane": "H",
-    "proposes": "ASSERT",
+    "proposes": "CAST",
     "skills": [
       "propose",
       "probe",
       "garden",
       "recall"
     ],
-    "curiosity": 0.65,
+    "curiosity": 0.83,
     "retention": 13
   },
   "tick": 7,

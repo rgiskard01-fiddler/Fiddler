@@ -18,12 +18,16 @@
   },
   {
     "toward": "ASSERT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 3
   },
   {
     "toward": "ASSERT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 3,
     "deep": "ASSERT",
     "ran": true,
@@ -78,12 +82,16 @@
   },
   {
     "toward": "ASSERT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 7
   },
   {
     "toward": "ASSERT",
-    "taught": [],
+    "taught": [
+      "hermes"
+    ],
     "tick": 7,
     "deep": "ASSERT",
     "ran": true,
