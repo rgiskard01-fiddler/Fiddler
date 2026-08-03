@@ -1,18 +1,42 @@
 [
   {
     "name": "agent-0",
+    "plane": "L1",
     "content": "AGENT-A GENOME:none",
     "fitness": 10,
     "gen": 0
   },
   {
     "name": "agent-1",
+    "plane": "L1",
     "content": "AGENT-A GENOME:none",
     "fitness": 10,
     "gen": 0
   },
   {
     "name": "agent-2",
+    "plane": "L1",
+    "content": "EVOLVE GENOME:YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD",
+    "fitness": 0,
+    "gen": 10
+  },
+  {
+    "name": "subagent-0",
+    "plane": "L2",
+    "content": "SUB-A GENOME:none",
+    "fitness": 10,
+    "gen": 0
+  },
+  {
+    "name": "subagent-1",
+    "plane": "L2",
+    "content": "SUB-A GENOME:none",
+    "fitness": 10,
+    "gen": 0
+  },
+  {
+    "name": "subagent-2",
+    "plane": "L2",
     "content": "EVOLVE GENOME:YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD",
     "fitness": 0,
     "gen": 10

@@ -1,10 +1,12 @@
 {
   "sender": "bios",
-  "receiver": "sa@6-agent-2",
+  "receiver": "subagent-2",
   "kind": "emit",
   "payload": {
-    "l2_address": 228869,
-    "host_symbol": "BINOP"
+    "plane": "L2",
+    "proposes": "LAMBDA",
+    "l2_address": 67685,
+    "host_symbol": "H12"
   },
   "tick": 6,
   "trace_id": "86fbe0212b72"

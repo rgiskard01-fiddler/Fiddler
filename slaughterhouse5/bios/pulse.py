@@ -1,13 +1,15 @@
-"""The PULSE — one metabolic tick: a PERSISTENT, EVOLVING multi-agent descent.
+"""The PULSE — one metabolic tick: a PERSISTENT, EVOLVING, MULTI-PLANE descent.
 
-The population of agents is PERSISTED across ticks (state/population.json) and
-EVOLVES: agents that lose the 2/3 arbitration are selected out and replaced by
-genome-biased mutants (selection pressure toward consensus). Only the
+Two proposing populations, on two planes, arbitrated together:
+  * L1 agents   (agent.Attest)        -> propose
+  * L2 subagents (subagent.SubAgent)   -> INDEPENDENTLY propose on the 18-bit
+                                          SUBAGENT HOST plane
+The cortex ARBITRATES the combined population at >= 2/3; EVERY difference is
+logged; losers are selected out and replaced by genome-biased mutants. Only the
 arbitrated verdict is woven into the executed program.
 
-seed(i4) -> emit(population, L1) -> host(subagents, L2) -> sense(L2)
--> compose(constructor, L3) -> arbitrate+log+EVOLVE(cortex, L4)
--> execute(jitonf, GATED by verdict) -> ingest.
+seed(i4) -> emit(L1+L2, propose) -> sense(L2) -> compose(L3)
+-> arbitrate+log+EVOLVE(cortex, L4) -> execute(jitonf, gated) -> ingest.
 """
 from __future__ import annotations
 
@@ -20,7 +22,7 @@ from collections import Counter
 from .kernel import BioSphere, FROZEN_SPEC_SHA
 from .contract import Capsule, CapsuleKind
 
-POP = 3  # size of the persistent agent population
+POP = 3  # proposers per plane (so 2*POP = 6 total, 2/3 = 4 needed)
 
 
 def _jitonf_demo_src() -> str:
@@ -60,19 +62,24 @@ def _save(bio, name, data):
 
 def _seed_population(genome):
     g = ",".join(genome) or "none"
-    return [
-        {"name": "agent-0", "content": f"AGENT-A GENOME:{g}", "fitness": 0, "gen": 0},
-        {"name": "agent-1", "content": f"AGENT-A GENOME:{g}", "fitness": 0, "gen": 0},
-        {"name": "agent-2", "content": f"AGENT-B GENOME:{g}", "fitness": 0, "gen": 0},
-    ]
+    pop = []
+    for i in range(POP):
+        tag = "A" if i < POP - 1 else "B"   # 2/3 majority per plane
+        pop.append({"name": f"agent-{i}", "plane": "L1",
+                    "content": f"AGENT-{tag} GENOME:{g}", "fitness": 0, "gen": 0})
+    for i in range(POP):
+        tag = "A" if i < POP - 1 else "B"
+        pop.append({"name": f"subagent-{i}", "plane": "L2",
+                    "content": f"SUB-{tag} GENOME:{g}", "fitness": 0, "gen": 0})
+    return pop
 
 
-def _evolve(pop, proposals, verdict, genome):
-    """Selection: winners gain fitness; losing agents below zero are replaced
-    by a genome-biased mutant (the biosphere nudges them toward consensus)."""
+def _evolve(members, verdict, genome):
+    """Selection across BOTH planes: winners gain fitness; losing specs below
+    zero are replaced by a genome-biased mutant (nudged toward consensus)."""
     g = ",".join(genome) or "none"
-    for i, spec in enumerate(pop):
-        if verdict and proposals[i] == verdict:
+    for spec, prop in members:
+        if verdict and prop == verdict:
             spec["fitness"] += 1
         else:
             spec["fitness"] -= 1
@@ -80,7 +87,7 @@ def _evolve(pop, proposals, verdict, genome):
             spec["content"] = f"EVOLVE GENOME:{g}"
             spec["fitness"] = 0
             spec["gen"] += 1
-    return pop
+    return members
 
 
 # Each adopted operant's real semantics, emulated in executable core I-13.
@@ -130,48 +137,51 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
             c = bio.seed()
             c_root = c.root
 
-        # ---- L1 : emit the PERSISTENT population (agents keep their identity) ----
-        agents = []
-        for spec in pop:
-            a = Agent.from_content(spec["name"], spec["content"].encode())
-            agents.append(a)
-            bio.emit(Capsule("bios", a.name, CapsuleKind.EMIT,
-                             {"proposes": a.proposes_operant,
-                              "fitness": spec["fitness"], "gen": spec["gen"],
-                              "learned": a.learned_i13[:16] + "…"}))
-
-        # ---- L2 SUBAGENT HOST : host each agent on the 18-bit plane ----
+        # ---- L1 + L2 : emit BOTH proposing populations (persisted identity) ----
+        agents_spec = [s for s in pop if s["plane"] == "L1"]
+        sub_specs = [s for s in pop if s["plane"] == "L2"]
+        agents = [Agent.from_content(s["name"], s["content"].encode()) for s in agents_spec]
+        subagents = [SubAgent.from_content(s["name"], s["content"].encode(), l2_address=None)
+                     for s in sub_specs]
         for a in agents:
-            sa = SubAgent.from_content(f"sa@{bio.tick}-{a.name}", a.attestation.encode(), l2_address=None)
+            bio.emit(Capsule("bios", a.name, CapsuleKind.EMIT,
+                             {"plane": "L1", "proposes": a.proposes_operant,
+                              "fitness": next(s["fitness"] for s in agents_spec if s["name"] == a.name),
+                              "learned": a.learned_i13[:16] + "…"}))
+        for sa in subagents:
             bio.emit(Capsule("bios", sa.name, CapsuleKind.EMIT,
-                             {"l2_address": sa.l2_address, "host_symbol": sa.host_symbol}))
+                             {"plane": "L2", "proposes": sa.proposes_operant,
+                              "l2_address": sa.l2_address, "host_symbol": sa.host_symbol}))
 
         # ---- L2 : cortex SENSE ----
         bio.emit(Capsule("bios", "cortex", CapsuleKind.SENSE,
                          {"L1": SENSE_L1, "L2": SENSE_L2}))
 
-        # ---- L3 COMPOSE : (a) verified collapse over the whole population ----
+        # ---- L3 COMPOSE : (a) verified collapse over BOTH planes ----
         if c_root is None:
             c_root = i4_collapse(FROZEN_SPEC_SHA).root
-        spheres = [Sphere(a.name, "agent", a.attestation) for a in agents]
-        spheres += [Sphere("cortex", "cortex", json.dumps({"L1": SENSE_L1, "L2": SENSE_L2})),
-                    Sphere("i4", "i4", c_root)]
+        spheres = ([Sphere(a.name, "agent", a.attestation) for a in agents]
+                   + [Sphere(sa.name, "subagent", sa.attestation) for sa in subagents]
+                   + [Sphere("cortex", "cortex", json.dumps({"L1": SENSE_L1, "L2": SENSE_L2})),
+                      Sphere("i4", "i4", c_root)])
         folds = build_fold(spheres)
         fold_ok, _ = verify_fold(folds[0]["seal"], folds[0]["proof"], folds[0]["root"])
         bio.emit(Capsule("bios", "constructor", CapsuleKind.FOLD,
                          {"verified": fold_ok, "root": folds[0]["root"][:16] + "…",
                           "spheres": len(spheres)}))
 
-        # ---- L4 : cortex ARBITRATES + LOGS EVERY DIFFERENCE ----
-        proposals = [a.proposes_operant for a in agents]
+        # ---- L4 : cortex ARBITRATES L1+L2 (logs EVERY difference) ----
+        members = ([(s, a.proposes_operant) for s, a in zip(agents_spec, agents)]
+                   + [(s, sa.proposes_operant) for s, sa in zip(sub_specs, subagents)])
+        proposals = [p for _, p in members]
         verdict = arbitrate(proposals)
-        diff_pairs = [[i, j] for i in range(len(agents)) for j in range(i + 1, len(agents))
+        diff_pairs = [[i, j] for i in range(len(members)) for j in range(i + 1, len(members))
                       if proposals[i] != proposals[j]]
         record = {
             "tick": bio.tick,
-            "population": [{"name": a.name, "proposal": a.proposes_operant,
-                            "fitness": spec["fitness"], "gen": spec["gen"]}
-                           for a, spec in zip(agents, pop)],
+            "population": [{"name": s["name"], "plane": s["plane"], "proposal": p,
+                            "fitness": s["fitness"], "gen": s["gen"]}
+                           for s, p in members],
             "distinct": verdict["distinct"], "counts": verdict["counts"],
             "differing_pairs": diff_pairs, "verdict": verdict["verdict"],
             "reason": verdict["reason"],
@@ -183,8 +193,8 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                           "differing_pairs": diff_pairs, "verdict": verdict["verdict"],
                           "reason": verdict["reason"]}))
 
-        # ---- EVOLVE : selection pressure toward consensus (persisted) ----
-        pop = _evolve(pop, proposals, verdict["verdict"], genome)
+        # ---- EVOLVE : selection pressure across BOTH planes (persisted) ----
+        members = _evolve(members, verdict["verdict"], genome)
         _save(bio, "population.json", pop)
 
         # ---- L3 COMPOSE : (b) weave the arbitrated operant's semantics ----
@@ -222,10 +232,9 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
 
         if verbose:
             fit = [s["fitness"] for s in pop]
-            gens = [s["gen"] for s in pop]
-            print(f"[pulse {bio.tick}] {bio.store.summary()} | pop={proposals} "
-                  f"verdict={verdict['verdict']} exec={ex['status']} "
-                  f"fitness={fit} gen={gens} diffs={len(diff_pairs)} op={op_tag}")
+            print(f"[pulse {bio.tick}] {bio.store.summary()} | L1={[a.proposes_operant for a in agents]} "
+                  f"L2={[sa.proposes_operant for sa in subagents]} verdict={verdict['verdict']} "
+                  f"exec={ex['status']} diffs={len(diff_pairs)} op={op_tag}")
 
     return bio
 

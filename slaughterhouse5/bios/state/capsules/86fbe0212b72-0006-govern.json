@@ -6,6 +6,9 @@
     "population": [
       "YIELD",
       "YIELD",
+      "LAMBDA",
+      "YIELD",
+      "YIELD",
       "LAMBDA"
     ],
     "distinct": [
@@ -18,12 +21,36 @@
         2
       ],
       [
+        0,
+        5
+      ],
+      [
         1,
         2
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
       ]
     ],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (2/3)"
+    "reason": "YIELD adopted by >=2/3 (4/6)"
   },
   "tick": 6,
   "trace_id": "86fbe0212b72"

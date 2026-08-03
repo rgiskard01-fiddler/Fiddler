@@ -1,10 +1,12 @@
 {
   "sender": "bios",
-  "receiver": "sa@9-agent-2",
+  "receiver": "subagent-2",
   "kind": "emit",
   "payload": {
-    "l2_address": 31631,
-    "host_symbol": "H32"
+    "plane": "L2",
+    "proposes": "SPAWN",
+    "l2_address": 36802,
+    "host_symbol": "NAME"
   },
   "tick": 9,
   "trace_id": "86fbe0212b72"

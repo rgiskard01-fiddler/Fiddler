@@ -1,10 +1,12 @@
 {
   "sender": "bios",
-  "receiver": "sa@7-agent-2",
+  "receiver": "subagent-2",
   "kind": "emit",
   "payload": {
-    "l2_address": 17143,
-    "host_symbol": "INDEX"
+    "plane": "L2",
+    "proposes": "CAST",
+    "l2_address": 204231,
+    "host_symbol": "CONSTANT"
   },
   "tick": 7,
   "trace_id": "86fbe0212b72"
