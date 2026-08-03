@@ -16,9 +16,9 @@
   {
     "name": "agent-2",
     "plane": "L1",
-    "content": "EVOLVE GENOME:YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD",
-    "fitness": 0,
-    "gen": 10
+    "content": "AGENT-B GENOME:none TEACH:12",
+    "fitness": 9,
+    "gen": 1
   },
   {
     "name": "subagent-0",
@@ -37,8 +37,8 @@
   {
     "name": "subagent-2",
     "plane": "L2",
-    "content": "EVOLVE GENOME:YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD,YIELD",
-    "fitness": 0,
-    "gen": 10
+    "content": "SUB-B GENOME:none TEACH:11",
+    "fitness": 9,
+    "gen": 1
   }
 ]

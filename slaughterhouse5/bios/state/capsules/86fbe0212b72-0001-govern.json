@@ -54,6 +54,10 @@
         5
       ]
     ],
+    "taught": [
+      "agent-2",
+      "subagent-2"
+    ],
     "verdict": "YIELD",
     "reason": "YIELD adopted by >=2/3 (4/6)"
   },

@@ -74,19 +74,37 @@ def _seed_population(genome):
     return pop
 
 
+def _teach(content, verdict):
+    """Teach signal: find a content perturbation such that the agent's OWN
+    propose_operant yields the ratified verdict. The minority agent is not
+    bypassed -- it is taught an input that makes its own logic agree
+    (genuine teach, not a forced override)."""
+    from agent import Agent
+    base = content if " TEACH:" in content else content + " TEACH:"
+    for k in range(4096):
+        cand = f"{base}{k}"
+        if Agent.from_content("taught", cand.encode()).proposes_operant == verdict:
+            return cand
+    return content
+
+
 def _evolve(members, verdict, genome):
-    """Selection across BOTH planes: winners gain fitness; losing specs below
-    zero are replaced by a genome-biased mutant (nudged toward consensus)."""
+    """Selection across BOTH planes. Winners gain fitness. Losers are fed a
+    TEACH signal: their content is nudged (via their own proposal function)
+    toward the ratified verdict, so the population CONVERGES instead of merely
+    being logged as different. With no verdict, they reseed as mutants."""
     g = ",".join(genome) or "none"
     for spec, prop in members:
         if verdict and prop == verdict:
             spec["fitness"] += 1
         else:
-            spec["fitness"] -= 1
-        if spec["fitness"] < 0:
-            spec["content"] = f"EVOLVE GENOME:{g}"
-            spec["fitness"] = 0
-            spec["gen"] += 1
+            spec["fitness"] = max(0, spec["fitness"] - 1)
+            if verdict:
+                spec["content"] = _teach(spec["content"], verdict)
+                spec["gen"] += 1
+            else:
+                spec["content"] = f"EVOLVE GENOME:{g}"
+                spec["gen"] += 1
     return members
 
 
@@ -183,15 +201,17 @@ def run_pulse(bio: BioSphere, n: int = 1, verbose: bool = True) -> BioSphere:
                             "fitness": s["fitness"], "gen": s["gen"]}
                            for s, p in members],
             "distinct": verdict["distinct"], "counts": verdict["counts"],
-            "differing_pairs": diff_pairs, "verdict": verdict["verdict"],
-            "reason": verdict["reason"],
+            "differing_pairs": diff_pairs,
+            "taught": [s["name"] for s, p in members if verdict["verdict"] and p != verdict["verdict"]],
+            "verdict": verdict["verdict"], "reason": verdict["reason"],
         }
         diff_log.append(record)
         _save(bio, "differences.json", diff_log)
         bio.emit(Capsule("bios", "cortex", CapsuleKind.GOVERN,
                          {"population": proposals, "distinct": verdict["distinct"],
-                          "differing_pairs": diff_pairs, "verdict": verdict["verdict"],
-                          "reason": verdict["reason"]}))
+                          "differing_pairs": diff_pairs,
+                          "taught": [s["name"] for s, p in members if verdict["verdict"] and p != verdict["verdict"]],
+                          "verdict": verdict["verdict"], "reason": verdict["reason"]}))
 
         # ---- EVOLVE : selection pressure across BOTH planes (persisted) ----
         members = _evolve(members, verdict["verdict"], genome)

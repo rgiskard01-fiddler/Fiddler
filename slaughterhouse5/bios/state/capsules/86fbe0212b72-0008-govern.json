@@ -6,51 +6,18 @@
     "population": [
       "YIELD",
       "YIELD",
-      "TRY",
       "YIELD",
       "YIELD",
-      "TRY"
-    ],
-    "distinct": [
-      "TRY",
+      "YIELD",
       "YIELD"
     ],
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
+    "distinct": [
+      "YIELD"
     ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   "tick": 8,
   "trace_id": "86fbe0212b72"

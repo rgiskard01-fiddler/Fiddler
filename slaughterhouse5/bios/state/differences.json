@@ -93,6 +93,10 @@
         5
       ]
     ],
+    "taught": [
+      "agent-2",
+      "subagent-2"
+    ],
     "verdict": "YIELD",
     "reason": "YIELD adopted by >=2/3 (4/6)"
   },
@@ -116,7 +120,7 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "IMPORT",
+        "proposal": "YIELD",
         "fitness": 0,
         "gen": 1
       },
@@ -137,55 +141,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "IMPORT",
+        "proposal": "YIELD",
         "fitness": 0,
         "gen": 1
       }
     ],
     "distinct": [
-      "IMPORT",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "IMPORT": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 3,
@@ -207,9 +177,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "ASSERT",
-        "fitness": 0,
-        "gen": 2
+        "proposal": "YIELD",
+        "fitness": 1,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -228,55 +198,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "ASSERT",
-        "fitness": 0,
-        "gen": 2
+        "proposal": "YIELD",
+        "fitness": 1,
+        "gen": 1
       }
     ],
     "distinct": [
-      "ASSERT",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "ASSERT": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 4,
@@ -298,9 +234,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "LAMBDA",
-        "fitness": 0,
-        "gen": 3
+        "proposal": "YIELD",
+        "fitness": 2,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -319,55 +255,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "LAMBDA",
-        "fitness": 0,
-        "gen": 3
+        "proposal": "YIELD",
+        "fitness": 2,
+        "gen": 1
       }
     ],
     "distinct": [
-      "LAMBDA",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "LAMBDA": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 5,
@@ -389,9 +291,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "INDEX",
-        "fitness": 0,
-        "gen": 4
+        "proposal": "YIELD",
+        "fitness": 3,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -410,55 +312,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "INDEX",
-        "fitness": 0,
-        "gen": 4
+        "proposal": "YIELD",
+        "fitness": 3,
+        "gen": 1
       }
     ],
     "distinct": [
-      "INDEX",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "INDEX": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 6,
@@ -480,9 +348,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "LAMBDA",
-        "fitness": 0,
-        "gen": 5
+        "proposal": "YIELD",
+        "fitness": 4,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -501,55 +369,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "LAMBDA",
-        "fitness": 0,
-        "gen": 5
+        "proposal": "YIELD",
+        "fitness": 4,
+        "gen": 1
       }
     ],
     "distinct": [
-      "LAMBDA",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "LAMBDA": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 7,
@@ -571,9 +405,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "CAST",
-        "fitness": 0,
-        "gen": 6
+        "proposal": "YIELD",
+        "fitness": 5,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -592,55 +426,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "CAST",
-        "fitness": 0,
-        "gen": 6
+        "proposal": "YIELD",
+        "fitness": 5,
+        "gen": 1
       }
     ],
     "distinct": [
-      "CAST",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "CAST": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 8,
@@ -662,9 +462,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "TRY",
-        "fitness": 0,
-        "gen": 7
+        "proposal": "YIELD",
+        "fitness": 6,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -683,55 +483,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "TRY",
-        "fitness": 0,
-        "gen": 7
+        "proposal": "YIELD",
+        "fitness": 6,
+        "gen": 1
       }
     ],
     "distinct": [
-      "TRY",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "TRY": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 9,
@@ -753,9 +519,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "SPAWN",
-        "fitness": 0,
-        "gen": 8
+        "proposal": "YIELD",
+        "fitness": 7,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -774,55 +540,21 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "SPAWN",
-        "fitness": 0,
-        "gen": 8
+        "proposal": "YIELD",
+        "fitness": 7,
+        "gen": 1
       }
     ],
     "distinct": [
-      "SPAWN",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "SPAWN": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   },
   {
     "tick": 10,
@@ -844,9 +576,9 @@
       {
         "name": "agent-2",
         "plane": "L1",
-        "proposal": "SPAWN",
-        "fitness": 0,
-        "gen": 9
+        "proposal": "YIELD",
+        "fitness": 8,
+        "gen": 1
       },
       {
         "name": "subagent-0",
@@ -865,54 +597,20 @@
       {
         "name": "subagent-2",
         "plane": "L2",
-        "proposal": "SPAWN",
-        "fitness": 0,
-        "gen": 9
+        "proposal": "YIELD",
+        "fitness": 8,
+        "gen": 1
       }
     ],
     "distinct": [
-      "SPAWN",
       "YIELD"
     ],
     "counts": {
-      "YIELD": 4,
-      "SPAWN": 2
+      "YIELD": 6
     },
-    "differing_pairs": [
-      [
-        0,
-        2
-      ],
-      [
-        0,
-        5
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        5
-      ],
-      [
-        2,
-        3
-      ],
-      [
-        2,
-        4
-      ],
-      [
-        3,
-        5
-      ],
-      [
-        4,
-        5
-      ]
-    ],
+    "differing_pairs": [],
+    "taught": [],
     "verdict": "YIELD",
-    "reason": "YIELD adopted by >=2/3 (4/6)"
+    "reason": "YIELD adopted by >=2/3 (6/6)"
   }
 ]
